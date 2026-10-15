@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Grade Escape - App de Questões</title>
+    
+    <!-- Fontes do Jogo -->
+    <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&family=Permanent+Marker&display=swap" rel="stylesheet">
+    
+    <!-- Link para o arquivo CSS externo -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="app-container">
+        
+        <!-- TELA 1: MENU PRINCIPAL -->
+        <div id="tela-menu" class="tela ativa">
+            <h1>THE GRADE ESCAPE</h1>
+            <p class="subtitulo">Banco Oficial de Questões</p>
+            
+            <div class="grid-materias">
+                <button class="btn-materia btn-mat" onclick="sortearPergunta('Matemática')">MATEMÁTICA</button>
+                <button class="btn-materia btn-port" onclick="sortearPergunta('Português')">PORTUGUÊS</button>
+                <button class="btn-materia btn-hist" onclick="sortearPergunta('História')">HISTÓRIA</button>
+                <button class="btn-materia btn-cien" onclick="sortearPergunta('Ciências')">CIÊNCIAS</button>
+            </div>
+        </div>
+
+        <!-- TELA 2: PERGUNTA -->
+        <div id="tela-pergunta" class="tela">
+            <div class="cabecalho-pergunta">
+                <span id="nome-materia">Matemática</span>
+                <!-- Novo Cronômetro -->
+                <span id="tempo-restante">⏱️ 60s</span>
+                <span id="pontos-materia" class="pontos-badge">3 PTS</span>
+            </div>
+            
+            <p id="texto-pergunta">Carregando pergunta...</p>
+            
+            <div id="opcoes" class="opcoes-container">
+                <!-- Botões gerados pelo JS -->
+            </div>
+        </div>
+
+        <!-- TELA 3: FEEDBACK -->
+        <div id="tela-feedback" class="tela">
+            <div id="icone-feedback">✅</div>
+            <h2 id="titulo-feedback">CORRETO!</h2>
+            <p id="pontos-feedback">+3 Pontos no Boletim</p>
+            <p id="explicacao-feedback">A explicação vai aqui.</p>
+            
+            <button class="btn-acao" onclick="voltarMenu()">ESCOLHER OUTRA MATÉRIA</button>
+        </div>
+
+    </div>
+
+    <!-- Link para o arquivo JavaScript externo -->
+    <script src="script.js"></script>
+</body>
+</html>
