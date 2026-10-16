@@ -323,6 +323,10 @@ function sortearPergunta(materia) {
     const randomIndex = Math.floor(Math.random() * questoesMateria.length);
     perguntaAtual = JSON.parse(JSON.stringify(questoesMateria[randomIndex]));
     
+    // NOVO: Reativa o botão de dica para a nova pergunta
+    const btnDica = document.getElementById('btn-dica');
+    if(btnDica) btnDica.disabled = false;
+
     document.getElementById('nome-materia').innerText = materia;
     document.getElementById('pontos-materia').innerText = perguntaAtual.pts + " PTS";
     
@@ -342,6 +346,10 @@ function sortearPergunta(materia) {
         const btn = document.createElement('button');
         btn.className = 'btn-opcao';
         btn.innerText = opcao.t;
+        
+        // NOVO: Guarda no HTML se esta opção é a correta ou não
+        btn.dataset.correta = opcao.c; 
+        
         btn.onclick = () => verificarResposta(opcao.c, perguntaAtual, false);
         containerOpcoes.appendChild(btn);
     });
@@ -349,6 +357,8 @@ function sortearPergunta(materia) {
     mudarTela('tela-pergunta');
     iniciarTimer(perguntaAtual);
 }
+
+
 
 function verificarResposta(isCorreta, objPergunta, tempoEsgotado = false) {
     clearInterval(timerInterval); 
@@ -389,74 +399,35 @@ function voltarMenu() {
 }
 
 // ==========================================
-// MODO TEMPORÁRIO DE TESTE VISUAL (DEBUG)
+// FUNÇÃO: BOTÃO DE DICA
 // ==========================================
-let qaQuestoes = [];
-let qaIndex = 0;
-
-function iniciarTesteVisual() {
-    qaQuestoes = []; // Limpa a lista
+function usarDica() {
+    const btnDica = document.getElementById('btn-dica');
     
-    // Junta todas as perguntas num só array
-    for (let materia in banco) {
-        banco[materia].forEach(q => {
-            let qTeste = JSON.parse(JSON.stringify(q));
-            qTeste.materiaFake = materia; // Guarda o nome da matéria para exibir
-            qaQuestoes.push(qTeste);
-        });
+    // Se já foi usada, aborta
+    if (btnDica.disabled) return;
+    
+    // Captura todos os botões de alternativas na tela
+    const botoesOpcoes = document.querySelectorAll('#opcoes .btn-opcao');
+    
+    // Filtra apenas os botões que têm a resposta errada E que ainda não foram eliminados
+    const erradas = Array.from(botoesOpcoes).filter(btn => 
+        btn.dataset.correta === "false" && !btn.classList.contains('opcao-eliminada')
+    );
+    
+    // Se houver opções erradas para eliminar
+    if (erradas.length > 0) {
+        // Sorteia uma aleatória
+        const indexAleatorio = Math.floor(Math.random() * erradas.length);
+        const botaoEliminar = erradas[indexAleatorio];
+        
+        // Aplica a classe CSS que apaga e bloqueia a alternativa
+        botaoEliminar.classList.add('opcao-eliminada');
+        
+        // Desativa o botão de dica para não ser usado de novo nesta pergunta
+        btnDica.disabled = true;
+        
+        // Toca o bipe para dar feedback sonoro
+        tocarBipe();
     }
-    
-    qaIndex = 0;
-    mostrarPerguntaTeste();
-}
-
-function mostrarPerguntaTeste() {
-    // Se chegou ao fim, avisa e volta ao menu
-    if (qaIndex >= qaQuestoes.length) {
-        alert("Fim do teste! Todas as perguntas foram verificadas.");
-        voltarMenu();
-        return;
-    }
-    
-    clearInterval(timerInterval); // Trava o cronómetro para você poder ler com calma
-    
-    let q = qaQuestoes[qaIndex];
-    
-    // Atualiza o cabeçalho (Ex: "Matemática (1/216) - ID: MAT-F01")
-    document.getElementById('nome-materia').innerText = `${q.materiaFake} (${qaIndex + 1}/${qaQuestoes.length})`;
-    document.getElementById('nome-materia').style.color = "white";
-    document.getElementById('pontos-materia').innerText = q.id; // Mostra o ID para saber qual arrumar se estiver grande demais
-    document.getElementById('tempo-restante').innerText = "TESTE";
-    
-    document.getElementById('texto-pergunta').innerText = q.p;
-    
-    const containerOpcoes = document.getElementById('opcoes');
-    containerOpcoes.innerHTML = ''; 
-    
-    // Renderiza as alternativas
-    q.o.forEach(opcao => {
-        const btn = document.createElement('button');
-        btn.className = 'btn-opcao';
-        btn.innerText = opcao.t;
-        // Ao clicar em qualquer alternativa, avança para a próxima
-        btn.onclick = () => { 
-            qaIndex++; 
-            mostrarPerguntaTeste(); 
-        };
-        containerOpcoes.appendChild(btn);
-    });
-
-    // Adiciona um botão extra de "PULAR" para acelerar o teste
-    const btnPular = document.createElement('button');
-    btnPular.className = 'btn-acao';
-    btnPular.style.marginTop = '15px';
-    btnPular.style.width = '100%';
-    btnPular.innerText = '⏭️ PRÓXIMA PERGUNTA';
-    btnPular.onclick = () => { 
-        qaIndex++; 
-        mostrarPerguntaTeste(); 
-    };
-    containerOpcoes.appendChild(btnPular);
-
-    mudarTela('tela-pergunta');
 }

@@ -27,11 +27,6 @@
                 <button class="btn-materia btn-cien" onclick="sortearPergunta('Ciências')"></button>
             </div>
 
-            <!-- BOTÃO TEMPORÁRIO DE TESTE -->
-            <button onclick="iniciarTesteVisual()" style="margin-top: 20px; padding: 10px; background-color: #FF9800; color: white; border: none; border-radius: 5px; font-weight: bold; width: 100%; cursor: pointer;">
-                🛠️ TESTAR TODAS AS PERGUNTAS 
-            </button>
-
         </div>
 
 
@@ -45,9 +40,14 @@
                 <span id="tempo-restante">⏱️ 45s</span>
                 <span id="pontos-materia" class="pontos-badge">3 PTS</span>
             </div>
-            
+
             <p id="texto-pergunta">Carregando pergunta...</p>
             
+            <!-- NOVO: Área do botão de dica -->
+            <div style="text-align: right; margin-bottom: 15px;">
+                <button id="btn-dica" class="btn-dica" onclick="usarDica()">🪄 Usar Dica</button>
+            </div>
+
             <div id="opcoes" class="opcoes-container">
                 <!-- Botões gerados pelo JS -->
             </div>
