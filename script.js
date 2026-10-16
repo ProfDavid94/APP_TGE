@@ -387,3 +387,76 @@ function voltarMenu() {
     clearInterval(timerInterval); 
     mudarTela('tela-menu');
 }
+
+// ==========================================
+// MODO TEMPORÁRIO DE TESTE VISUAL (DEBUG)
+// ==========================================
+let qaQuestoes = [];
+let qaIndex = 0;
+
+function iniciarTesteVisual() {
+    qaQuestoes = []; // Limpa a lista
+    
+    // Junta todas as perguntas num só array
+    for (let materia in banco) {
+        banco[materia].forEach(q => {
+            let qTeste = JSON.parse(JSON.stringify(q));
+            qTeste.materiaFake = materia; // Guarda o nome da matéria para exibir
+            qaQuestoes.push(qTeste);
+        });
+    }
+    
+    qaIndex = 0;
+    mostrarPerguntaTeste();
+}
+
+function mostrarPerguntaTeste() {
+    // Se chegou ao fim, avisa e volta ao menu
+    if (qaIndex >= qaQuestoes.length) {
+        alert("Fim do teste! Todas as perguntas foram verificadas.");
+        voltarMenu();
+        return;
+    }
+    
+    clearInterval(timerInterval); // Trava o cronómetro para você poder ler com calma
+    
+    let q = qaQuestoes[qaIndex];
+    
+    // Atualiza o cabeçalho (Ex: "Matemática (1/216) - ID: MAT-F01")
+    document.getElementById('nome-materia').innerText = `${q.materiaFake} (${qaIndex + 1}/${qaQuestoes.length})`;
+    document.getElementById('nome-materia').style.color = "white";
+    document.getElementById('pontos-materia').innerText = q.id; // Mostra o ID para saber qual arrumar se estiver grande demais
+    document.getElementById('tempo-restante').innerText = "TESTE";
+    
+    document.getElementById('texto-pergunta').innerText = q.p;
+    
+    const containerOpcoes = document.getElementById('opcoes');
+    containerOpcoes.innerHTML = ''; 
+    
+    // Renderiza as alternativas
+    q.o.forEach(opcao => {
+        const btn = document.createElement('button');
+        btn.className = 'btn-opcao';
+        btn.innerText = opcao.t;
+        // Ao clicar em qualquer alternativa, avança para a próxima
+        btn.onclick = () => { 
+            qaIndex++; 
+            mostrarPerguntaTeste(); 
+        };
+        containerOpcoes.appendChild(btn);
+    });
+
+    // Adiciona um botão extra de "PULAR" para acelerar o teste
+    const btnPular = document.createElement('button');
+    btnPular.className = 'btn-acao';
+    btnPular.style.marginTop = '15px';
+    btnPular.style.width = '100%';
+    btnPular.innerText = '⏭️ PRÓXIMA PERGUNTA';
+    btnPular.onclick = () => { 
+        qaIndex++; 
+        mostrarPerguntaTeste(); 
+    };
+    containerOpcoes.appendChild(btnPular);
+
+    mudarTela('tela-pergunta');
+}
