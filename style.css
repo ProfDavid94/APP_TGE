@@ -353,3 +353,187 @@ h1 {
         padding: 15px;
     }
 }
+
+/* ==========================================
+   MODO DESAFIO (TELA DIVIDIDA)
+   ========================================== */
+
+#tela-desafio {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 0; left: 0;
+    background-color: var(--fundo-quadro);
+    overflow: hidden;
+}
+
+/* A Linha Central que divide os jogadores */
+.linha-divisoria {
+    height: 4px;
+    background-color: #FFEB3B;
+    width: 100%;
+    z-index: 10;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+/* Estrutura base de cada metade */
+.metade-desafio {
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: height 0.5s cubic-bezier(0.4, 0, 0.2, 1); /* Animação elástica suave */
+    overflow: hidden;
+    padding: 10px;
+}
+
+/* O Segredo do Frente-a-Frente: Roda a metade de cima */
+#area-j2 {
+    transform: rotate(180deg);
+}
+
+/* ==========================================
+   ESTADOS DE PROPORÇÃO (50/50, 85/15)
+   ========================================== */
+
+/* Estado 1: Início (50/50) */
+.metade-desafio.neutra {
+    height: 50%;
+}
+
+/* Estado 2: Turno Ativo (85%) */
+.metade-desafio.ativa {
+    height: 85%;
+    background-color: rgba(255, 255, 255, 0.05); /* Ligeiro destaque */
+}
+
+/* Estado 3: Turno Inativo (Espera - 15%) */
+.metade-desafio.inativa {
+    height: 15%;
+    background-color: rgba(0, 0, 0, 0.4); /* Escurece a área */
+}
+
+/* ==========================================
+   ELEMENTOS INTERNOS DA ARENA
+   ========================================== */
+
+/* O Relógio */
+.relogio-gigante {
+    font-family: 'Cinzel', serif;
+    font-weight: bold;
+    color: white;
+    transition: all 0.5s ease;
+}
+
+/* Se a área está ativa, o relógio encolhe e vai para o topo */
+.ativa .relogio-gigante {
+    font-size: 2rem;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+}
+
+/* Se a área está inativa (15%), o relógio fica gigante no centro */
+.inativa .relogio-gigante {
+    font-size: 4rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #9E9E9E; /* Cinza para indicar pausa */
+}
+
+/* Se a área é neutra (início), relógio médio */
+.neutra .relogio-gigante {
+    font-size: 3rem;
+}
+
+/* Esconde as perguntas/botões quando está na área de 15% ou 50% */
+.inativa .conteudo-desafio, .neutra .conteudo-desafio {
+    opacity: 0;
+    pointer-events: none;
+    display: none;
+}
+
+/* Mostra as perguntas apenas quando a área tem 85% */
+.ativa .conteudo-desafio {
+    opacity: 1;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 500px;
+    margin-top: 40px; /* Espaço para o relógio encolhido */
+}
+
+/* O Overlay brilhante para o primeiro toque */
+.overlay-espera {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0,0,0,0.5);
+    color: #FFEB3B;
+    font-family: 'Cinzel', serif;
+    font-size: 1.2rem;
+    text-align: center;
+    padding: 20px;
+    cursor: pointer;
+    animation: pulsarTexto 1.5s infinite;
+}
+
+/* Ocultar o overlay de clique assim que o jogo começa */
+.ativa .overlay-espera, .inativa .overlay-espera {
+    display: none;
+}
+
+@keyframes pulsarTexto {
+    0% { opacity: 0.5; }
+    50% { opacity: 1; transform: scale(1.05); }
+    100% { opacity: 0.5; }
+}
+
+/* ==========================================
+   ANIMAÇÃO DE PENALIDADE (-5s)
+   ========================================== */
+.alerta-penalidade {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 4rem;
+    color: #F44336;
+    font-weight: bold;
+    font-family: 'Cinzel', serif;
+    opacity: 0;
+    pointer-events: none;
+    text-shadow: 2px 2px 10px black;
+}
+
+.animar-penalidade {
+    animation: flutuarSome 1.5s ease-out forwards;
+}
+
+@keyframes flutuarSome {
+    0% { opacity: 1; transform: translate(-50%, -50%) scale(0.5); }
+    20% { opacity: 1; transform: translate(-50%, -60%) scale(1.2); }
+    100% { opacity: 0; transform: translate(-50%, -100%) scale(1); }
+}
+
+/* Efeito de tremor no relógio ao errar */
+.shake {
+    animation: tremer 0.3s;
+    color: #F44336 !important;
+}
+
+@keyframes tremer {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    50% { transform: translateX(5px); }
+    75% { transform: translateX(-5px); }
+    100% { transform: translateX(0); }
+}

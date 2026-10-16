@@ -27,6 +27,12 @@
                 <button class="btn-materia btn-cien" onclick="sortearPergunta('Ciências')"></button>
             </div>
 
+                        <!-- Botão para entrar no submenu do Desafio -->
+            <button class="btn-acao" style="margin-top: 20px; width: 100%; background-color: #D32F2F; color: white;" onclick="abrirMenuDesafio()">
+                ⚔️ MODO DESAFIO (2 JOGADORES)
+            </button>
+
+
         </div>
 
 
@@ -65,6 +71,45 @@
             
             <button class="btn-acao" onclick="voltarMenu()">ESCOLHER OUTRA MATÉRIA</button>
         </div>
+
+                <!-- TELA 4: ARENA DO DESAFIO (DIVIDIDA) -->
+        <div id="tela-desafio" class="tela">
+            
+            <!-- METADE DO JOGADOR 2 (TOPO - VIRADA DE CABEÇA PARA BAIXO) -->
+            <div id="area-j2" class="metade-desafio neutra" onclick="iniciarDesafio(1)">
+                <div class="relogio-gigante" id="relogio-j2">40</div>
+                
+                <div class="conteudo-desafio">
+                    <p id="pergunta-j2" class="texto-pergunta-desafio">Aguardando...</p>
+                    <div id="opcoes-j2" class="opcoes-container-desafio"></div>
+                    <div class="alerta-penalidade" id="alerta-j2">-5s</div>
+                </div>
+                
+                <div class="overlay-espera" id="overlay-j2">
+                    <span>TOQUE PARA SOLTAR O TEMPO DO JOGADOR 1</span>
+                </div>
+            </div>
+
+            <!-- LINHA DIVISÓRIA CENTRAL -->
+            <div class="linha-divisoria"></div>
+
+            <!-- METADE DO JOGADOR 1 (BASE - POSIÇÃO NORMAL) -->
+            <div id="area-j1" class="metade-desafio neutra" onclick="iniciarDesafio(2)">
+                <div class="relogio-gigante" id="relogio-j1">40</div>
+                
+                <div class="conteudo-desafio">
+                    <p id="pergunta-j1" class="texto-pergunta-desafio">Aguardando...</p>
+                    <div id="opcoes-j1" class="opcoes-container-desafio"></div>
+                    <div class="alerta-penalidade" id="alerta-j1">-5s</div>
+                </div>
+
+                <div class="overlay-espera" id="overlay-j1">
+                    <span>TOQUE PARA SOLTAR O TEMPO DO JOGADOR 2</span>
+                </div>
+            </div>
+
+        </div>
+
 
     </div>
 
