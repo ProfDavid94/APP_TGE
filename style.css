@@ -17,33 +17,43 @@
 }
 
 body {
-    font-family: 'Indie Flower', cursive;
+    font-family: 'Lora', serif; /* Fonte de leitura para perguntas e botões */
     background-image: url('assets/fundo.png');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
     color: var(--grafite);
-    display: flex;
-    justify-content: center;
-    align-items: flex-start; /* Move todo o bloco para cima[cite: 13] */
-    min-height: 100vh;
-    padding: 5vh 20px 20px 20px; /* Dá um pequeno respiro no topo da tela */
+    
+    /* Trava o scroll da tela */
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden; 
+    box-sizing: border-box;
 }
 
 #app-container {
-    background-color: transparent; /* Remove o fundo verde */
-    border: none; /* Remove a borda laranja */
-    box-shadow: none; /* Remove a sombra do container */
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
     width: 100%;
     max-width: 600px;
-    padding: 30px;
+    height: 100vh; /* Ocupa exatamente a altura do ecrã */
+    margin: 0 auto;
+    padding: 20px;
     color: white;
     text-align: center;
     position: relative;
+    
+    /* Distribui os elementos perfeitamente sem espremer */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly; 
 }
 
-h1, h2 {
-    font-family: 'Permanent Marker', cursive;
+h1, h2, .pontos-badge, #tempo-restante, .btn-acao, #titulo-feedback {
+    font-family: 'Cinzel', serif; /* Fonte épica para títulos e números */
     letter-spacing: 2px;
 }
 
