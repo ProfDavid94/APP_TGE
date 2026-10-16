@@ -18,7 +18,7 @@
 
 body {
     font-family: 'Lora', serif; /* Fonte de leitura para perguntas e botões */
-    background-image: url('assets/fundo.png');
+    background-image: url('assets/Fundo.png');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -113,10 +113,11 @@ h1 {
     transform: scale(0.95);
 }
 
-.btn-mat { background-color: var(--cor-mat); }
-.btn-port { background-color: var(--cor-port); }
-.btn-hist { background-color: var(--cor-hist); }
-.btn-cien { background-color: var(--cor-cien); }
+/* Vinculando cada imagem ao seu respectivo botão */
+.btn-mat { background-image: url('assets/Botao-Mat.png'); }
+.btn-port { background-image: url('assets/Botao-Port.png'); }
+.btn-hist { background-image: url('assets/Botao-Hist.png'); }
+.btn-cien { background-image: url('assets/Botao-Cien.png'); }
 
 /* --- TELA DE PERGUNTA --- */
 .cabecalho-pergunta {
