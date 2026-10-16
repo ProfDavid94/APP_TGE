@@ -6,8 +6,7 @@
     <title>The Grade Escape - App de Questões</title>
     
     <!-- Fontes do Jogo -->
-    <!-- Fontes Épicas do Jogo -->
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Lora:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&family=Permanent+Marker&display=swap" rel="stylesheet">
     
     <!-- Link para o arquivo CSS externo -->
     <link rel="stylesheet" href="style.css">
@@ -22,10 +21,11 @@
             <p class="subtitulo">Banco Oficial de Questões</p>
             
             <div class="grid-materias">
-                <button class="btn-materia btn-mat" onclick="sortearPergunta('Matemática')">MATEMÁTICA</button>
-                <button class="btn-materia btn-port" onclick="sortearPergunta('Português')">PORTUGUÊS</button>
-                <button class="btn-materia btn-hist" onclick="sortearPergunta('História')">HISTÓRIA</button>
-                <button class="btn-materia btn-cien" onclick="sortearPergunta('Ciências')">CIÊNCIAS</button>
+                <!-- Textos removidos pois já estão nas imagens -->
+                <button class="btn-materia btn-mat" onclick="sortearPergunta('Matemática')"></button>
+                <button class="btn-materia btn-port" onclick="sortearPergunta('Português')"></button>
+                <button class="btn-materia btn-hist" onclick="sortearPergunta('História')"></button>
+                <button class="btn-materia btn-cien" onclick="sortearPergunta('Ciências')"></button>
             </div>
         </div>
 
@@ -34,7 +34,7 @@
             <div class="cabecalho-pergunta">
                 <span id="nome-materia">Matemática</span>
                 <!-- Novo Cronômetro -->
-                <span id="tempo-restante">⏱️ 60s</span>
+                <span id="tempo-restante">⏱️ 45s</span>
                 <span id="pontos-materia" class="pontos-badge">3 PTS</span>
             </div>
             
@@ -51,6 +51,9 @@
             <h2 id="titulo-feedback">CORRETO!</h2>
             <p id="pontos-feedback">+3 Pontos no Boletim</p>
             <p id="explicacao-feedback">A explicação vai aqui.</p>
+            
+            <!-- Nova Tag para o ID da Questão -->
+            <p id="referencia-pergunta" style="font-size: 0.9rem; color: #B0BEC5; margin-bottom: 20px; font-family: sans-serif;">Ref: ID</p>
             
             <button class="btn-acao" onclick="voltarMenu()">ESCOLHER OUTRA MATÉRIA</button>
         </div>
