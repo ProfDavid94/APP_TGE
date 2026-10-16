@@ -361,12 +361,17 @@ h1 {
 #tela-desafio {
     height: 100vh;
     width: 100vw;
-    display: flex;
     flex-direction: column;
     position: absolute;
     top: 0; left: 0;
     background-color: var(--fundo-quadro);
     overflow: hidden;
+    z-index: 100; /* Garante que cobre o menu completamente quando chamada */
+}
+
+/* Define o flex apenas quando a tela for ativada pelo JavaScript */
+#tela-desafio.ativa {
+    display: flex;
 }
 
 /* A Linha Central que divide os jogadores */
@@ -474,16 +479,17 @@ h1 {
     position: absolute;
     top: 0; left: 0; width: 100%; height: 100%;
     display: flex;
-    align-items: center;
+    align-items: flex-end;
     justify-content: center;
     background: rgba(0,0,0,0.5);
     color: #FFEB3B;
     font-family: 'Cinzel', serif;
     font-size: 1.2rem;
     text-align: center;
-    padding: 20px;
+    padding-bottom: 25px; 
     cursor: pointer;
     animation: pulsarTexto 1.5s infinite;
+    z-index:5;
 }
 
 /* Ocultar o overlay de clique assim que o jogo começa */
