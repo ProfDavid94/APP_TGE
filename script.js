@@ -258,11 +258,19 @@ const banco = {
 };
 
 // ==========================================
-// LÓGICA DO APLICATIVO
+// LÓGICA DO APLICATIVO E VARIÁVEIS GLOBAIS
 // ==========================================
 let perguntaAtual = null;
 let timerInterval; 
 let tempoRestante; 
+
+// Variáveis do Modo Desafio
+let modoAtual = 'normal'; // Pode ser 'normal' ou 'desafio'
+let timerDesafio;
+let tempoJ1 = 40;
+let tempoJ2 = 40;
+let turnoAtual = 0; // 0 = Preparo, 1 = J1 ativo, 2 = J2 ativo
+let materiaDesafio = "";
 
 const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
 
@@ -293,6 +301,92 @@ function mudarTela(idTela) {
     document.getElementById(idTela).classList.add('ativa');
 }
 
+// ==========================================
+// MENU PRINCIPAL (TRANSIÇÃO DE MODOS)
+// ==========================================
+function abrirMenuDesafio() {
+    const btn = document.querySelector('#tela-menu .btn-acao');
+    
+    // Transforma o botão num "Liga/Desliga" para o Modo Desafio
+    if (modoAtual === 'normal') {
+        modoAtual = 'desafio';
+        document.querySelector('#tela-menu h1').innerText = "ESCOLHA A MATÉRIA";
+        document.querySelector('#tela-menu .subtitulo').innerText = "Modo Desafio (2 Jogadores)";
+        btn.innerText = "❌ CANCELAR DESAFIO";
+        btn.style.backgroundColor = "#607D8B";
+    } else {
+        modoAtual = 'normal';
+        document.querySelector('#tela-menu h1').innerText = "THE GRADE ESCAPE";
+        document.querySelector('#tela-menu .subtitulo').innerText = "Banco Oficial de Questões";
+        btn.innerText = "⚔️ MODO DESAFIO (2 JOGADORES)";
+        btn.style.backgroundColor = "#D32F2F";
+    }
+}
+
+function voltarMenu() {
+    clearInterval(timerInterval); 
+    clearInterval(timerDesafio); 
+    
+    // Se voltar, garante que o menu volta ao estado Normal
+    modoAtual = 'normal';
+    document.querySelector('#tela-menu h1').innerText = "THE GRADE ESCAPE";
+    document.querySelector('#tela-menu .subtitulo').innerText = "Banco Oficial de Questões";
+    const btnDesafio = document.querySelector('#tela-menu .btn-acao');
+    if(btnDesafio) {
+        btnDesafio.innerText = "⚔️ MODO DESAFIO (2 JOGADORES)";
+        btnDesafio.style.backgroundColor = "#D32F2F";
+    }
+
+    mudarTela('tela-menu');
+}
+
+// ==========================================
+// MODO NORMAL (CAMPANHA)
+// ==========================================
+function sortearPergunta(materia) {
+    if (audioCtx.state === 'suspended') audioCtx.resume();
+
+    // INTERCEPTADOR: Se o modo for desafio, desvia para a nova Arena!
+    if (modoAtual === 'desafio') {
+        prepararArenaDesafio(materia);
+        return;
+    }
+
+    const questoesMateria = banco[materia];
+    const randomIndex = Math.floor(Math.random() * questoesMateria.length);
+    perguntaAtual = JSON.parse(JSON.stringify(questoesMateria[randomIndex]));
+    
+    const btnDica = document.getElementById('btn-dica');
+    if(btnDica) btnDica.disabled = false;
+
+    document.getElementById('nome-materia').innerText = materia;
+    document.getElementById('pontos-materia').innerText = perguntaAtual.pts + " PTS";
+    
+    const headerMateria = document.getElementById('nome-materia');
+    if(materia === "Matemática") headerMateria.style.color = "var(--cor-mat)";
+    if(materia === "Português") headerMateria.style.color = "var(--cor-port)";
+    if(materia === "História") headerMateria.style.color = "var(--cor-hist)";
+    if(materia === "Ciências") headerMateria.style.color = "var(--cor-cien)";
+
+    document.getElementById('texto-pergunta').innerText = perguntaAtual.p;
+    
+    const opcoesEmbaralhadas = embaralhar(perguntaAtual.o);
+    const containerOpcoes = document.getElementById('opcoes');
+    containerOpcoes.innerHTML = ''; 
+    
+    opcoesEmbaralhadas.forEach(opcao => {
+        const btn = document.createElement('button');
+        btn.className = 'btn-opcao';
+        btn.innerText = opcao.t;
+        btn.dataset.correta = opcao.c; 
+        btn.onclick = () => verificarResposta(opcao.c, perguntaAtual, false);
+        containerOpcoes.appendChild(btn);
+    });
+
+    mudarTela('tela-pergunta');
+    iniciarTimer(perguntaAtual);
+}
+
 function iniciarTimer(objPergunta) {
     clearInterval(timerInterval); 
     tempoRestante = 60;
@@ -316,57 +410,13 @@ function iniciarTimer(objPergunta) {
     }, 1000); 
 }
 
-function sortearPergunta(materia) {
-    if (audioCtx.state === 'suspended') audioCtx.resume();
-
-    const questoesMateria = banco[materia];
-    const randomIndex = Math.floor(Math.random() * questoesMateria.length);
-    perguntaAtual = JSON.parse(JSON.stringify(questoesMateria[randomIndex]));
-    
-    // NOVO: Reativa o botão de dica para a nova pergunta
-    const btnDica = document.getElementById('btn-dica');
-    if(btnDica) btnDica.disabled = false;
-
-    document.getElementById('nome-materia').innerText = materia;
-    document.getElementById('pontos-materia').innerText = perguntaAtual.pts + " PTS";
-    
-    const headerMateria = document.getElementById('nome-materia');
-    if(materia === "Matemática") headerMateria.style.color = "var(--cor-mat)";
-    if(materia === "Português") headerMateria.style.color = "var(--cor-port)";
-    if(materia === "História") headerMateria.style.color = "var(--cor-hist)";
-    if(materia === "Ciências") headerMateria.style.color = "var(--cor-cien)";
-
-    document.getElementById('texto-pergunta').innerText = perguntaAtual.p;
-    
-    const opcoesEmbaralhadas = embaralhar(perguntaAtual.o);
-    const containerOpcoes = document.getElementById('opcoes');
-    containerOpcoes.innerHTML = ''; 
-    
-    opcoesEmbaralhadas.forEach(opcao => {
-        const btn = document.createElement('button');
-        btn.className = 'btn-opcao';
-        btn.innerText = opcao.t;
-        
-        // NOVO: Guarda no HTML se esta opção é a correta ou não
-        btn.dataset.correta = opcao.c; 
-        
-        btn.onclick = () => verificarResposta(opcao.c, perguntaAtual, false);
-        containerOpcoes.appendChild(btn);
-    });
-
-    mudarTela('tela-pergunta');
-    iniciarTimer(perguntaAtual);
-}
-
-
-
 function verificarResposta(isCorreta, objPergunta, tempoEsgotado = false) {
     clearInterval(timerInterval); 
 
     const titulo = document.getElementById('titulo-feedback');
     const pontos = document.getElementById('pontos-feedback');
     const icone = document.getElementById('icone-feedback');
-    const ref = document.getElementById('referencia-pergunta'); // Nova constante para o ID
+    const ref = document.getElementById('referencia-pergunta');
 
     if (tempoEsgotado) {
         icone.innerText = "⏰";
@@ -386,48 +436,181 @@ function verificarResposta(isCorreta, objPergunta, tempoEsgotado = false) {
     }
 
     document.getElementById('explicacao-feedback').innerText = objPergunta.exp;
-    
-    // Injeta o ID da questão na tela final
     ref.innerText = "Ref: " + objPergunta.id;
-
     mudarTela('tela-feedback');
 }
 
-function voltarMenu() {
-    clearInterval(timerInterval); 
-    mudarTela('tela-menu');
-}
-
-// ==========================================
-// FUNÇÃO: BOTÃO DE DICA
-// ==========================================
 function usarDica() {
     const btnDica = document.getElementById('btn-dica');
-    
-    // Se já foi usada, aborta
     if (btnDica.disabled) return;
     
-    // Captura todos os botões de alternativas na tela
     const botoesOpcoes = document.querySelectorAll('#opcoes .btn-opcao');
-    
-    // Filtra apenas os botões que têm a resposta errada E que ainda não foram eliminados
     const erradas = Array.from(botoesOpcoes).filter(btn => 
         btn.dataset.correta === "false" && !btn.classList.contains('opcao-eliminada')
     );
     
-    // Se houver opções erradas para eliminar
     if (erradas.length > 0) {
-        // Sorteia uma aleatória
         const indexAleatorio = Math.floor(Math.random() * erradas.length);
-        const botaoEliminar = erradas[indexAleatorio];
-        
-        // Aplica a classe CSS que apaga e bloqueia a alternativa
-        botaoEliminar.classList.add('opcao-eliminada');
-        
-        // Desativa o botão de dica para não ser usado de novo nesta pergunta
+        erradas[indexAleatorio].classList.add('opcao-eliminada');
         btnDica.disabled = true;
-        
-        // Toca o bipe para dar feedback sonoro
         tocarBipe();
     }
+}
+
+// ==========================================
+// MODO DESAFIO (LÓGICA E RELÓGIOS DE XADREZ)
+// ==========================================
+
+function prepararArenaDesafio(materia) {
+    materiaDesafio = materia;
+    tempoJ1 = 40;
+    tempoJ2 = 40;
+    turnoAtual = 0; // Fase de preparo (50/50)
+
+    document.getElementById('relogio-j1').innerText = tempoJ1;
+    document.getElementById('relogio-j2').innerText = tempoJ2;
+    
+    // Reseta as metades para 50%
+    document.getElementById('area-j1').className = 'metade-desafio neutra';
+    document.getElementById('area-j2').className = 'metade-desafio neutra';
+    
+    mudarTela('tela-desafio');
+}
+
+// Disparado ao tocar num dos blocos de "Aguarde" (Overlays)
+function iniciarDesafio(jogadorAlvo) {
+    // Trava de segurança: só funciona no primeiro clique da partida
+    if (turnoAtual !== 0) return; 
+    
+    turnoAtual = jogadorAlvo;
+    
+    clearInterval(timerDesafio);
+    timerDesafio = setInterval(atualizarRelogiosDesafio, 1000);
+    
+    carregarNovaPerguntaDesafio(turnoAtual);
+    atualizarVisualDesafio();
+}
+
+function atualizarVisualDesafio() {
+    const areaJ1 = document.getElementById('area-j1');
+    const areaJ2 = document.getElementById('area-j2');
+    
+    if (turnoAtual === 1) {
+        areaJ1.className = 'metade-desafio ativa';
+        areaJ2.className = 'metade-desafio inativa';
+    } else if (turnoAtual === 2) {
+        areaJ2.className = 'metade-desafio ativa';
+        areaJ1.className = 'metade-desafio inativa';
+    }
+}
+
+function atualizarRelogiosDesafio() {
+    if (turnoAtual === 1) {
+        tempoJ1--;
+        document.getElementById('relogio-j1').innerText = tempoJ1;
+        if (tempoJ1 <= 10 && tempoJ1 > 0) tocarBipe();
+        if (tempoJ1 <= 0) finalizarDesafio(2); // Tempo do J1 acabou, J2 vence
+    } else if (turnoAtual === 2) {
+        tempoJ2--;
+        document.getElementById('relogio-j2').innerText = tempoJ2;
+        if (tempoJ2 <= 10 && tempoJ2 > 0) tocarBipe();
+        if (tempoJ2 <= 0) finalizarDesafio(1); // Tempo do J2 acabou, J1 vence
+    }
+}
+
+function carregarNovaPerguntaDesafio(jogador) {
+    const questoesMateria = banco[materiaDesafio];
+    const randomIndex = Math.floor(Math.random() * questoesMateria.length);
+    const p = JSON.parse(JSON.stringify(questoesMateria[randomIndex]));
+    
+    const sufixo = jogador === 1 ? 'j1' : 'j2';
+    document.getElementById(`pergunta-${sufixo}`).innerText = p.p;
+    
+    const opcoesEmbaralhadas = embaralhar(p.o);
+    const container = document.getElementById(`opcoes-${sufixo}`);
+    container.innerHTML = '';
+    
+    opcoesEmbaralhadas.forEach(opcao => {
+        const btn = document.createElement('button');
+        btn.className = 'btn-opcao';
+        btn.innerText = opcao.t;
+        
+        btn.onclick = (e) => {
+            e.stopPropagation(); // Evita que o clique atravesse o botão e ative o fundo
+            if (turnoAtual === jogador) {
+                responderDesafio(jogador, opcao.c);
+            }
+        };
+        container.appendChild(btn);
+    });
+}
+
+function responderDesafio(jogador, isCorreta) {
+    if (isCorreta) {
+        // Acertou! Passa o turno para o adversário
+        turnoAtual = jogador === 1 ? 2 : 1;
+        carregarNovaPerguntaDesafio(turnoAtual);
+        atualizarVisualDesafio();
+    } else {
+        // Errou! Aplica a penalidade e troca a pergunta do próprio jogador
+        aplicarPenalidade(jogador);
+    }
+}
+
+function aplicarPenalidade(jogador) {
+    tocarBipe(); // Bipe rápido de erro
+    
+    if (jogador === 1) {
+        tempoJ1 -= 5;
+        if (tempoJ1 < 0) tempoJ1 = 0;
+        document.getElementById('relogio-j1').innerText = tempoJ1;
+    } else {
+        tempoJ2 -= 5;
+        if (tempoJ2 < 0) tempoJ2 = 0;
+        document.getElementById('relogio-j2').innerText = tempoJ2;
+    }
+    
+    // Captura os elementos para a animação
+    const relogio = document.getElementById(`relogio-j${jogador}`);
+    const alerta = document.getElementById(`alerta-j${jogador}`);
+    
+    // Reseta as animações para permitir que ocorram várias vezes seguidas
+    relogio.classList.remove('shake');
+    alerta.classList.remove('animar-penalidade');
+    
+    // Reflow: truque mágico do JavaScript para forçar o navegador a reiniciar a animação
+    void relogio.offsetWidth;
+    void alerta.offsetWidth;
+    
+    // Dispara a animação
+    relogio.classList.add('shake');
+    alerta.classList.add('animar-penalidade');
+    
+    // Verifica morte súbita por penalidade
+    if (jogador === 1 && tempoJ1 <= 0) finalizarDesafio(2);
+    else if (jogador === 2 && tempoJ2 <= 0) finalizarDesafio(1);
+    else {
+        // Se ainda tiver tempo, recebe logo outra pergunta para continuar a tentar
+        carregarNovaPerguntaDesafio(jogador);
+    }
+}
+
+function finalizarDesafio(vencedor) {
+    clearInterval(timerDesafio);
+    turnoAtual = 0;
+    
+    // Aproveitamos a Tela de Feedback Normal para exibir o Campeão
+    const titulo = document.getElementById('titulo-feedback');
+    const pontos = document.getElementById('pontos-feedback');
+    const icone = document.getElementById('icone-feedback');
+    const ref = document.getElementById('referencia-pergunta');
+    
+    icone.innerText = "🏆";
+    titulo.innerText = `JOGADOR ${vencedor} VENCEU!`;
+    titulo.style.color = "#FFD700";
+    pontos.innerText = "O tempo do adversário esgotou!";
+    document.getElementById('explicacao-feedback').innerText = "Que duelo! Para uma revanche, basta escolher a matéria novamente no menu principal.";
+    ref.innerText = "";
+    
+    mudarTela('tela-feedback');
 }
