@@ -309,7 +309,11 @@ h1 {
         padding: 10px 5px; /* Menos margem interna para as cartas caberem */
     }
 
-    /* ... mantenha os ajustes de fonte do h1 e subtitulo que já estavam aqui ... */
+    
+    .texto-pergunta-desafio {
+        font-size: 1.3rem; /* Fica num tamanho ideal no telemóvel */
+    }
+
 
     .grid-materias {
         grid-template-columns: 1fr 1fr; 
