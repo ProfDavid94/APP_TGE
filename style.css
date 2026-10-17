@@ -476,40 +476,41 @@ h1 {
 
 
 /* ==========================================
-   OVERLAY DE ESPERA (CORREÇÃO DE POSIÇÃO)
+   OVERLAY DE ESPERA (CORREÇÃO DEFINITIVA)
    ========================================== */
 .overlay-espera {
     position: absolute;
     top: 0; left: 0; width: 100%; height: 100%;
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    align-items: center; /* Centraliza com segurança */
     justify-content: center;
-    background: rgba(0,0,0,0.75); /* Fundo bem escuro para esconder o relógio temporariamente */
+    background: rgba(0,0,0,0.75); /* Fundo mais escuro */
     cursor: pointer;
-    z-index: 999; /* Força suprema para ficar acima de TUDO na tela */
+    z-index: 999; /* Força máxima para ficar acima de tudo */
 }
 
+/* Aplicamos a animação apenas no texto, evitando que a tela toda bugue */
 .overlay-espera span {
     color: #FFEB3B;
     font-family: 'Cinzel', serif;
     font-size: 1.2rem;
     font-weight: bold;
     text-align: center;
-    width: 90%;
-    margin-top: 140px; /* Empurra o texto para baixo do relógio sem usar 'transform', evitando bugs */
+    padding: 0 20px;
+    margin-top: 150px; /* Empurra para baixo do relógio 40 */
     animation: pulsarTexto 1.5s infinite;
 }
 
-/* Força a ocultação assim que um jogador toca na tela */
-.ativa .overlay-espera, .inativa .overlay-espera {
+/* A CORREÇÃO MÁGICA: Especificar que é a "metade-desafio" que esconde o texto, e não a tela toda! */
+.metade-desafio.ativa .overlay-espera, 
+.metade-desafio.inativa .overlay-espera {
     display: none !important; 
 }
 
 @keyframes pulsarTexto {
-    0% { opacity: 0.4; transform: scale(1); }
+    0% { opacity: 0.3; transform: scale(1); }
     50% { opacity: 1; transform: scale(1.05); }
-    100% { opacity: 0.4; transform: scale(1); }
+    100% { opacity: 0.3; transform: scale(1); }
 }
 
 
