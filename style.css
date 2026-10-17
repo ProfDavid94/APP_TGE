@@ -178,8 +178,8 @@ h1 {
 }
 
 .btn-opcao {
-    font-family: 'Indie Flower', cursive;
-    font-size: 1.4rem;
+    font-family: 'Lora', serif;
+    font-size: 1.2rem;
     font-weight: bold;
     background-color: rgba(255, 255, 255, 0.1);
     color: white;
@@ -191,7 +191,18 @@ h1 {
     text-align: left;
     user-select: none;
     -webkit-tap-highlight-color: transparent;
+    width: 100%; 
+    display: block;
 }
+
+/* Container das opções do desafio */
+.opcoes-container-desafio {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Espaço entre as alternativas */
+    width: 100%;
+}
+
 
 @media (hover: hover) {
     .btn-opcao:hover {
@@ -474,34 +485,40 @@ h1 {
     margin-top: 40px; /* Espaço para o relógio encolhido */
 }
 
-
 /* ==========================================
-   OVERLAY DE ESPERA (CORREÇÃO DEFINITIVA)
+   OVERLAY DE ESPERA (SIMETRIA E IDENTIFICAÇÃO)
    ========================================== */
 .overlay-espera {
     position: absolute;
     top: 0; left: 0; width: 100%; height: 100%;
     display: flex;
-    align-items: center; /* Centraliza com segurança */
-    justify-content: center;
-    background: rgba(0,0,0,0.75); /* Fundo mais escuro */
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between; /* Empurra os textos para as pontas */
+    padding: 30px 10px; /* Margem segura e igual para o topo e a base */
+    box-sizing: border-box;
+    background: rgba(0,0,0,0.75); 
     cursor: pointer;
-    z-index: 999; /* Força máxima para ficar acima de tudo */
+    z-index: 999; 
 }
 
-/* Aplicamos a animação apenas no texto, evitando que a tela toda bugue */
+.id-jogador {
+    color: white;
+    font-family: 'Cinzel', serif;
+    font-size: 1.5rem;
+    letter-spacing: 3px;
+    text-shadow: 0 0 10px black;
+}
+
 .overlay-espera span {
     color: #FFEB3B;
     font-family: 'Cinzel', serif;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     font-weight: bold;
     text-align: center;
-    padding: 0 20px;
-    margin-top: 150px; /* Empurra para baixo do relógio 40 */
     animation: pulsarTexto 1.5s infinite;
 }
 
-/* A CORREÇÃO MÁGICA: Especificar que é a "metade-desafio" que esconde o texto, e não a tela toda! */
 .metade-desafio.ativa .overlay-espera, 
 .metade-desafio.inativa .overlay-espera {
     display: none !important; 
@@ -512,6 +529,7 @@ h1 {
     50% { opacity: 1; transform: scale(1.05); }
     100% { opacity: 0.3; transform: scale(1); }
 }
+
 
 
 

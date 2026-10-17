@@ -327,6 +327,9 @@ function voltarMenu() {
     clearInterval(timerInterval); 
     clearInterval(timerDesafio); 
     
+    // MUDANÇA: Garante que a tela de feedback volta à rotação normal
+    document.getElementById('tela-feedback').style.transform = 'rotate(0deg)';
+    
     // Se voltar, garante que o menu volta ao estado Normal
     modoAtual = 'normal';
     document.querySelector('#tela-menu h1').innerText = "THE GRADE ESCAPE";
@@ -339,6 +342,7 @@ function voltarMenu() {
 
     mudarTela('tela-menu');
 }
+
 
 // ==========================================
 // MODO NORMAL (CAMPANHA)
@@ -595,11 +599,20 @@ function aplicarPenalidade(jogador) {
     }
 }
 
+
 function finalizarDesafio(vencedor) {
     clearInterval(timerDesafio);
     turnoAtual = 0;
     
-    // Aproveitamos a Tela de Feedback Normal para exibir o Campeão
+    const telaFeedback = document.getElementById('tela-feedback');
+    
+    // MUDANÇA: Roda a tela inteira para ficar de frente para quem ganhou!
+    if (vencedor === 2) {
+        telaFeedback.style.transform = 'rotate(180deg)';
+    } else {
+        telaFeedback.style.transform = 'rotate(0deg)';
+    }
+    
     const titulo = document.getElementById('titulo-feedback');
     const pontos = document.getElementById('pontos-feedback');
     const icone = document.getElementById('icone-feedback');
@@ -614,3 +627,5 @@ function finalizarDesafio(vencedor) {
     
     mudarTela('tela-feedback');
 }
+
+
