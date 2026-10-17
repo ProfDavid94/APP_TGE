@@ -387,12 +387,29 @@ h1 {
 
 /* A Linha Central que divide os jogadores */
 .linha-divisoria {
-    height: 4px;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%); /* Crava a linha no meio exato do ecrã */
+    height: 6px; /* Um bocadinho mais grossa para destacar */
     background-color: #FFEB3B;
     width: 100%;
     z-index: 10;
-    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    box-shadow: 0 0 15px rgba(0,0,0,0.8);
 }
+
+/* Tamanho da Pergunta no Modo Desafio */
+.texto-pergunta-desafio {
+    font-family: 'Lora', serif;
+    font-size: 1.5rem; /* Tamanho grande e legível */
+    font-weight: bold;
+    line-height: 1.3;
+    margin-bottom: 20px;
+    text-align: center;
+    padding: 0 10px;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5); /* Sombra para ajudar a ler */
+}
+
 
 /* Estrutura base de cada metade */
 .metade-desafio {
@@ -486,7 +503,7 @@ h1 {
 }
 
 /* ==========================================
-   OVERLAY DE ESPERA (SIMETRIA E IDENTIFICAÇÃO)
+   OVERLAY DE ESPERA (CENTRALIZADO PERFEITAMENTE)
    ========================================== */
 .overlay-espera {
     position: absolute;
@@ -494,10 +511,9 @@ h1 {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between; /* Empurra os textos para as pontas */
-    padding: 30px 10px; /* Margem segura e igual para o topo e a base */
-    box-sizing: border-box;
-    background: rgba(0,0,0,0.75); 
+    justify-content: center; /* MUDANÇA: Agora fica tudo no centro da metade */
+    gap: 25px; /* Espaço elegante entre o "JOGADOR" e o "APERTE" */
+    background: rgba(0,0,0,0.85); /* Fundo um pouco mais escuro para o texto brilhar */
     cursor: pointer;
     z-index: 999; 
 }
@@ -516,6 +532,7 @@ h1 {
     font-size: 1.1rem;
     font-weight: bold;
     text-align: center;
+    margin: 0; /* Remove margens antigas que empurravam o texto */
     animation: pulsarTexto 1.5s infinite;
 }
 
