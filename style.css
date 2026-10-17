@@ -474,36 +474,45 @@ h1 {
     margin-top: 40px; /* Espaço para o relógio encolhido */
 }
 
-/* O Overlay brilhante para o primeiro toque */
+
+/* ==========================================
+   OVERLAY DE ESPERA (CORREÇÃO DE POSIÇÃO)
+   ========================================== */
 .overlay-espera {
     position: absolute;
     top: 0; left: 0; width: 100%; height: 100%;
     display: flex;
-    align-items: flex-end; /* Empurra para baixo para não cobrir o 40 */
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
-    background: rgba(0,0,0,0.6); /* Um pouco mais escuro para dar contraste */
+    background: rgba(0,0,0,0.75); /* Fundo bem escuro para esconder o relógio temporariamente */
+    cursor: pointer;
+    z-index: 999; /* Força suprema para ficar acima de TUDO na tela */
+}
+
+.overlay-espera span {
     color: #FFEB3B;
     font-family: 'Cinzel', serif;
     font-size: 1.2rem;
+    font-weight: bold;
     text-align: center;
-    padding-bottom: 30px;
-    cursor: pointer;
+    width: 90%;
+    margin-top: 140px; /* Empurra o texto para baixo do relógio sem usar 'transform', evitando bugs */
     animation: pulsarTexto 1.5s infinite;
-    z-index: 50; /* CORREÇÃO AQUI: Garante que fica acima do relógio */
 }
 
-/* Ocultar o overlay de clique assim que o jogo começa */
+/* Força a ocultação assim que um jogador toca na tela */
 .ativa .overlay-espera, .inativa .overlay-espera {
-    display: none !important; /* CORREÇÃO AQUI: Força a ocultação quando o jogo começa */
+    display: none !important; 
 }
-
-
 
 @keyframes pulsarTexto {
-    0% { opacity: 0.5; }
+    0% { opacity: 0.4; transform: scale(1); }
     50% { opacity: 1; transform: scale(1.05); }
-    100% { opacity: 0.5; }
+    100% { opacity: 0.4; transform: scale(1); }
 }
+
+
 
 /* ==========================================
    ANIMAÇÃO DE PENALIDADE (-5s)
