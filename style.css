@@ -389,18 +389,18 @@ h1 {
     display: flex;
 }
 
+
 /* A Linha Central que divide os jogadores */
 .linha-divisoria {
-    position: absolute;
-    top: 50%;
-    left: 0;
-    transform: translateY(-50%); /* Crava a linha no meio exato do ecrã */
-    height: 6px; /* Um bocadinho mais grossa para destacar */
+    height: 6px;
     background-color: #FFEB3B;
     width: 100%;
     z-index: 10;
     box-shadow: 0 0 15px rgba(0,0,0,0.8);
+    flex-shrink: 0; /* O segredo para a linha não desaparecer nem ser esmagada */
 }
+
+
 
 /* Tamanho da Pergunta no Modo Desafio */
 .texto-pergunta-desafio {
@@ -433,26 +433,29 @@ h1 {
     transform: rotate(180deg);
 }
 
+
 /* ==========================================
-   ESTADOS DE PROPORÇÃO (50/50, 85/15)
+   ESTADOS DE PROPORÇÃO (COM MATEMÁTICA EXATA)
    ========================================== */
 
 /* Estado 1: Início (50/50) */
 .metade-desafio.neutra {
-    height: 50%;
+    height: calc(50% - 3px); /* 50% menos metade da espessura da linha */
 }
 
 /* Estado 2: Turno Ativo (85%) */
 .metade-desafio.ativa {
-    height: 85%;
+    height: calc(85% - 3px);
     background-color: rgba(255, 255, 255, 0.05); /* Ligeiro destaque */
 }
 
 /* Estado 3: Turno Inativo (Espera - 15%) */
 .metade-desafio.inativa {
-    height: 15%;
+    height: calc(15% - 3px);
     background-color: rgba(0, 0, 0, 0.4); /* Escurece a área */
 }
+
+
 
 /* ==========================================
    ELEMENTOS INTERNOS DA ARENA
