@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Grade Escape - App de Questões</title>
     
-    <!-- Otimização Suprema: Força o telemóvel a carregar as imagens antes de abrir a tela -->
+    <!-- Pré-carregamento de Imagens -->
     <link rel="preload" href="assets/fundo.png" as="image">
     <link rel="preload" href="assets/Botao-Mat.png" as="image">
     <link rel="preload" href="assets/Botao-Port.png" as="image">
@@ -15,49 +15,75 @@
     <!-- Fontes Épicas do Jogo -->
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Lora:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">    
     
-    <!-- Link para o arquivo CSS externo -->
+    <!-- CSS Externo -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <div id="app-container">
         
-        <!-- TELA 1: MENU PRINCIPAL -->
-        <div id="tela-menu" class="tela ativa">
+        <!-- TELA 0: SELEÇÃO DE SÉRIE / ANO ESCOLAR -->
+        <div id="tela-series" class="tela ativa">
             <h1>THE GRADE ESCAPE</h1>
-            <p class="subtitulo">Banco Oficial de Questões</p>
+            <p class="subtitulo">Selecione seu Ano Escolar</p>
+            
+            <div class="grid-series">
+                <button class="btn-serie" onclick="selecionarSerie('6')">
+                    <span class="numero-serie">6º</span>
+                    <span class="rotulo-serie">ANO</span>
+                </button>
+                <button class="btn-serie" onclick="selecionarSerie('7')">
+                    <span class="numero-serie">7º</span>
+                    <span class="rotulo-serie">ANO</span>
+                </button>
+                <button class="btn-serie" onclick="selecionarSerie('8')">
+                    <span class="numero-serie">8º</span>
+                    <span class="rotulo-serie">ANO</span>
+                </button>
+                <button class="btn-serie" onclick="selecionarSerie('9')">
+                    <span class="numero-serie">9º</span>
+                    <span class="rotulo-serie">ANO</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- TELA 1: MENU DE MATÉRIAS -->
+        <div id="tela-menu" class="tela">
+            <div class="indicador-serie" id="badge-serie-menu">6º ANO</div>
+            <h1 id="titulo-menu">MATÉRIAS</h1>
+            <p class="subtitulo" id="subtitulo-menu">Escolha a disciplina para jogar</p>
             
             <div class="grid-materias">
-                <!-- Textos removidos pois já estão nas imagens -->
                 <button class="btn-materia btn-mat" onclick="sortearPergunta('Matemática')"></button>
                 <button class="btn-materia btn-port" onclick="sortearPergunta('Português')"></button>
                 <button class="btn-materia btn-hist" onclick="sortearPergunta('História')"></button>
                 <button class="btn-materia btn-cien" onclick="sortearPergunta('Ciências')"></button>
             </div>
 
-                        <!-- Botão para entrar no submenu do Desafio -->
-            <button class="btn-acao" style="margin-top: 20px; width: 100%; background-color: #D32F2F; color: white;" onclick="abrirMenuDesafio()">
-                ⚔️ MODO DESAFIO (2 JOGADORES)
-            </button>
-
-
+            <!-- Botões de Ação do Menu -->
+            <div class="controles-menu">
+                <button class="btn-acao btn-desafio" id="btn-toggle-desafio" onclick="abrirMenuDesafio()">
+                    ⚔️ MODO DESAFIO (2 JOGADORES)
+                </button>
+                <button class="btn-acao btn-voltar-serie" onclick="voltarParaSeries()">
+                    🔄 TROCAR SÉRIE
+                </button>
+            </div>
         </div>
-
-
-
 
         <!-- TELA 2: PERGUNTA -->
         <div id="tela-pergunta" class="tela">
             <div class="cabecalho-pergunta">
-                <span id="nome-materia">Matemática</span>
-                <!-- Novo Cronômetro -->
-                <span id="tempo-restante">⏱️ 45s</span>
+                <div class="info-materia-container">
+                    <span id="badge-serie-pergunta" class="badge-serie-mini">6º ANO</span>
+                    <span id="nome-materia">Matemática</span>
+                </div>
+                <span id="tempo-restante">⏱️ 60s</span>
                 <span id="pontos-materia" class="pontos-badge">3 PTS</span>
             </div>
 
             <p id="texto-pergunta">Carregando pergunta...</p>
             
-            <!-- NOVO: Área do botão de dica -->
             <div style="text-align: right; margin-bottom: 15px;">
                 <button id="btn-dica" class="btn-dica" onclick="usarDica()">🪄 Usar Dica</button>
             </div>
@@ -74,17 +100,15 @@
             <p id="pontos-feedback">+3 Pontos no Boletim</p>
             <p id="explicacao-feedback">A explicação vai aqui.</p>
             
-            <!-- Nova Tag para o ID da Questão -->
             <p id="referencia-pergunta" style="font-size: 0.9rem; color: #B0BEC5; margin-bottom: 20px; font-family: sans-serif;">Ref: ID</p>
             
-            <button class="btn-acao" onclick="voltarMenu()">ESCOLHER OUTRA MATÉRIA</button>
+            <button class="btn-acao" onclick="voltarMenu()">CONTINUAR JOGANDO</button>
         </div>
 
-
-                <!-- TELA 4: ARENA DO DESAFIO (DIVIDIDA) -->
+        <!-- TELA 4: ARENA DO DESAFIO (2 JOGADORES) -->
         <div id="tela-desafio" class="tela">
             
-            <!-- METADE DO JOGADOR 2 (TOPO - VIRADA DE CABEÇA PARA BAIXO) -->
+            <!-- JOGADOR 2 (TOPO - INVERTIDO) -->
             <div id="area-j2" class="metade-desafio neutra" onclick="iniciarDesafio(1)">
                 <div class="relogio-gigante" id="relogio-j2">40</div>
                 
@@ -96,14 +120,14 @@
                 
                 <div class="overlay-espera" id="overlay-j2">
                     <div class="id-jogador">JOGADOR 2</div>
-                    <span>APERTE PARA COMEÇAR O TEMPO DO ADVERSÁRIO</span>
+                    <span>TOQUE PARA INICIAR O TEMPO DO ADVERSÁRIO</span>
                 </div>
             </div>
 
-            <!-- LINHA DIVISÓRIA CENTRAL -->
+            <!-- LINHA DIVISÓRIA -->
             <div class="linha-divisoria"></div>
 
-            <!-- METADE DO JOGADOR 1 (BASE - POSIÇÃO NORMAL) -->
+            <!-- JOGADOR 1 (BASE) -->
             <div id="area-j1" class="metade-desafio neutra" onclick="iniciarDesafio(2)">
                 <div class="relogio-gigante" id="relogio-j1">40</div>
                 
@@ -115,17 +139,15 @@
 
                 <div class="overlay-espera" id="overlay-j1">
                     <div class="id-jogador">JOGADOR 1</div>
-                    <span>APERTE PARA COMEÇAR O TEMPO DO ADVERSÁRIO</span>
+                    <span>TOQUE PARA INICIAR O TEMPO DO ADVERSÁRIO</span>
                 </div>
             </div>
 
         </div>
-8
-
 
     </div>
 
-    <!-- Link para o arquivo JavaScript externo -->
+    <!-- JS Externo -->
     <script src="script.js"></script>
 </body>
 </html>

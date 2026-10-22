@@ -1,445 +1,122 @@
 // ==========================================
-// BANCO DE QUESTÕES COMPLETO (Com IDs únicos)
+// BANCO DE QUESTÕES OFICIAL (ESTRUTURADO POR SÉRIE)
 // ==========================================
 const banco = {
-    "Matemática": [
-        // --- NÍVEL FÁCIL ---
-        { id: "MAT-F01", p: "No sistema decimal, qual o nome da posição ocupada pelo algarismo 5 no número 1.520?", o: [{t:"Centenas",c:true}, {t:"Dezenas",c:false}, {t:"Unidades",c:false}, {t:"Milhares",c:false}], pts: 2, exp: "No número 1.520, o 0 é unidade, o 2 é dezena e o 5 é centena." },
-        { id: "MAT-F02", p: "O que caracteriza um segmento de reta na geometria?", o: [{t:"Uma curva fechada",c:false}, {t:"Parte limitada por dois pontos",c:true}, {t:"Uma linha sem fim",c:false}, {t:"Um ponto isolado",c:false}], pts: 2, exp: "Diferente da reta, o segmento é a parte da reta limitada por dois pontos." },
-        { id: "MAT-F03", p: "Como é chamado o número que fica acima do traço em uma fração?", o: [{t:"Denominador",c:false}, {t:"Quociente",c:false}, {t:"Numerador",c:true}, {t:"Resto",c:false}], pts: 2, exp: "O número acima do traço é o numerador, indicando as partes tomadas da fração." },
-        { id: "MAT-F04", p: "Como classificamos um ângulo que mede exatamente 90 graus?", o: [{t:"Agudo",c:false}, {t:"Obtuso",c:false}, {t:"Raso",c:false}, {t:"Reto",c:true}], pts: 2, exp: "Um ângulo exato de 90 graus é classificado como ângulo Reto." },
-        { id: "MAT-F05", p: "Qual o nome do polígono que possui cinco lados?", o: [{t:"Pentágono",c:true}, {t:"Hexágono",c:false}, {t:"Quadrado",c:false}, {t:"Triângulo",c:false}], pts: 2, exp: "O polígono de 5 lados e 5 ângulos chama-se pentágono." },
-        { id: "MAT-F06", p: "Qual a unidade padrão de medida de comprimento no Sistema Internacional?", o: [{t:"Litro",c:false}, {t:"Metro",c:true}, {t:"Grama",c:false}, {t:"Hora",c:false}], pts: 2, exp: "O Metro (m) é a unidade fundamental de comprimento no SI." },
-        { id: "MAT-F07", p: "O que representa o símbolo de porcentagem (%) na matemática?", o: [{t:"Soma de 100",c:false}, {t:"Vezes 10",c:false}, {t:"Razão com denominador 100",c:true}, {t:"Raiz de 100",c:false}], pts: 2, exp: "A porcentagem é uma fração cujo denominador é igual a 100." },
-        { id: "MAT-F08", p: "Qual linha divide uma figura em duas partes iguais que se sobrepõem?", o: [{t:"Paralela",c:false}, {t:"Diagonal",c:false}, {t:"Perímetro",c:false}, {t:"Eixo de simetria",c:true}], pts: 2, exp: "O eixo de simetria funciona como um espelho perfeito para a figura." },
-        { id: "MAT-F09", p: "Como chamamos o atributo que pode ser medido em uma pesquisa (ex: idade)?", o: [{t:"Variável",c:true}, {t:"Gráfico",c:false}, {t:"Tabela",c:false}, {t:"Amostra",c:false}], pts: 2, exp: "A característica investigada numa pesquisa estatística é chamada de variável." },
-        { id: "MAT-F10", p: "Qual o resultado da soma: 15,2 + 4,8?", o: [{t:"19,0",c:false}, {t:"20,0",c:true}, {t:"20,2",c:false}, {t:"10,0",c:false}], pts: 2, exp: "Alinhando as vírgulas: 15,2 + 4,8 = 20,0." },
-        { id: "MAT-F11", p: "Qual o valor do produto: 12 x 5?", o: [{t:"50",c:false}, {t:"55",c:false}, {t:"60",c:true}, {t:"65",c:false}], pts: 2, exp: "O produto (multiplicação) de 12 por 5 resulta em 60." },
-        { id: "MAT-F12", p: "Quanto é 10% de 250?", o: [{t:"10",c:false}, {t:"20",c:false}, {t:"50",c:false}, {t:"25",c:true}], pts: 2, exp: "Para calcular 10% de um número, basta dividi-lo por 10 (250 / 10 = 25)." },
-        { id: "MAT-F13", p: "Qual o perímetro de um quadrado com lado de 6 cm?", o: [{t:"24 cm",c:true}, {t:"36 cm",c:false}, {t:"12 cm",c:false}, {t:"18 cm",c:false}], pts: 2, exp: "Perímetro é a soma dos 4 lados: 6 + 6 + 6 + 6 = 24 cm." },
-        { id: "MAT-F14", p: "Qual o resultado de 2/5 + 1/5?", o: [{t:"3/10",c:false}, {t:"3/5",c:true}, {t:"2/5",c:false}, {t:"1/5",c:false}], pts: 2, exp: "Com denominadores iguais, somamos os numeradores (2+1 = 3) e mantemos o denominador." },
-        { id: "MAT-F15", p: "Qual o resultado de 400 ÷ 8?", o: [{t:"40",c:false}, {t:"45",c:false}, {t:"50",c:true}, {t:"55",c:false}], pts: 2, exp: "Se 40 dividido por 8 é 5, logo 400 dividido por 8 é 50." },
-        { id: "MAT-F16", p: "Qual o resultado de 100 - 37?", o: [{t:"73",c:false}, {t:"53",c:false}, {t:"67",c:false}, {t:"63",c:true}], pts: 2, exp: "A diferença entre 100 e 37 é exatamente 63." },
-        { id: "MAT-F17", p: "Quanto é 0,5 x 100?", o: [{t:"50",c:true}, {t:"5",c:false}, {t:"500",c:false}, {t:"0,50",c:false}], pts: 2, exp: "Multiplicar por 100 desloca a vírgula duas casas para a direita (0,5 -> 50)." },
-        { id: "MAT-F18", p: "Qual a área de um quadrado com lado de 3 cm?", o: [{t:"6 cm²",c:false}, {t:"9 cm²",c:true}, {t:"12 cm²",c:false}, {t:"3 cm²",c:false}], pts: 2, exp: "A área do quadrado é lado vezes lado (3 x 3 = 9 cm²)." },
-        { id: "MAT-F19", p: "Qual algarismo ocupa a ordem das dezenas de milhar no número 45.789?", o: [{t:"4",c:true}, {t:"5",c:false}, {t:"7",c:false}, {t:"8",c:false}], pts: 2, exp: "No sistema de numeração decimal, o 4 ocupa a 5ª ordem (dezenas de milhar) valendo 40.000[span_0](start_span)[span_0](end_span)." },
-        { id: "MAT-F20", p: "O que indica o denominador em uma fração?", o: [{t:"As partes tomadas",c:false}, {t:"Em quantas partes iguais o inteiro foi dividido",c:true}, {t:"O resto da divisão",c:false}, {t:"O dobro do valor",c:false}], pts: 2, exp: "Na ideia de parte-todo, o denominador representa o total de partes em que a unidade foi dividida[span_1](start_span)[span_1](end_span)." },
-        { id: "MAT-F21", p: "Como chamamos um ângulo cuja medida é menor que 90 graus?", o: [{t:"Obtuso",c:false}, {t:"Raso",c:false}, {t:"Reto",c:false}, {t:"Agudo",c:true}], pts: 2, exp: "Ângulos com abertura inferior a um quarto de volta (90°) são classificados como agudos[span_2](start_span)[span_2](end_span)." },
-        { id: "MAT-F22", p: "Qual destes números é um múltiplo de 7?", o: [{t:"20",c:false}, {t:"21",c:true}, {t:"25",c:false}, {t:"30",c:false}], pts: 2, exp: "Os múltiplos de 7 são obtidos multiplicando-o por números naturais. Como 7 x 3 = 21, ele é um múltiplo[span_3](start_span)[span_3](end_span)." },
-        { id: "MAT-F23", p: "No conjunto dos números inteiros, qual é o oposto (simétrico) de -15?", o: [{t:"0",c:false}, {t:"1",c:false}, {t:"15",c:true}, {t:"-15",c:false}], pts: 2, exp: "O número oposto possui a mesma distância da origem (zero) na reta numérica, mas com sinal contrário (+15)[span_4](start_span)[span_4](end_span)." },
-        { id: "MAT-F24", p: "Qual é o nome do polígono que possui exatamente 6 lados?", o: [{t:"Hexágono",c:true}, {t:"Heptágono",c:false}, {t:"Octógono",c:false}, {t:"Decágono",c:false}], pts: 2, exp: "Os polígonos são classificados pelo número de lados, sendo o de 6 lados chamado de hexágono[span_5](start_span)[span_5](end_span)." },
-        { id: "MAT-F25", p: "Qual é o resultado da potência 3² (três elevado ao quadrado)?", o: [{t:"6",c:false}, {t:"9",c:true}, {t:"12",c:false}, {t:"27",c:false}], pts: 2, exp: "A potenciação é a multiplicação de fatores iguais. Portanto, 3² é igual a 3 x 3 = 9[span_6](start_span)[span_6](end_span)." },
-        { id: "MAT-F26", p: "Quantas faces possui um cubo (hexaedro regular)?", o: [{t:"4",c:false}, {t:"6",c:true}, {t:"8",c:false}, {t:"12",c:false}], pts: 2, exp: "O cubo é um prisma retangular formado por 6 faces quadradas iguais[span_7](start_span)[span_7](end_span)." },
-        { id: "MAT-F27", p: "A fração 1/4 corresponde a qual taxa percentual?", o: [{t:"10%",c:false}, {t:"20%",c:false}, {t:"25%",c:true}, {t:"40%",c:false}], pts: 2, exp: "A representação fracionária 1/4 equivale à quarta parte de 100%, ou seja, 25%[span_8](start_span)[span_8](end_span)." },
-        { id: "MAT-F28", p: "Qual operação deve ser resolvida primeiro na expressão matemática: 5 + 3 x 2?", o: [{t:"A adição",c:false}, {t:"A multiplicação",c:true}, {t:"Da esquerda para a direita",c:false}, {t:"A de maior valor",c:false}], pts: 2, exp: "Nas expressões numéricas sem parênteses, as multiplicações têm prioridade hierárquica sobre as adições[span_9](start_span)[span_9](end_span)." },
-        { id: "MAT-F29", p: "Um termômetro marcava 5 °C e a temperatura caiu 8 °C. Qual é a nova temperatura?", o: [{t:"3 °C",c:false}, {t:"13 °C",c:false}, {t:"-3 °C",c:true}, {t:"-8 °C",c:false}], pts: 2, exp: "A variação de temperatura é uma subtração com inteiros: 5 - 8 = -3 °C[span_10](start_span)[span_10](end_span)." },
-        { id: "MAT-F30", p: "Qual é o triplo do número decimal 1,5?", o: [{t:"3,0",c:false}, {t:"3,5",c:false}, {t:"4,0",c:false}, {t:"4,5",c:true}], pts: 2, exp: "O triplo significa multiplicar por 3. Sendo assim, 1,5 x 3 resulta em 4,5[span_11](start_span)[span_11](end_span)." },
+    // ------------------------------------------
+    // 6º ANO
+    // ------------------------------------------
+    "6": {
+        "Matemática": [
+            { id: "6ANO-MAT-F01", p: "No sistema decimal, qual o nome da posição ocupada pelo algarismo 5 no número 1.520?", o: [{t:"Centenas",c:true}, {t:"Dezenas",c:false}, {t:"Unidades",c:false}, {t:"Milhares",c:false}], pts: 2, exp: "No número 1.520, o 0 é unidade, o 2 é dezena e o 5 é centena." },
+            { id: "6ANO-MAT-M01", p: "O que define um número primo na matemática?", o: [{t:"Ser um número ímpar",c:false}, {t:"Terminar em 1 ou 7",c:false}, {t:"Ter apenas dois divisores (1 e ele mesmo)",c:true}, {t:"Ser divisível por 2",c:false}], pts: 3, exp: "Números primos são divisíveis exclusivamente por 1 e por eles mesmos." },
+            { id: "6ANO-MAT-D01", p: "Qual a definição do conjunto dos Números Racionais (Q)?", o: [{t:"Números que podem ser frações",c:true}, {t:"Apenas decimais finitos",c:false}, {t:"Números sem zero",c:false}, {t:"Somente raízes exatas",c:false}], pts: 4, exp: "Os racionais são todos aqueles números que podem ser escritos na forma de fração." }
+            // COLE AQUI MAIS QUESTÕES DE MATEMÁTICA DO 6º ANO
+        ],
+        "Português": [
+            { id: "6ANO-PORT-F01", p: "Qual é a classe de palavras que dá nome a seres, objetos, lugares e sentimentos?", o: [{t:"Substantivo",c:true}, {t:"Adjetivo",c:false}, {t:"Verbo",c:false}, {t:"Artigo",c:false}], pts: 2, exp: "O substantivo nomeia tudo o que existe." },
+            { id: "6ANO-PORT-M01", p: "Na análise sintática, qual é a definição de sujeito?", o: [{t:"O ser sobre o qual se faz uma declaração",c:true}, {t:"O conjunto de vírgulas",c:false}, {t:"A pontuação final",c:false}, {t:"O tempo do verbo",c:false}], pts: 3, exp: "O sujeito é o termo sobre o qual o predicado declara algo." }
+            // COLE AQUI MAIS QUESTÕES DE PORTUGUÊS DO 6º ANO
+        ],
+        "História": [
+            { id: "6ANO-HIST-F01", p: "No sistema de datação ocidental, qual evento marca o ano zero?", o: [{t:"Nascimento de Jesus",c:true}, {t:"Invenção da Escrita",c:false}, {t:"Fundação de Roma",c:false}, {t:"Queda de Constantinopla",c:false}], pts: 2, exp: "O calendário cristão adota o nascimento de Cristo como ano 1." }
+            // COLE AQUI MAIS QUESTÕES DE HISTÓRIA DO 6º ANO
+        ],
+        "Ciências": [
+            { id: "6ANO-CIEN-F01", p: "O que é a célula na biologia?", o: [{t:"A unidade básica da vida",c:true}, {t:"A camada de ar do planeta",c:false}, {t:"Um mineral das rochas",c:false}, {t:"Um fluido corporal",c:false}], pts: 2, exp: "A célula é a unidade funcional e estrutural básica de todos os seres vivos." }
+            // COLE AQUI MAIS QUESTÕES DE CIÊNCIAS DO 6º ANO
+        ]
+    },
 
+    // ------------------------------------------
+    // 7º ANO
+    // ------------------------------------------
+    "7": {
+        "Matemática": [
+            { id: "7ANO-MAT-F01", p: "Qual o resultado de 2/5 + 1/5?", o: [{t:"3/10",c:false}, {t:"3/5",c:true}, {t:"2/5",c:false}, {t:"1/5",c:false}], pts: 2, exp: "Com denominadores iguais, somamos os numeradores (2+1 = 3) e mantemos o denominador." },
+            { id: "7ANO-MAT-M01", p: "O conjunto dos Inteiros (Z) é formado por:", o: [{t:"Apenas positivos",c:false}, {t:"Apenas negativos",c:false}, {t:"Números com vírgula",c:false}, {t:"Naturais e seus opostos",c:true}], pts: 3, exp: "O conjunto Z engloba os números naturais, seus opostos negativos e o zero." }
+            // COLE AQUI MAIS QUESTÕES DE MATEMÁTICA DO 7º ANO
+        ],
+        "Português": [
+            { id: "7ANO-PORT-F01", p: "O que são palavras antônimas?", o: [{t:"Palavras com sentidos opostos",c:true}, {t:"Palavras com a mesma escrita",c:false}, {t:"Palavras com o mesmo som",c:false}, {t:"Palavras sem sentido",c:false}], pts: 2, exp: "Antônimos são palavras que expressam ideias contrárias." }
+            // COLE AQUI MAIS QUESTÕES DE PORTUGUÊS DO 7º ANO
+        ],
+        "História": [
+            { id: "7ANO-HIST-F01", p: "Qual era a principal atividade econômica no Feudalismo europeu?", o: [{t:"Comércio Imediato",c:false}, {t:"Agricultura de Subsistência",c:true}, {t:"Indústria",c:false}, {t:"Mineração",c:false}], pts: 2, exp: "A economia feudal baseava-se no cultivo da terra do feudo para sustento." }
+            // COLE AQUI MAIS QUESTÕES DE HISTÓRIA DO 7º ANO
+        ],
+        "Ciências": [
+            { id: "7ANO-CIEN-F01", p: "O que define um organismo autótrofo?", o: [{t:"Produz o próprio alimento",c:true}, {t:"Precisa caçar para comer",c:false}, {t:"Vive como parasita",c:false}, {t:"Decompõe matéria",c:false}], pts: 3, exp: "Organismos autótrofos (como as plantas) sintetizam seu próprio alimento." }
+            // COLE AQUI MAIS QUESTÕES DE CIÊNCIAS DO 7º ANO
+        ]
+    },
 
+    // ------------------------------------------
+    // 8º ANO
+    // ------------------------------------------
+    "8": {
+        "Matemática": [
+            { id: "8ANO-MAT-M01", p: "Em uma equação, o que representa a incógnita (x)?", o: [{t:"O resultado",c:false}, {t:"O valor desconhecido",c:true}, {t:"O sinal de igual",c:false}, {t:"Uma constante",c:false}], pts: 3, exp: "A incógnita é o valor desconhecido que queremos descobrir." },
+            { id: "8ANO-MAT-D01", p: "O que caracteriza uma inequação matemática?", o: [{t:"Uso de sinal de igual (=)",c:false}, {t:"Uso de sinais de desigualdade (>, <)",c:true}, {t:"Não ter solução",c:false}, {t:"Sem letras",c:false}], pts: 4, exp: "Inequações utilizam sinais de desigualdade." }
+            // COLE AQUI MAIS QUESTÕES DE MATEMÁTICA DO 8º ANO
+        ],
+        "Português": [
+            { id: "8ANO-PORT-M01", p: "O que é o predicado de uma oração?", o: [{t:"O autor do texto",c:false}, {t:"Tudo o que se informa sobre o sujeito",c:true}, {t:"A pontuação final",c:false}, {t:"Um tipo de adjetivo",c:false}], pts: 3, exp: "O predicado traz a informação sobre o sujeito." }
+            // COLE AQUI MAIS QUESTÕES DE PORTUGUÊS DO 8º ANO
+        ],
+        "História": [
+            { id: "8ANO-HIST-M01", p: "O princípio do 'Direito Divino dos Reis' no Absolutismo justificava:", o: [{t:"O poder absoluto do rei concedido por Deus",c:true}, {t:"A democracia direta",c:false}, {t:"A eleição do monarca",c:false}, {t:"O fim da monarquia",c:false}], pts: 3, exp: "Acreditava-se que o poder do rei vinha diretamente da vontade divina." }
+            // COLE AQUI MAIS QUESTÕES DE HISTÓRIA DO 8º ANO
+        ],
+        "Ciências": [
+            { id: "8ANO-CIEN-D01", p: "Qual a função da organela Mitocôndria?", o: [{t:"Respiração celular e geração de energia",c:true}, {t:"Armazenar água",c:false}, {t:"Digestão",c:false}, {t:"Fotossíntese",c:false}], pts: 4, exp: "A mitocôndria é a usina de energia da célula." }
+            // COLE AQUI MAIS QUESTÕES DE CIÊNCIAS DO 8º ANO
+        ]
+    },
 
-
-
-        // --- NÍVEL MÉDIO ---
-        { id: "MAT-M01", p: "O que define um número primo na matemática?", o: [{t:"Ser um número ímpar",c:false}, {t:"Terminar em 1 ou 7",c:false}, {t:"Ter apenas dois divisores (1 e ele mesmo)",c:true}, {t:"Ser divisível por 2",c:false}], pts: 3, exp: "Números primos são divisíveis exclusivamente por 1 e por eles mesmos." },
-        { id: "MAT-M02", p: "O conjunto dos Inteiros (Z) é formado por:", o: [{t:"Apenas positivos",c:false}, {t:"Apenas negativos",c:false}, {t:"Números com vírgula",c:false}, {t:"Naturais e seus opostos",c:true}], pts: 3, exp: "O conjunto Z engloba os números naturais (0, 1, 2...), seus opostos negativos e o zero." },
-        { id: "MAT-M03", p: "Como se chama o ponto zero onde os eixos X e Y se cruzam?", o: [{t:"Origem",c:true}, {t:"Ordenada",c:false}, {t:"Abscissa",c:false}, {t:"Quadrante",c:false}], pts: 3, exp: "O cruzamento dos eixos X e Y no plano cartesiano forma a Origem (0,0)." },
-        { id: "MAT-M04", p: "Em uma equação, o que representa a incógnita (x)?", o: [{t:"O resultado",c:false}, {t:"O valor desconhecido",c:true}, {t:"O sinal de igual",c:false}, {t:"Uma constante",c:false}], pts: 3, exp: "A incógnita é o valor desconhecido que queremos descobrir para resolver a equação." },
-        { id: "MAT-M05", p: "O que são ângulos complementares?", o: [{t:"Soma igual a 180°",c:false}, {t:"Ângulos iguais",c:false}, {t:"Soma igual a 90°",c:true}, {t:"Ângulos maiores que 90°",c:false}], pts: 3, exp: "Dois ângulos são complementares quando a soma de suas medidas é exatamente 90°." },
-        { id: "MAT-M06", p: "Grandezas que aumentam na mesma razão são chamadas de:", o: [{t:"Inversas",c:false}, {t:"Opostas",c:false}, {t:"Fixas",c:false}, {t:"Diretamente Proporcionais",c:true}], pts: 3, exp: "Se uma grandeza aumenta e a outra aumenta na mesma proporção, são diretamente proporcionais." },
-        { id: "MAT-M07", p: "Para calcular a área de um trapézio, precisamos das:", o: [{t:"Bases e altura",c:true}, {t:"Diagonais apenas",c:false}, {t:"Raio e diâmetro",c:false}, {t:"Apenas um lado",c:false}], pts: 3, exp: "A área do trapézio é a soma das bases, multiplicada pela altura e dividida por 2." },
-        { id: "MAT-M08", p: "O que é a Média Aritmética simples?", o: [{t:"Valor mais comum",c:false}, {t:"Soma dividida pela quantidade",c:true}, {t:"Valor central",c:false}, {t:"Maior valor menos o menor",c:false}], pts: 3, exp: "A média aritmética é a soma de todos os valores dividida pela quantidade deles." },
-        { id: "MAT-M09", p: "Na translação geométrica, a figura:", o: [{t:"Muda de tamanho",c:false}, {t:"Gira 90°",c:false}, {t:"Desliza sem girar",c:true}, {t:"Desaparece",c:false}], pts: 3, exp: "Na translação, a figura desloca-se pelo plano mudando de posição, mantendo tamanho e sem girar." },
-        { id: "MAT-M10", p: "Qual o resultado de: -12 + 7?", o: [{t:"-19",c:false}, {t:"5",c:false}, {t:"19",c:false}, {t:"-5",c:true}], pts: 3, exp: "Se você deve 12 e tem 7, ao pagar o que tem, ainda fica devendo 5 (-5)." },
-        { id: "MAT-M11", p: "Qual o resultado de: 2/3 x 4/5?", o: [{t:"8/15",c:true}, {t:"6/8",c:false}, {t:"10/12",c:false}, {t:"15/8",c:false}], pts: 3, exp: "Na multiplicação de frações faz-se numerador vezes numerador (2x4=8) e denominador vezes denominador (3x5=15)." },
-        { id: "MAT-M12", p: "Qual o valor de x na equação: x + 15 = 40?", o: [{t:"55",c:false}, {t:"25",c:true}, {t:"30",c:false}, {t:"35",c:false}], pts: 3, exp: "Isolando o x, temos: x = 40 - 15, portanto x = 25." },
-        { id: "MAT-M13", p: "Se 3 canetas custam 6 reais, quanto custam 10 canetas?", o: [{t:"10 reais",c:false}, {t:"30 reais",c:false}, {t:"20 reais",c:true}, {t:"60 reais",c:false}], pts: 3, exp: "Cada caneta custa 2 reais (6/3). Logo, 10 canetas custarão 20 reais (10x2)." },
-        { id: "MAT-M14", p: "Qual a área de um retângulo com base de 8 cm e altura de 5 cm?", o: [{t:"13 cm²",c:false}, {t:"26 cm²",c:false}, {t:"400 cm²",c:false}, {t:"40 cm²",c:true}], pts: 3, exp: "A área do retângulo calcula-se fazendo base vezes altura (8 x 5 = 40 cm²)." },
-        { id: "MAT-M15", p: "Qual o valor decimal correspondente à fração 1/2?", o: [{t:"0,5",c:true}, {t:"0,2",c:false}, {t:"0,12",c:false}, {t:"1,2",c:false}], pts: 3, exp: "A fração 1/2 representa a metade, que dividindo 1 por 2 resulta em 0,5." },
-        { id: "MAT-M16", p: "Ao lançar um dado (1 a 6), qual a chance de sair um número par?", o: [{t:"1/6",c:false}, {t:"3/6",c:true}, {t:"1/2",c:false}, {t:"2/6",c:false}], pts: 3, exp: "Os números pares no dado são 2, 4 e 6 (3 opções) em um total de 6. Portanto, a probabilidade é 3/6." },
-        { id: "MAT-M17", p: "Quanto é 0,15 x 10?", o: [{t:"15",c:false}, {t:"0,150",c:false}, {t:"1,05",c:false}, {t:"1,5",c:true}], pts: 3, exp: "Multiplicar por 10 desloca a vírgula uma casa para a direita (0,15 -> 1,5)." },
-        { id: "MAT-M18", p: "Qual o complemento de um ângulo de 35°?", o: [{t:"145°",c:false}, {t:"155°",c:false}, {t:"55°",c:true}, {t:"45°",c:false}], pts: 3, exp: "O complemento é o que falta para chegar aos 90°. Fazendo 90° - 35° obtemos 55°." },
-        { id: "MAT-M19", p: "Qual é o critério de divisibilidade para afirmar que um número é divisível por 5?", o: [{t:"Ser um número par",c:false}, {t:"A soma dos algarismos resultar em 5",c:false}, {t:"Terminar em 0 ou 5",c:true}, {t:"Ser sempre um número ímpar",c:false}], pts: 3, exp: "Segundo os critérios de divisibilidade, qualquer número natural terminado em 0 ou 5 é múltiplo de 5[span_12](start_span)[span_12](end_span)." },
-        { id: "MAT-M20", p: "Qual é o resultado da adição algébrica (-8) + (-5)?", o: [{t:"-13",c:true}, {t:"-3",c:false}, {t:"3",c:false}, {t:"13",c:false}], pts: 3, exp: "Soma de inteiros com o mesmo sinal: conserva-se o sinal e somam-se os módulos, resultando em -13[span_13](start_span)[span_13](end_span)." },
-        { id: "MAT-M21", p: "A unidade de medida padrão 'Litro' (L) está diretamente associada a qual grandeza?", o: [{t:"Perímetro",c:false}, {t:"Área",c:false}, {t:"Capacidade / Volume",c:true}, {t:"Massa",c:false}], pts: 3, exp: "O litro é a unidade usual de medida de capacidade, relacionando-se com o volume interno de um recipiente[span_14](start_span)[span_14](end_span)." },
-        { id: "MAT-M22", p: "Na geometria, como definimos ângulos suplementares?", o: [{t:"A soma das medidas é 90°",c:false}, {t:"A soma das medidas é 180°",c:true}, {t:"A soma das medidas é 360°",c:false}, {t:"Possuem o mesmo vértice e mesma medida",c:false}], pts: 3, exp: "Dois ângulos são complementares se somam 90° e suplementares quando a soma resulta num ângulo raso de 180°[span_15](start_span)[span_15](end_span)." },
-        { id: "MAT-M23", p: "Em uma sala há 10 meninas e 15 meninos. Qual é a razão entre o número de meninas e o total de alunos?", o: [{t:"10/15",c:false}, {t:"2/3",c:false}, {t:"2/5",c:true}, {t:"3/5",c:false}], pts: 3, exp: "O total de alunos é 25. A razão é 10/25, que, simplificando por 5, resulta na fração irredutível 2/5[span_16](start_span)[span_16](end_span)." },
-        { id: "MAT-M24", p: "Qual é o Mínimo Múltiplo Comum (MMC) entre os números 4 e 6?", o: [{t:"10",c:false}, {t:"12",c:true}, {t:"24",c:false}, {t:"2",c:false}], pts: 3, exp: "Os múltiplos comuns de 4 e 6 iniciam-se com 12, sendo este o menor múltiplo comum diferente de zero[span_17](start_span)[span_17](end_span)." },
-        { id: "MAT-M25", p: "Se a área de um quadrado mede 49 cm², qual é o comprimento de cada um dos seus lados?", o: [{t:"7 cm",c:true}, {t:"14 cm",c:false}, {t:"24,5 cm",c:false}, {t:"98 cm",c:false}], pts: 3, exp: "A área do quadrado é Lado × Lado. Como 7 × 7 = 49, o lado mede exatamente 7 cm[span_18](start_span)[span_18](end_span)." },
-        { id: "MAT-M26", p: "Qual é a solução (raiz) da equação de primeiro grau 3x = 21?", o: [{t:"6",c:false}, {t:"7",c:true}, {t:"18",c:false}, {t:"24",c:false}], pts: 3, exp: "Aplicando o princípio multiplicativo da igualdade, dividimos os dois termos por 3. Portanto, x = 7[span_19](start_span)[span_19](end_span)." },
-        { id: "MAT-M27", p: "Como classificamos um triângulo que possui as medidas dos três lados congruentes (iguais)?", o: [{t:"Escaleno",c:false}, {t:"Isósceles",c:false}, {t:"Equilátero",c:true}, {t:"Retângulo",c:false}], pts: 3, exp: "O triângulo equilátero possui todos os três lados com a mesma medida[span_20](start_span)[span_20](end_span)." },
-        { id: "MAT-M28", p: "Qual é a representação em número decimal da fração 3/4?", o: [{t:"0,34",c:false}, {t:"3,4",c:false}, {t:"0,75",c:true}, {t:"7,5",c:false}], pts: 3, exp: "Dividindo o numerador 3 pelo denominador 4 obtém-se o quociente 0,75[span_21](start_span)[span_21](end_span)." },
-        { id: "MAT-M29", p: "Um produto que custava R$ 50,00 teve um acréscimo de 20%. Qual é o novo preço?", o: [{t:"R$ 60,00",c:true}, {t:"R$ 70,00",c:false}, {t:"R$ 52,00",c:false}, {t:"R$ 55,00",c:false}], pts: 3, exp: "Calculando 20% de 50 tem-se 10. Somando este acréscimo simples ao valor inicial, o novo preço é R$ 60,00[span_22](start_span)[span_22](end_span)." },
-        { id: "MAT-M30", p: "Em um sorteio de fichas numeradas de 1 a 10, qual é a probabilidade de sortear um múltiplo de 3?", o: [{t:"3/10",c:true}, {t:"1/3",c:false}, {t:"1/10",c:false}, {t:"3/7",c:false}], pts: 3, exp: "O espaço amostral tem 10 elementos e os resultados favoráveis (3, 6, 9) são 3. A probabilidade é de 3/10[span_23](start_span)[span_23](end_span)." },
-
-
-
-
-
-    
-        // --- NÍVEL DIFÍCIL ---
-        { id: "MAT-D01", p: "Qual a definição do conjunto dos Números Racionais (Q)?", o: [{t:"Números que podem ser frações",c:true}, {t:"Apenas decimais finitos",c:false}, {t:"Números sem zero",c:false}, {t:"Somente raízes exatas",c:false}], pts: 4, exp: "Os racionais são todos aqueles números que podem ser escritos na forma de fração." },
-        { id: "MAT-D02", p: "O que caracteriza uma inequação matemática?", o: [{t:"Uso de sinal de igual (=)",c:false}, {t:"Uso de sinais de desigualdade (>, <)",c:true}, {t:"Ser impossível de resolver",c:false}, {t:"Não possuir letras",c:false}], pts: 4, exp: "Enquanto a equação usa a igualdade, a inequação usa relações de desigualdade (maior, menor)." },
-        { id: "MAT-D03", p: "O que é o 'Espaço Amostral' em um experimento?", o: [{t:"O erro do cálculo",c:false}, {t:"O local da pesquisa",c:false}, {t:"Conjunto de todos os resultados possíveis",c:true}, {t:"O gráfico final",c:false}], pts: 4, exp: "Na probabilidade, o espaço amostral engloba todos os cenários ou resultados que podem acontecer." },
-        { id: "MAT-D04", p: "O que define um polígono regular na geometria?", o: [{t:"Lados paralelos",c:false}, {t:"Ser desenhado à mão",c:false}, {t:"Ter muitos vértices",c:false}, {t:"Lados e ângulos iguais",c:true}], pts: 4, exp: "Um polígono é regular quando possui todos os seus lados congruentes e ângulos iguais." },
-        { id: "MAT-D05", p: "Como calculamos o volume de um prisma reto?", o: [{t:"Área da base x altura",c:true}, {t:"Perímetro + altura",c:false}, {t:"Base x altura",c:false}, {t:"Lado ao quadrado",c:false}], pts: 4, exp: "O volume do prisma é calculado multiplicando-se a área da sua base pela sua altura." },
-        { id: "MAT-D06", p: "O Princípio Multiplicativo diz que devemos:", o: [{t:"Somar as opções",c:false}, {t:"Multiplicar as opções de cada etapa",c:true}, {t:"Dividir o total por dois",c:false}, {t:"Subtrair as repetições",c:false}], pts: 4, exp: "Para combinar possibilidades de etapas independentes, multiplicamos o número de opções de cada uma." },
-        { id: "MAT-D07", p: "Em um gráfico de pizza, o tamanho da fatia depende da:", o: [{t:"Cor escolhida",c:false}, {t:"Data da pesquisa",c:false}, {t:"Porcentagem ou frequência do dado",c:true}, {t:"Largura da legenda",c:false}], pts: 4, exp: "O tamanho da fatia (ângulo) é diretamente proporcional à frequência ou porcentagem daquele dado." },
-        { id: "MAT-D08", p: "A fórmula do comprimento da circunferência é:", o: [{t:"π x r",c:false}, {t:"r²",c:false}, {t:"2 x π",c:false}, {t:"2 x π x r",c:true}], pts: 4, exp: "O comprimento da circunferência (C) é calculado pela fórmula C = 2 * π * r." },
-        { id: "MAT-D09", p: "O 'Valor Numérico' de uma expressão é obtido ao:", o: [{t:"Trocar letras por números e resolver",c:true}, {t:"Inverter os sinais",c:false}, {t:"Contar as letras",c:false}, {t:"Desenhar um gráfico",c:false}], pts: 4, exp: "Substituímos as incógnitas/letras da expressão por seus respectivos números para achar o resultado." },
-        { id: "MAT-D10", p: "Resolva: 2x - 4 = 12. Qual o valor de x?", o: [{t:"4",c:false}, {t:"8",c:true}, {t:"16",c:false}, {t:"6",c:false}], pts: 4, exp: "Temos 2x = 12 + 4 -> 2x = 16. O x será 16 dividido por 2, que é 8." },
-        { id: "MAT-D11", p: "Qual o volume de um bloco com dimensões 5 x 3 x 2 cm?", o: [{t:"10 cm³",c:false}, {t:"15 cm³",c:false}, {t:"30 cm³",c:true}, {t:"25 cm³",c:false}], pts: 4, exp: "O volume de um bloco (paralelepípedo) é o produto das suas dimensões (5 x 3 x 2 = 30 cm³)." },
-        { id: "MAT-D12", p: "Quanto é 20% de 50% de 200 reais?", o: [{t:"10 reais",c:false}, {t:"40 reais",c:false}, {t:"50 reais",c:false}, {t:"20 reais",c:true}], pts: 4, exp: "Primeiro, 50% de 200 é 100. Em seguida, calculamos 20% de 100, que resulta em 20 reais." },
-        { id: "MAT-D13", p: "Qual o resultado da divisão: 3/5 ÷ 1/2?", o: [{t:"6/5",c:true}, {t:"3/10",c:false}, {t:"5/6",c:false}, {t:"2/5",c:false}], pts: 4, exp: "Na divisão de frações, repete-se a primeira e multiplica-se pelo inverso da segunda (3/5 x 2/1 = 6/5)." },
-        { id: "MAT-D14", p: "Qual a área de um triângulo com base de 10 cm e altura de 6 cm?", o: [{t:"60 cm²",c:false}, {t:"30 cm²",c:true}, {t:"15 cm²",c:false}, {t:"100 cm²",c:false}], pts: 4, exp: "A área do triângulo é base vezes altura a dividir por dois. (10 x 6) / 2 = 60 / 2 = 30 cm²." },
-        { id: "MAT-D15", p: "Se 2 operários fazem uma obra em 10 dias, 4 operários farão em:", o: [{t:"20 dias",c:false}, {t:"10 dias",c:false}, {t:"5 dias",c:true}, {t:"15 dias",c:false}], pts: 4, exp: "São grandezas inversamente proporcionais. O dobro de operários fará a obra na metade do tempo (5 dias)." },
-        { id: "MAT-D16", p: "Em uma escala 1:100, quanto representam 5 cm no tamanho real?", o: [{t:"50 cm",c:false}, {t:"500 cm",c:true}, {t:"1 metro",c:false}, {t:"5 metros",c:false}], pts: 4, exp: "A escala 1:100 significa que 1 cm no desenho equivale a 100 cm no real. Logo, 5 x 100 = 500 cm." },
-        { id: "MAT-D17", p: "Qual o Mínimo Múltiplo Comum (MMC) entre 12 e 18?", o: [{t:"36",c:true}, {t:"6",c:false}, {t:"72",c:false}, {t:"12",c:false}], pts: 4, exp: "Os múltiplos de 12 são 12, 24, 36... Os de 18 são 18, 36... O menor em comum é 36." },
-        { id: "MAT-D18", p: "Qual o resultado de: (-5) x (-3) + 2?", o: [{t:"-13",c:false}, {t:"17",c:true}, {t:"15",c:false}, {t:"-15",c:false}], pts: 4, exp: "Primeiro resolvemos a multiplicação: (-5) x (-3) = +15. Depois a soma: 15 + 2 = 17." }
-        
-    ],
-
-
-    "Português": [
-        // --- NÍVEL FÁCIL ---
-        { id: "PORT-F01", p: "Qual é a classe de palavras que dá nome a seres, objetos, lugares e sentimentos?", o: [{t:"Substantivo",c:true}, {t:"Adjetivo",c:false}, {t:"Verbo",c:false}, {t:"Artigo",c:false}], pts: 2, exp: "O substantivo é a classe gramatical responsável por nomear tudo o que existe." },
-        { id: "PORT-F02", p: "Qual palavra é usada para atribuir qualidades, estados ou características ao substantivo?", o: [{t:"Advérbio",c:false}, {t:"Adjetivo",c:true}, {t:"Numeral",c:false}, {t:"Preposição",c:false}], pts: 2, exp: "O adjetivo acompanha o substantivo para lhe dar uma característica." },
-        { id: "PORT-F03", p: "O que é um verbo na língua portuguesa?", o: [{t:"Palavra que substitui o nome",c:false}, {t:"Palavra que define o gênero",c:false}, {t:"Palavra que indica ação, estado ou fenômeno",c:true}, {t:"Palavra que liga dois substantivos",c:false}], pts: 2, exp: "Verbos são palavras que expressam ações, estados ou fenômenos da natureza." },
-        { id: "PORT-F04", p: "Como chamamos as palavras que possuem significados semelhantes entre si?", o: [{t:"Homônimas",c:false}, {t:"Antônimas",c:false}, {t:"Parônimas",c:false}, {t:"Sinônimas",c:true}], pts: 2, exp: "Palavras sinônimas são aquelas que possuem sentidos parecidos ou iguais." },
-        { id: "PORT-F05", p: "O que são palavras antônimas?", o: [{t:"Palavras com sentidos opostos",c:true}, {t:"Palavras com a mesma escrita",c:false}, {t:"Palavras com o mesmo som",c:false}, {t:"Palavras sem significado claro",c:false}], pts: 2, exp: "Antônimos são palavras que expressam ideias contrárias." },
-        { id: "PORT-F06", p: "Qual é a principal função do ponto final em um texto?", o: [{t:"Indicar uma pergunta",c:false}, {t:"Encerrar uma frase declarativa",c:true}, {t:"Mostrar uma interrupção",c:false}, {t:"Separar elementos de uma lista",c:false}], pts: 2, exp: "O ponto final é usado para terminar uma ideia ou frase declarativa." },
-        { id: "PORT-F07", p: "Para que serve o ponto de interrogação?", o: [{t:"Expressar uma ordem",c:false}, {t:"Finalizar uma exclamação",c:false}, {t:"Indicar uma pergunta direta",c:true}, {t:"Substituir o uso da vírgula",c:false}], pts: 2, exp: "Utiliza-se o ponto de interrogação sempre que se faz uma pergunta direta." },
-        { id: "PORT-F08", p: "Qual é a função da classe gramatical chamada advérbio?", o: [{t:"Nomear os objetos da frase",c:false}, {t:"Substituir o sujeito principal",c:false}, {t:"Caracterizar apenas substantivos",c:false}, {t:"Modificar o verbo, adjetivo ou advérbio",c:true}], pts: 2, exp: "O advérbio indica a circunstância da ação (tempo, modo, lugar)." },
-        { id: "PORT-F09", p: "O que é um artigo na gramática?", o: [{t:"Palavra que antecede o substantivo",c:true}, {t:"Palavra que indica uma ação",c:false}, {t:"Palavra que liga duas orações",c:false}, {t:"Palavra que indica emoção",c:false}], pts: 2, exp: "O artigo antecede o substantivo para determiná-lo ou indeterminá-lo." },
-        { id: "PORT-F10", p: "O que caracteriza a classe dos pronomes?", o: [{t:"Palavras que indicam números",c:false}, {t:"Palavras que substituem ou acompanham nomes",c:true}, {t:"Palavras que dão ordens diretas",c:false}, {t:"Palavras que imitam sons reais",c:false}], pts: 2, exp: "Pronomes são usados para evitar a repetição de nomes num texto." },
-        { id: "PORT-F11", p: "Qual é a principal característica de uma fábula?", o: [{t:"Uso de dados científicos",c:false}, {t:"Ser um texto longo e jurídico",c:false}, {t:"Presença de animais com moral da história",c:true}, {t:"Relatar fatos reais do jornalismo",c:false}], pts: 2, exp: "Fábulas trazem animais personificados e terminam com um ensinamento (a moral da história)." },
-        { id: "PORT-F12", p: "Qual é o objetivo principal do gênero textual notícia?", o: [{t:"Convencer o leitor a comprar algo",c:false}, {t:"Contar uma piada ou história fictícia",c:false}, {t:"Expressar os sentimentos do autor",c:false}, {t:"Informar sobre fatos reais e atuais",c:true}], pts: 2, exp: "A notícia tem caráter informativo e lida com acontecimentos verdadeiros e do momento." },
-        { id: "PORT-F13", p: "Como definimos a classe gramatical do numeral?", o: [{t:"Indica quantidade, ordem ou fração",c:true}, {t:"Indica o nome de cidades e países",c:false}, {t:"Indica uma característica física",c:false}, {t:"Substitui o uso dos verbos",c:false}], pts: 2, exp: "O numeral exprime quantidade exata de seres, ordem, múltiplos ou frações." },
-        { id: "PORT-F14", p: "O que é a sílaba tônica de uma palavra?", o: [{t:"É a primeira sílaba de toda palavra",c:false}, {t:"É a sílaba pronunciada com mais força",c:true}, {t:"É a sílaba que nunca recebe acento",c:false}, {t:"É a sílaba que tem mais vogais",c:false}], pts: 2, exp: "A sílaba tônica é a que possui a maior intensidade sonora na palavra." },
-        { id: "PORT-F15", p: "Quando uma palavra é considerada oxítona?", o: [{t:"Quando a antepenúltima sílaba é tônica",c:false}, {t:"Quando ela possui apenas uma sílaba",c:false}, {t:"Quando a última sílaba é tônica",c:true}, {t:"Quando ela não possui acento gráfico",c:false}], pts: 2, exp: "Oxítonas têm a sua força na última sílaba, como a-MOR ou ca-FÉ." },
-        { id: "PORT-F16", p: "O que caracteriza uma palavra paroxítona?", o: [{t:"A sílaba forte é a primeira",c:false}, {t:"A sílaba forte é a última",c:false}, {t:"Todas as sílabas são iguais",c:false}, {t:"A sílaba tônica é a penúltima",c:true}], pts: 2, exp: "As paroxítonas têm a penúltima sílaba como a mais forte (ex: CA-sa, LÁ-pis)." },
-        { id: "PORT-F17", p: "Qual é a regra principal das palavras proparoxítonas?", o: [{t:"Todas são obrigatoriamente acentuadas",c:true}, {t:"Nenhuma pode receber acento gráfico",c:false}, {t:"Só recebem acento se terminarem em S",c:false}, {t:"Só recebem acento se forem nomes",c:false}], pts: 2, exp: "Esta é a regra mais simples da acentuação: todas as proparoxítonas levam acento gráfico." },
-        { id: "PORT-F18", p: "O que é um encontro vocálico?", o: [{t:"A união de duas consoantes fortes",c:false}, {t:"O encontro de vogais em uma palavra",c:true}, {t:"A separação silábica correta",c:false}, {t:"O início de um novo parágrafo",c:false}], pts: 2, exp: "Acontece quando duas ou mais vogais se encontram na palavra (ex: pEI-xe)." },
-        { id: "PORT-F19", p: "Qual classe de palavras é responsável por nomear seres, objetos, lugares e sentimentos?", o: [{t:"Substantivo",c:true}, {t:"Adjetivo",c:false}, {t:"Verbo",c:false}, {t:"Artigo",c:false}], pts: 2, exp: "O substantivo é a classe gramatical responsável por dar nome a tudo o que existe." },
-        { id: "PORT-F20", p: "Qual classe gramatical atribui qualidades, estados ou características ao substantivo?", o: [{t:"Advérbio",c:false}, {t:"Adjetivo",c:true}, {t:"Numeral",c:false}, {t:"Preposição",c:false}], pts: 2, exp: "O adjetivo é a palavra que caracteriza o substantivo." },
-        { id: "PORT-F21", p: "Como se chama a palavra que indica ação, estado ou fenômeno da natureza?", o: [{t:"Pronome",c:false}, {t:"Substantivo",c:false}, {t:"Verbo",c:true}, {t:"Interjeição",c:false}], pts: 2, exp: "Verbos são palavras que flexionam para indicar ações, estados ou fenômenos naturais." },
-        { id: "PORT-F22", p: "Como são chamadas as palavras que possuem significados semelhantes?", o: [{t:"Homônimas",c:false}, {t:"Antônimas",c:false}, {t:"Parônimas",c:false}, {t:"Sinônimas",c:true}], pts: 2, exp: "Sinônimos são palavras diferentes que expressam sentidos parecidos." },
-        { id: "PORT-F23", p: "Como são classificadas as palavras que possuem significados opostos?", o: [{t:"Antônimas",c:true}, {t:"Sinônimas",c:false}, {t:"Oxítonas",c:false}, {t:"Polissêmicas",c:false}], pts: 2, exp: "Antônimos são palavras de sentidos contrários, como alto e baixo." },
-        { id: "PORT-F24", p: "Qual sinal de pontuação é usado para encerrar uma frase declarativa?", o: [{t:"Ponto de interrogação",c:false}, {t:"Ponto final",c:true}, {t:"Reticências",c:false}, {t:"Dois-pontos",c:false}], pts: 2, exp: "O ponto final encerra o pensamento de uma frase declarativa." },
-        { id: "PORT-F25", p: "Qual sinal de pontuação deve ser utilizado ao final de uma pergunta direta?", o: [{t:"Ponto de exclamação",c:false}, {t:"Ponto final",c:false}, {t:"Ponto de interrogação",c:true}, {t:"Vírgula",c:false}], pts: 2, exp: "O ponto de interrogação indica que a frase é uma pergunta direta." },
-        { id: "PORT-F26", p: "Qual classe de palavras modifica o verbo, indicando circunstância de tempo, lugar ou modo?", o: [{t:"Advérbio",c:true}, {t:"Adjetivo",c:false}, {t:"Pronome",c:false}, {t:"Artigo",c:false}], pts: 2, exp: "O advérbio exprime circunstâncias (modo, tempo, lugar) associadas ao verbo." },
-        { id: "PORT-F27", p: "Qual palavra antecede o substantivo para determiná-lo ou indeterminá-lo?", o: [{t:"Preposição",c:false}, {t:"Artigo",c:true}, {t:"Conjunção",c:false}, {t:"Numeral",c:false}], pts: 2, exp: "O artigo (definido ou indefinido) antecede o substantivo indicando seu gênero e número." },
-        { id: "PORT-F28", p: "Qual classe gramatical tem a função de substituir ou acompanhar um nome/substantivo?", o: [{t:"Verbo",c:false}, {t:"Pronome",c:true}, {t:"Advérbio",c:false}, {t:"Interjeição",c:false}], pts: 2, exp: "O pronome é a palavra que substitui ou acompanha o substantivo no texto." },
-        { id: "PORT-F29", p: "Qual gênero narrativo traz animais com características humanas e uma moral da história?", o: [{t:"Notícia",c:false}, {t:"Fábula",c:true}, {t:"Artigo de opinião",c:false}, {t:"Verbete",c:false}], pts: 2, exp: "A fábula utiliza animais personificados para transmitir um ensinamento moral." },
-        { id: "PORT-F30", p: "Qual é o objetivo principal do gênero textual notícia?", o: [{t:"Informar fatos reais e atuais",c:true}, {t:"Convencer a comprar um produto",c:false}, {t:"Narrar uma lenda antiga",c:false}, {t:"Expressar sentimentos poéticos",c:false}], pts: 2, exp: "A notícia busca relatar fatos reais, recentes e de interesse público de forma objetiva." },
-
-
-
-        // --- NÍVEL MÉDIO ---
-        { id: "PORT-M01", p: "Na análise sintática, qual é a definição de sujeito?", o: [{t:"A palavra que indica o tempo da frase",c:false}, {t:"O conjunto de vírgulas da frase",c:false}, {t:"O ser sobre o qual se faz uma declaração",c:true}, {t:"A pontuação final da oração",c:false}], pts: 3, exp: "O sujeito é o termo da oração a respeito do qual o predicado diz alguma coisa." },
-        { id: "PORT-M02", p: "O que é o predicado de uma oração?", o: [{t:"O nome do autor do texto lido",c:false}, {t:"O termo que caracteriza o substantivo",c:false}, {t:"A pessoa com quem se fala diretamente",c:false}, {t:"Tudo o que se informa sobre o sujeito",c:true}], pts: 3, exp: "O predicado contém a ação e todas as informações referentes ao sujeito da frase." },
-        { id: "PORT-M03", p: "O que é uma preposição?", o: [{t:"Palavra que liga termos estabelecendo relação",c:true}, {t:"Palavra que indica números ordinais",c:false}, {t:"Palavra usada para gritar ou exclamar",c:false}, {t:"Palavra que substitui o verbo principal",c:false}], pts: 3, exp: "A preposição conecta palavras, fazendo com que o segundo termo complete o primeiro." },
-        { id: "PORT-M04", p: "Qual é a função da conjunção?", o: [{t:"Dar nome aos seres inanimados",c:false}, {t:"Ligar orações ou palavras semelhantes",c:true}, {t:"Indicar o plural dos substantivos",c:false}, {t:"Modificar apenas o sentido dos nomes",c:false}], pts: 3, exp: "As conjunções unem orações ou termos de mesma função sintática (como 'e', 'mas', 'ou')." },
-        { id: "PORT-M05", p: "O que define um sujeito oculto?", o: [{t:"Quando há dois núcleos na oração",c:false}, {t:"Quando o sujeito é inexistente",c:false}, {t:"Identificado pela desinência do verbo",c:true}, {t:"Quando o sujeito aparece no fim da frase",c:false}], pts: 3, exp: "Oculto (ou elíptico) é o sujeito que não está expresso, mas deduz-se facilmente pelo verbo." },
-        { id: "PORT-M06", p: "Como reconhecemos um sujeito composto?", o: [{t:"Possui apenas um verbo de ligação",c:false}, {t:"Não pode ser identificado no texto",c:false}, {t:"É formado por um único núcleo",c:false}, {t:"Apresenta dois ou mais núcleos",c:true}], pts: 3, exp: "Sujeito composto possui mais do que um núcleo principal. (ex: 'Cães e gatos brincam')." },
-        { id: "PORT-M07", p: "O que é a metáfora?", o: [{t:"Comparação implícita sem conectivo",c:true}, {t:"Exagero intencional de uma ideia",c:false}, {t:"Repetição de sons consonantais",c:false}, {t:"Imitação de sons da natureza",c:false}], pts: 3, exp: "A metáfora é uma figura de linguagem que compara algo sem usar o termo 'como'." },
-        { id: "PORT-M08", p: "Qual a diferença da comparação para a metáfora?", o: [{t:"A comparação não usa palavras",c:false}, {t:"A comparação usa conectivos (ex: como)",c:true}, {t:"A comparação é sempre um exagero",c:false}, {t:"Não existe diferença entre as duas",c:false}], pts: 3, exp: "A comparação é explícita, utilizando elementos conectivos (como, tal qual)." },
-        { id: "PORT-M09", p: "O que é um verbo intransitivo?", o: [{t:"Verbo que exige dois objetos",c:false}, {t:"Verbo que não possui sujeito",c:false}, {t:"Verbo com sentido completo",c:true}, {t:"Verbo que liga nome a característica",c:false}], pts: 3, exp: "O verbo intransitivo não precisa de complemento para que a ação faça sentido (ex: A planta morreu)." },
-        { id: "PORT-M10", p: "O que define um verbo transitivo?", o: [{t:"Indica fenômeno da natureza",c:false}, {t:"Indica apenas o estado do sujeito",c:false}, {t:"Verbo que ocorre apenas no passado",c:false}, {t:"Necessita de complemento para ter sentido",c:true}], pts: 3, exp: "Sem um complemento (objeto), a ação do verbo transitivo fica incompleta na oração." },
-        { id: "PORT-M11", p: "Como classificamos o objeto direto?", o: [{t:"Complemento sem preposição obrigatória",c:true}, {t:"Sujeito que sofre a ação do verbo",c:false}, {t:"Advérbio que indica o lugar da ação",c:false}, {t:"Indica a circunstância de tempo",c:false}], pts: 3, exp: "O objeto direto liga-se ao verbo diretamente, sem a obrigatoriedade de uma preposição." },
-        { id: "PORT-M12", p: "O que caracteriza o objeto indireto?", o: [{t:"É ligado ao sujeito por um adjetivo",c:false}, {t:"É o complemento ligado por preposição",c:true}, {t:"É o verbo principal da oração",c:false}, {t:"Indica a circunstância de tempo",c:false}], pts: 3, exp: "O objeto indireto completa o verbo, mas liga-se a ele através de uma preposição válida." },
-        { id: "PORT-M13", p: "O que ocorre para existir a crase?", o: [{t:"União de duas consoantes iguais",c:false}, {t:"Separação de vogais na sílaba",c:false}, {t:"Fusão da preposição A com artigo A",c:true}, {t:"Acentuação de todas as paroxítonas",c:false}], pts: 3, exp: "A crase é o fenômeno da fusão da preposição 'A' com o artigo feminino 'A', indicado pelo acento grave (`)." },
-        { id: "PORT-M14", p: "Qual é a definição de hiato?", o: [{t:"Encontro consonantal inseparável",c:false}, {t:"Vogais juntas na mesma sílaba",c:false}, {t:"Vogal e consoante na mesma sílaba",c:false}, {t:"Vogais juntas que se separam nas sílabas",c:true}], pts: 3, exp: "No hiato, duas vogais estão lado a lado na palavra, mas separam-se ao dividir as sílabas (ex: sa-Ú-de)." },
-        { id: "PORT-M15", p: "O que é um ditongo?", o: [{t:"Vogais juntas na mesma sílaba",c:true}, {t:"Duas consoantes na mesma sílaba",c:false}, {t:"Três vogais na mesma sílaba",c:false}, {t:"Vogais separadas por um hífen",c:false}], pts: 3, exp: "O ditongo é o encontro de uma vogal e uma semivogal juntas na mesma sílaba (ex: cAI-xa)." },
-        { id: "PORT-M16", p: "O que é a derivação prefixal?", o: [{t:"Acréscimo de sufixo após o radical",c:false}, {t:"Acréscimo de prefixo antes do radical",c:true}, {t:"Junção de duas palavras completas",c:false}, {t:"Mudança da classe gramatical",c:false}], pts: 3, exp: "Ocorre quando um prefixo é adicionado ao início da palavra para formar uma nova (ex: IN-feliz)." },
-        { id: "PORT-M17", p: "Como ocorre a derivação sufixal?", o: [{t:"Redução de uma palavra longa",c:false}, {t:"Repetição da primeira sílaba",c:false}, {t:"Acréscimo de sufixo após o radical",c:true}, {t:"Colocação de um termo no início",c:false}], pts: 3, exp: "Ocorre quando um sufixo é adicionado ao final da palavra original (ex: feliz-MENTE)." },
-        { id: "PORT-M18", p: "Qual é a definição de variação linguística?", o: [{t:"Erros que devem ser proibidos",c:false}, {t:"Uso de línguas estrangeiras",c:false}, {t:"Regras exclusivas da gramática",c:false}, {t:"Mudanças da língua por região ou grupo",c:true}], pts: 3, exp: "A língua sofre variações históricas, sociais, geográficas ou situacionais em cada grupo." },
-        { id: "PORT-M19", p: "Na análise sintática, como é chamado o termo sobre o qual se faz uma declaração?", o: [{t:"Predicado",c:false}, {t:"Sujeito",c:true}, {t:"Objeto direto",c:false}, {t:"Agente da passiva",c:false}], pts: 3, exp: "O sujeito é o termo sintático a respeito do qual se declara algo." },
-        { id: "PORT-M20", p: "Como chamamos o termo da oração que contém o verbo e informa algo sobre o sujeito?", o: [{t:"Predicado",c:true}, {t:"Sujeito simples",c:false}, {t:"Vocativo",c:false}, {t:"Aposto",c:false}], pts: 3, exp: "O predicado é a parte da oração que traz a informação sobre o sujeito." },
-        { id: "PORT-M21", p: "Qual palavra invariável liga dois termos, estabelecendo uma relação de subordinação entre eles?", o: [{t:"Preposição",c:true}, {t:"Adjetivo",c:false}, {t:"Substantivo",c:false}, {t:"Artigo",c:false}], pts: 3, exp: "A preposição liga palavras criando relações de sentido entre elas (ex: de, para, com)." },
-        { id: "PORT-M22", p: "Qual classe de palavras é responsável por ligar orações ou termos de mesma função sintática?", o: [{t:"Conjunção",c:true}, {t:"Interjeição",c:false}, {t:"Advérbio",c:false}, {t:"Numeral",c:false}], pts: 3, exp: "Conjunções estabelecem relações lógicas entre orações ou termos (ex: e, mas, porque)." },
-        { id: "PORT-M23", p: "Como é classificada a linguagem que utiliza palavras escritas ou faladas na comunicação?", o: [{t:"Linguagem não verbal",c:false}, {t:"Linguagem verbal",c:true}, {t:"Linguagem corporal",c:false}, {t:"Linguagem icônica",c:false}], pts: 3, exp: "A linguagem verbal se estrutura por meio da palavra falada ou escrita." },
-        { id: "PORT-M24", p: "Como chamamos a linguagem que se expressa exclusivamente por imagens, símbolos e cores?", o: [{t:"Linguagem não verbal",c:true}, {t:"Linguagem verbal",c:false}, {t:"Linguagem culta",c:false}, {t:"Linguagem formal",c:false}], pts: 3, exp: "Linguagem não verbal utiliza recursos visuais/sonoros sem o uso de palavras." },
-        { id: "PORT-M25", p: "Como se chama o uso da palavra em seu sentido próprio, literal e dicionarizado?", o: [{t:"Conotação",c:false}, {t:"Denotação",c:true}, {t:"Metáfora",c:false}, {t:"Ironia",c:false}], pts: 3, exp: "Denotação é o sentido exato e literal da palavra (D de dicionário)." },
-        { id: "PORT-M26", p: "Como chamamos o emprego da palavra em sentido figurado, subjetivo ou expressivo?", o: [{t:"Denotação",c:false}, {t:"Conotação",c:true}, {t:"Coesão",c:false}, {t:"Coerência",c:false}], pts: 3, exp: "Conotação expande o significado da palavra para além do seu sentido literal." },
-        { id: "PORT-M27", p: "Qual figura de linguagem consiste em uma comparação implícita sem o uso do 'como'?", o: [{t:"Metáfora",c:true}, {t:"Metonímia",c:false}, {t:"Pleonasmo",c:false}, {t:"Hipérbole",c:false}], pts: 3, exp: "A metáfora atribui o significado de um termo a outro com base em uma comparação implícita." },
-        { id: "PORT-M28", p: "Qual figura de linguagem se caracteriza pelo exagero intencional de uma ideia?", o: [{t:"Eufemismo",c:false}, {t:"Hipérbole",c:true}, {t:"Antítese",c:false}, {t:"Prosopopeia",c:false}], pts: 3, exp: "A hipérbole expressa um exagero expressivo (ex: 'morrendo de sede')." },
-        { id: "PORT-M29", p: "Como é classificado o verbo que exige complemento sem a presença de preposição obrigatória?", o: [{t:"Transitivo direto",c:true}, {t:"Transitivo indireto",c:false}, {t:"Intransitivo",c:false}, {t:"De ligação",c:false}], pts: 3, exp: "Verbos transitivos diretos ligam-se ao seu objeto sem preposição (ex: 'Comprei um livro')." },
-        { id: "PORT-M30", p: "Qual gênero do campo jornalístico-midiático tem por objetivo defender uma tese com argumentos?", o: [{t:"Notícia",c:false}, {t:"Artigo de opinião",c:true}, {t:"Fotolegenda",c:false}, {t:"Anúncio publicitário",c:false}], pts: 3, exp: "O artigo de opinião é um texto argumentativo assinado onde o autor defende seu ponto de vista." },
-
-
-
-        // --- NÍVEL DIFÍCIL ---
-        { id: "PORT-D01", p: "O que define uma oração na gramática?", o: [{t:"Enunciado que se organiza em torno de verbo",c:true}, {t:"Qualquer frase sem sinais de pontuação",c:false}, {t:"Texto longo com vários parágrafos",c:false}, {t:"Unidade que não possui sentido próprio",c:false}], pts: 4, exp: "Para ser uma oração, a frase precisa conter obrigatoriamente um verbo ou locução verbal." },
-        { id: "PORT-D02", p: "O que é um período composto?", o: [{t:"Período com apenas uma oração",c:false}, {t:"Período com duas ou mais orações",c:true}, {t:"Período que não possui verbos",c:false}, {t:"Período usado apenas em poesias",c:false}], pts: 4, exp: "Um período composto possui mais de um verbo ou locução verbal." },
-        { id: "PORT-D03", p: "Como definimos as orações coordenadas?", o: [{t:"Orações que não possuem verbos",c:false}, {t:"Orações que dependem de outra",c:false}, {t:"Orações independentes sintaticamente",c:true}, {t:"Orações que funcionam como adjetivo",c:false}], pts: 4, exp: "As coordenadas não dependem umas das outras para fazer sentido; são sintaticamente independentes." },
-        { id: "PORT-D04", p: "O que são orações subordinadas?", o: [{t:"Orações que encerram o texto",c:false}, {t:"Orações totalmente independentes",c:false}, {t:"Orações que não seguem regras",c:false}, {t:"Orações que exercem função em outra",c:true}], pts: 4, exp: "A oração subordinada depende sintaticamente da oração principal para ter sentido completo." },
-        { id: "PORT-D05", p: "O que é o predicativo do sujeito?", o: [{t:"Termo que dá característica ao sujeito",c:true}, {t:"Verbo que indica uma ação brusca",c:false}, {t:"Nome do sujeito quando ele é oculto",c:false}, {t:"Pontuação que separa o sujeito do verbo",c:false}], pts: 4, exp: "Atribui uma qualidade ou estado ao sujeito, normalmente intermediado por um verbo de ligação." },
-        { id: "PORT-D06", p: "Qual a função do verbo de ligação?", o: [{t:"Indicar uma ação do sujeito",c:false}, {t:"Ligar o sujeito a uma característica",c:true}, {t:"Ligar duas frases sem usar vírgulas",c:false}, {t:"Substituir o uso de preposições",c:false}], pts: 4, exp: "O verbo de ligação (ser, estar, ficar...) não indica ação, mas apenas liga o sujeito ao seu estado." },
-        { id: "PORT-D07", p: "O que é um adjunto adnominal?", o: [{t:"Termo que indica o tempo do verbo",c:false}, {t:"Dar nome a seres vivos na frase",c:false}, {t:"Termo que acompanha e modifica substantivo",c:true}, {t:"Preposição que inicia a oração",c:false}], pts: 4, exp: "Determina, modifica ou especifica um substantivo na oração (ex: O MEU carro NOVO)." },
-        { id: "PORT-D08", p: "Qual é a função do adjunto adverbial?", o: [{t:"Verbo que liga o nome ao predicado",c:false}, {t:"Caracterizar apenas o substantivo",c:false}, {t:"Ligar o sujeito ao seu predicativo",c:false}, {t:"Indicar circunstância (tempo, lugar, modo)",c:true}], pts: 4, exp: "O adjunto adverbial expressa uma circunstância e modifica um verbo, adjetivo ou advérbio." },
-        { id: "PORT-D09", p: "O que caracteriza a hipérbole?", o: [{t:"Uso de expressões com exagero intencional",c:true}, {t:"Comparação entre dois seres diferentes",c:false}, {t:"Repetição de sons no início das palavras",c:false}, {t:"Suavização de uma notícia ruim",c:false}], pts: 4, exp: "Hipérbole é a figura de linguagem usada para expressar uma ideia com exagero (ex: 'Estou a morrer de rir')." },
-        { id: "PORT-D10", p: "O que é personificação ou prosopopeia?", o: [{t:"Imitar o jeito de falar de outra pessoa",c:false}, {t:"Dar características humanas a seres inanimados",c:true}, {t:"Exagerar qualidades de um objeto",c:false}, {t:"Comparar pessoas com animais selvagens",c:false}], pts: 4, exp: "Atribui sentimentos e ações humanas a seres não-humanos ou inanimados." },
-        { id: "PORT-D11", p: "Qual é a definição de eufemismo?", o: [{t:"Exagero dramático de uma situação",c:false}, {t:"Comparação direta usando conectivos",c:false}, {t:"Suavizar uma expressão desagradável",c:true}, {t:"Repetir a mesma palavra várias vezes",c:false}], pts: 4, exp: "Substitui um termo forte ou chocante por outro mais agradável (ex: 'Partiu desta para melhor')." },
-        { id: "PORT-D12", p: "O que define a ironia como figura?", o: [{t:"Dizer algo querendo reforçar o sentido real",c:false}, {t:"Usar palavras difíceis para confundir",c:false}, {t:"Repetir sons de vogais na mesma frase",c:false}, {t:"Dizer o contrário do que se pretende",c:true}], pts: 4, exp: "Usa-se a ironia para expressar uma ideia dizendo exatamente o seu oposto de forma sarcástica." },
-        { id: "PORT-D13", p: "O que são palavras homônimas?", o: [{t:"Mesma grafia ou som, mas sentidos diferentes",c:true}, {t:"Palavras que possuem apenas uma sílaba",c:false}, {t:"Palavras com significados idênticos",c:false}, {t:"Palavras que não possuem consoantes",c:false}], pts: 4, exp: "São palavras iguais na pronúncia ou na escrita, mas com sentidos diferentes (ex: manga da blusa / manga fruta)." },
-        { id: "PORT-D14", p: "Como definimos as palavras parônimas?", o: [{t:"Palavras lidas igual de trás para frente",c:false}, {t:"Parecidas na grafia ou som, mas sentidos diferentes",c:true}, {t:"Palavras que rimam perfeitamente no final",c:false}, {t:"Nomes próprios usados como substantivos",c:false}], pts: 4, exp: "São muito semelhantes na escrita e no som, mas não são idênticas (ex: cavaleiro e cavalheiro)." },
-        { id: "PORT-D15", p: "O que é a ambiguidade em um texto?", o: [{t:"Erro de concordância entre sujeito e verbo",c:false}, {t:"Texto escrito em duas línguas diferentes",c:false}, {t:"Duplicidade de sentido que gera confusão",c:true}, {t:"Uso de letras maiúsculas em excesso",c:false}], pts: 4, exp: "Ocorre quando um texto permite mais de uma interpretação, o que pode prejudicar a clareza." },
-        { id: "PORT-D16", p: "Qual é a definição de coesão textual?", o: [{t:"A margem correta das folhas de um livro",c:false}, {t:"O uso de rimas em textos não poéticos",c:false}, {t:"A contagem de palavras em cada parágrafo",c:false}, {t:"Ligação entre partes do texto por conectivos",c:true}], pts: 4, exp: "A coesão é a conexão harmoniosa entre as frases e parágrafos através de palavras de ligação." },
-        { id: "PORT-D17", p: "O que caracteriza a coerência textual?", o: [{t:"Relação lógica que dá sentido ao texto",c:true}, {t:"Escrita sem erros de ortografia ou acento",c:false}, {t:"Uso de vocabulário muito difícil e raro",c:false}, {t:"Formatação visual atraente da página",c:false}], pts: 4, exp: "O texto coerente tem sentido contínuo, sem contradições lógicas nas suas ideias." },
-        { id: "PORT-D18", p: "Qual é a definição de vocativo?", o: [{t:"Verbo que indica o chamamento de alguém",c:false}, {t:"Termo usado para chamar ou interpelar",c:true}, {t:"Sujeito que aparece apenas no fim da frase",c:false}, {t:"Complemento que vem sempre sem preposição",c:false}], pts: 4, exp: "É usado para evocar o ouvinte real ou imaginário na oração e é sempre isolado por vírgulas." }
-        { id: "PORT-D19", p: "Qual figura de linguagem atribui características humanas a seres inanimados ou animais?", o: [{t:"Personificação",c:true}, {t:"Eufemismo",c:false}, {t:"Antítese",c:false}, {t:"Catacrese",c:false}], pts: 4, exp: "A personificação (ou prosopopeia) dá sentimentos e ações humanas a seres inanimados." },
-        { id: "PORT-D20", p: "Qual figura de linguagem é empregada para suavizar uma mensagem desagradável ou chocante?", o: [{t:"Hipérbole",c:false}, {t:"Eufemismo",c:true}, {t:"Ironia",c:false}, {t:"Paradoxo",c:false}], pts: 4, exp: "O eufemismo substitui termos rudes ou chocantes por expressões mais brandas." },
-        { id: "PORT-D21", p: "Qual figura de linguagem consiste na aproximação de palavras de sentidos opostos?", o: [{t:"Antítese",c:true}, {t:"Metáfora",c:false}, {t:"Pleonasmo",c:false}, {t:"Sinestesia",c:false}], pts: 4, exp: "A antítese utiliza termos com significados contrários no mesmo enunciado (ex: luz e sombra)." },
-        { id: "PORT-D22", p: "Como se chama a oração subordinada introduzida por pronome relativo que qualifica um substantivo?", o: [{t:"Substantiva",c:false}, {t:"Adjetiva",c:true}, {t:"Adverbial",c:false}, {t:"Coordenada",c:false}], pts: 4, exp: "Orações subordinadas adjetivas exercem a função de adjetivo, ligadas por pronomes relativos." },
-        { id: "PORT-D23", p: "Como chamamos o recurso de coesão que retoma um elemento já citado anteriormente no texto?", o: [{t:"Anáfora",c:true}, {t:"Catáfora",c:false}, {t:"Elipse",c:false}, {t:"Zeugma",c:false}], pts: 4, exp: "A anáfora faz referência anafórica a uma palavra ou expressão dita anteriormente." },
-        { id: "PORT-D24", p: "Como chamamos a concordância que se estabelece entre o verbo e o seu sujeito em número e pessoa?", o: [{t:"Concordância nominal",c:false}, {t:"Concordância verbal",c:true}, {t:"Regência nominal",c:false}, {t:"Regência verbal",c:false}], pts: 4, exp: "Concordância verbal ajusta o verbo ao número (singular/plural) e pessoa do sujeito." },
-        { id: "PORT-D25", p: "Em qual voz verbal o sujeito gramatical é o agente que executa a ação expressa pelo verbo?", o: [{t:"Voz passiva",c:false}, {t:"Voz reflexiva",c:false}, {t:"Voz ativa",c:true}, {t:"Voz recíproca",c:false}], pts: 4, exp: "Na voz ativa, o sujeito pratica ativamente a ação expressa pelo verbo." },
-        { id: "PORT-D26", p: "Em qual voz verbal o sujeito gramatical recebe ou sofre a ação expressa pelo verbo?", o: [{t:"Voz ativa",c:false}, {t:"Voz passiva",c:true}, {t:"Voz reflexiva",c:false}, {t:"Voz imperativa",c:false}], pts: 4, exp: "Na voz passiva, o sujeito paciente sofre a ação praticada pelo agente da passiva." },
-        { id: "PORT-D27", p: "Qual modo verbal expressa fatos incertos, hipóteses, dúvidas ou desejos?", o: [{t:"Modo indicativo",c:false}, {t:"Modo subjuntivo",c:true}, {t:"Modo imperativo",c:false}, {t:"Modo infinitivo",c:false}], pts: 4, exp: "O modo subjuntivo expressa dúvida, possibilidade, desejo ou condição." },
-        { id: "PORT-D28", p: "Qual modo verbal exprime ordens, pedidos, exortações, proibições ou conselhos?", o: [{t:"Modo imperativo",c:true}, {t:"Modo subjuntivo",c:false}, {t:"Modo indicativo",c:false}, {t:"Modo particípio",c:false}], pts: 4, exp: "O modo imperativo busca influenciar o comportamento do interlocutor via ordem/pedido." },
-        { id: "PORT-D29", p: "Como chamamos a atitude preconceituosa contra determinados falares e variedades linguísticas?", o: [{t:"Variação regional",c:false}, {t:"Preconceito linguístico",c:true}, {t:"Norma-padrão",c:false}, {t:"Adequação vocabular",c:false}], pts: 4, exp: "Preconceito linguístico é o julgamento depreciativo sobre certas variedades linguísticas." },
-        { id: "PORT-D30", p: "Como se chama a relação ou diálogo que um texto estabelece com outro texto pré-existente?", o: [{t:"Intertextualidade",c:true}, {t:"Intratextualidade",c:false}, {t:"Hipercorreção",c:false}, {t:"Polissemia",c:false}], pts: 4, exp: "A intertextualidade ocorre quando um texto faz referência direta ou indireta a outro." }
-    
-    ],
-
-
-
-    "História": [
-        // --- NÍVEL FÁCIL ---
-        { id: "HIST-F01", p: "No sistema de datação ocidental, qual evento marca o ano zero?", o: [{t:"Invenção da Escrita",c:false}, {t:"Fundação de Roma",c:false}, {t:"Nascimento de Jesus",c:true}, {t:"Queda de Constantinopla",c:false}], pts: 2, exp: "O calendário cristão (gregoriano) adota o nascimento de Cristo como o ano 1, marcando a divisão entre a.C. e d.C." },
-        { id: "HIST-F02", p: "Os grupos humanos no Paleolítico eram caçadores e coletores. Qual era sua principal forma de deslocamento?", o: [{t:"Nomadismo",c:true}, {t:"Sedentarismo",c:false}, {t:"Urbanização",c:false}, {t:"Migração Forçada",c:false}], pts: 2, exp: "Como não produziam o próprio alimento, mudavam-se constantemente (nomadismo) quando os recursos locais acabavam." },
-        { id: "HIST-F03", p: "Qual grande transformação humana ocorreu no período Neolítico com o desenvolvimento da agricultura?", o: [{t:"Transporte",c:false}, {t:"Fim da Agricultura",c:false}, {t:"Sedentarização",c:true}, {t:"Urbanização Imediata",c:false}], pts: 2, exp: "A agricultura permitiu que os grupos humanos se fixassem num único lugar, tornando-se sedentários." },
-        { id: "HIST-F04", p: "Quais civilizações pré-colombianas construíram grandes pirâmides na região do México e Guatemala?", o: [{t:"Incas e Tupis",c:false}, {t:"Astecas e Maias",c:true}, {t:"Iroqueses e Sioux",c:false}, {t:"Romanos e Egípcios",c:false}], pts: 2, exp: "Maias e Astecas destacaram-se pela arquitetura monumental (pirâmides em degraus) na região da Mesoamérica." },
-        { id: "HIST-F05", p: "Qual era o principal objetivo de Portugal ao colonizar o Brasil inicialmente?", o: [{t:"Exploração de Recursos (Pau-Brasil) e Ouro",c:true}, {t:"Criação da Mochila",c:false}, {t:"Conversão de Animais",c:false}, {t:"Urbanização Imediata",c:false}], pts: 2, exp: "O foco inicial era o extrativismo (Pau-Brasil) para gerar lucros mercantilistas para a Coroa." },
-        { id: "HIST-F06", p: "Quem foi o monge alemão que iniciou a Reforma Protestante ao publicar as 95 Teses?", o: [{t:"Martinho Lutero",c:true}, {t:"Leonardo da Vinci",c:false}, {t:"Júlio César",c:false}, {t:"Nicolau Copérnico",c:false}], pts: 2, exp: "Em 1517, Lutero fixou as 95 Teses criticando práticas da Igreja Católica, como a venda de indulgências." },
-        { id: "HIST-F07", p: "Qual era a principal atividade econômica no Feudalismo europeu?", o: [{t:"Comércio Imediato",c:false}, {t:"Mochila",c:false}, {t:"Agricultura de Subsistência",c:true}, {t:"Conversão de Animais",c:false}], pts: 2, exp: "A economia baseava-se na terra (feudo) e a produção agrícola era destinada ao consumo próprio, não ao comércio." },
-        { id: "HIST-F08", p: "No sistema a.C. e d.C., qual o significado de d.C.?", o: [{t:"Antes de Cristo",c:false}, {t:"Depois de Cristo",c:true}, {t:"Desenvolvimento do Comércio",c:false}, {t:"Fim da Urbanização",c:false}], pts: 2, exp: "A sigla d.C. significa 'Depois de Cristo', referindo-se aos anos após o ano 1." },
-        { id: "HIST-F09", p: "A influência africana na cultura brasileira é visível na:", o: [{t:"Culinária, Música e Religião",c:true}, {t:"Criação da Mochila",c:false}, {t:"Invenção da Escrita",c:false}, {t:"Urbanização Imediata",c:false}], pts: 2, exp: "Pratos (feijoada, acarajé), ritmos (samba, capoeira) e religiões (candomblé) são fortes matrizes africanas no Brasil." },
-        { id: "HIST-F10", p: "A teoria do Heliocentrismo, defendida por Copérnico, afirmava que:", o: [{t:"O Sol girava em torno da Terra",c:false}, {t:"O Sol era o centro do sistema solar",c:true}, {t:"A Geração de itens",c:false}, {t:"A Mochila é finita",c:false}], pts: 2, exp: "Hélio significa Sol; logo, Heliocentrismo coloca o Sol (e não a Terra) no centro do nosso sistema." },
-        { id: "HIST-F11", p: "Os reinos muçulmanos medievais avançaram muito no conhecimento de:", o: [{t:"Astronomia, Medicina e Matemática",c:true}, {t:"Geração de Mochilas",c:false}, {t:"Fim da Agricultura",c:false}, {t:"Conversão de Animais",c:false}], pts: 2, exp: "Os estudiosos islâmicos preservaram e expandiram o conhecimento científico clássico durante a Idade Média." },
-        { id: "HIST-F12", p: "A principal característica do nomadismo Paleolítico era a dependência humana da:", o: [{t:"Caça, Pesca e Coleta",c:true}, {t:"Agricultura e Sedentarismo",c:false}, {t:"Geração de itens",c:false}, {t:"Mochila",c:false}], pts: 2, exp: "Como não plantavam nem criavam animais, dependiam do que a natureza oferecia diretamente." },
-        { id: "HIST-F13", p: "Qual evento é considerado o marco inicial da Idade Moderna ocidental?", o: [{t:"Queda de Constantinopla (1453)",c:true}, {t:"Queda de Roma",c:false}, {t:"Invenção da Escrita",c:false}, {t:"Invenção da Mochila",c:false}], pts: 2, exp: "A tomada de Constantinopla pelos turcos otomanos em 1453 marca o fim da Idade Média." },
-        { id: "HIST-F14", p: "A invenção da prensa por Gutenberg facilitou a disseminação de ideias, incluindo:", o: [{t:"A Geração de itens",c:false}, {t:"A Bíblia traduzida para línguas nacionais",c:true}, {t:"A Conversão",c:false}, {t:"O Fim da Agricultura",c:false}], pts: 2, exp: "A prensa permitiu imprimir Bíblias nas línguas do povo, impulsionando a Reforma Protestante." },
-        { id: "HIST-F15", p: "A principal causa do nomadismo Paleolítico era a dependência humana da:", o: [{t:"Agricultura e Sedentarismo",c:false}, {t:"Geração de itens",c:false}, {t:"Mochila finita",c:false}, {t:"Caça, Pesca e Coleta",c:true}], pts: 2, exp: "A sobrevivência dependia estritamente da recolha de alimentos disponíveis na natureza." },
-        { id: "HIST-F16", p: "Qual evento é considerado o marco do início da Pré-História?", o: [{t:"Invenção da Escrita",c:true}, {t:"Queda de Roma",c:false}, {t:"Invenção da Mochila",c:false}, {t:"Queda de Constantinopla",c:false}], pts: 2, exp: "A História (período documentado) inicia-se com a invenção da escrita pelos Sumérios." },
-        { id: "HIST-F17", p: "O Engenho Colonial no Brasil baseava-se na monocultura de exportação, focado na:", o: [{t:"Conversão de animais",c:false}, {t:"Geração de itens",c:false}, {t:"Produção de Açúcar",c:true}, {t:"Urbanização Imediata",c:false}], pts: 2, exp: "A cana-de-açúcar foi a base da economia colonial brasileira durante os séculos XVI e XVII." },
-        { id: "HIST-F18", p: "A Arte Rupestre é considerada como evidência de:", o: [{t:"Invenção da Escrita",c:false}, {t:"Fim da Agricultura",c:false}, {t:"Geração de Itens",c:false}, {t:"Rituais e Crenças",c:true}], pts: 2, exp: "As pinturas nas cavernas eram formas de expressão mágica, religiosa e de comunicação dos primeiros humanos." },
-        { id: "HIST-F19", p: "O que caracteriza a prática do nomadismo entre os primeiros grupos humanos do Paleolítico?", o: [{t:"Fixação permanente em cidades",c:false}, {t:"Deslocamento constante em busca de alimentos",c:true}, {t:"Uso exclusivo de moedas de ouro",c:false}, {t:"Prática da agricultura irrigada",c:false}], pts: 2, exp: "No Paleolítico, sem o domínio da agricultura, os grupos humanos dependiam da caça e coleta, deslocando-se constantemente." },
-        { id: "HIST-F20", p: "Qual transformação no período Neolítico permitiu que os grupos humanos se tornassem sedentários?", o: [{t:"Surgimento da fábrica",c:false}, {t:"Desenvolvimento da agricultura",c:true}, {t:"Invenção do avião",c:false}, {t:"Criação do dinheiro de papel",c:false}], pts: 2, exp: "A agricultura permitiu ao ser humano produzir seu próprio alimento e se fixar em um único local, gerando as primeiras aldeias." },
-        { id: "HIST-F21", p: "As pinturas feitas em paredes de cavernas pelos povos da pré-história são chamadas de:", o: [{t:"Arte Rupestre",c:true}, {t:"Pintura Iluminista",c:false}, {t:"Escultura Barroca",c:false}, {t:"Mosaico Romano",c:false}], pts: 2, exp: "A arte rupestre é o registro gráfico (desenhos e símbolos) deixado por povos pré-históricos nas rochas e cavernas." },
-        { id: "HIST-F22", p: "Qual grande invenção marca a transição da Pré-História para a História documentada?", o: [{t:"Invenção da Escrita",c:true}, {t:"Criação da Bateria",c:false}, {t:"Invenção do Plástico",c:false}, {t:"Uso do Motor a Vapor",c:false}], pts: 2, exp: "A invenção da escrita (como a cuneiforme pelos sumérios) é o marco tradicional que inicia o período histórico registrado." },
-        { id: "HIST-F23", p: "Quais eram os dois grandes povos pré-colombianos que construíram impérios monumentais na Mesoamérica?", o: [{t:"Maias e Astecas",c:true}, {t:"Incas e Tupis",c:false}, {t:"Romanos e Gregos",c:false}, {t:"Egípcios e Búzios",c:false}], pts: 2, exp: "Maias e Astecas habitavam a região da Mesoamérica (México e América Central) com arquitetura e cidades complexas." },
-        { id: "HIST-F24", p: "Qual povo pré-colombiano construiu um vasto império ao longo da Cordilheira dos Andes na América do Sul?", o: [{t:"Incas",c:true}, {t:"Astecas",c:false}, {t:"Fenícios",c:false}, {t:"Espartanos",c:false}], pts: 2, exp: "Os Incas dominaram a região andina da América do Sul, construindo estradas e cidades como Machu Picchu." },
-        { id: "HIST-F25", p: "Qual foi a primeira riqueza natural explorada pelos portugueses no litoral brasileiro em 1500?", o: [{t:"Pau-Brasil",c:true}, {t:"Café",c:false}, {t:"Petróleo",c:false}, {t:"Soja",c:false}], pts: 2, exp: "O Pau-Brasil foi o primeiro recurso extraído pelos portugueses, utilizando a mão de obra indígena via escambo." },
-        { id: "HIST-F26", p: "O sistema econômico da Idade Média europeia baseado na propriedade da terra chamava-se:", o: [{t:"Feudalismo",c:true}, {t:"Capitalismo Industrial",c:false}, {t:"Socialismo",c:false}, {t:"Anarquismo",c:false}], pts: 2, exp: "O feudalismo fundamentava-se na posse do feudo (terra) e nas relações de servidão entre camponeses e senhores." },
-        { id: "HIST-F27", p: "Quem escreveu e fixou as 95 Teses em 1517, dando início à Reforma Protestante?", o: [{t:"Martinho Lutero",c:true}, {t:"Napoleão Bonaparte",c:false}, {t:"Júlio César",c:false}, {t:"Lorde Byron",c:false}], pts: 2, exp: "O monge alemão Martinho Lutero criticou o comércio de indulgências e desencadeou a Reforma Protestante." },
-        { id: "HIST-F28", p: "O movimento cultural e artístico europeu que valorizou o humanismo e a razão no início da Idade Moderna foi o:", o: [{t:"Renascimento",c:true}, {t:"Iluminismo",c:false}, {t:"Feudalismo",c:false}, {t:"Romantismo",c:false}], pts: 2, exp: "O Renascimento cultural resgatou valores clássicos greco-romanos e colocou a razão e o ser humano no centro das artes." },
-        { id: "HIST-F29", p: "Quem foi o líder jangadeiro cearense que se recusou a transportar escravizados no porto de Fortaleza em 1881?", o: [{t:"Dragão do Mar (Chico da Matrícula)",c:true}, {t:"Zumbi dos Palmares",c:false}, {t:"Padre Cícero",c:false}, {t:"Lampião",c:false}], pts: 2, exp: "Dragão do Mar (Francisco José do Nascimento) liderou os jangadeiros de Fortaleza na paralisação do tráfico interprovincial." },
-        { id: "HIST-F30", p: "A teoria heliocêntrica, formulada no início da ciência moderna, afirmava que:", o: [{t:"O Sol é o centro do sistema solar",c:true}, {t:"A Terra é o centro do universo",c:false}, {t:"A Lua é maior que o Sol",c:false}, {t:"Os planetas são fixos e imóveis",c:false}], pts: 2, exp: "O Heliocentrismo, proposto por Copérnico e defendido por Galileu, colocou o Sol no centro do sistema planetário." },
-        { id: "HIST-F31", p: "Como eram chamados os guardiões da tradição oral que contavam a história das comunidades na África Ocidental?", o: [{t:"Griots",c:true}, {t:"Senhores Feudais",c:false}, {t:"Senadores",c:false}, {t:"Escribas",c:false}], pts: 2, exp: "Os Griots preservavam a história, genealogias e rituais dos povos africanos por meio de narrativas e cantos orais." },
-        { id: "HIST-F32", p: "Qual produto agrícola foi a base do sistema de plantation colonial no Nordeste brasileiro nos séculos XVI e XVII?", o: [{t:"Cana-de-açúcar",c:true}, {t:"Trigo",c:false}, {t:"Borracha",c:false}, {t:"Maçã",c:false}], pts: 2, exp: "A cana-de-açúcar alimentou o sistema de engenhos, monocultura e trabalho escravizado na colônia." },
-        { id: "HIST-F33", p: "A Invenção da Imprensa por Gutenberg no século XV permitiu a rápida difusão de:", o: [{t:"Livros e ideias impressas",c:true}, {t:"Imagens digitais",c:false}, {t:"Programas de rádio",c:false}, {t:"Sinais de telégrafo",c:false}], pts: 2, exp: "A imprensa de tipos móveis barateou a produção de livros como a Bíblia, acelerando a circulação de ideias na Europa." },
-        { id: "HIST-F34", p: "A datação dos anos no calendário ocidental toma como ponto de partida (ano 1):", o: [{t:"Nascimento de Jesus Cristo",c:true}, {t:"Fundação de Brasília",c:false}, {t:"Construção das Pirâmides",c:false}, {t:"Descobrimento da América",c:false}], pts: 2, exp: "O calendário cristão gregoriano organiza a cronologia histórica dividida em Antes de Cristo (a.C.) e Depois de Cristo (d.C.)." },
-        { id: "HIST-F35", p: "O movimento de transição em que o ser humano passou a criar animais e domesticar plantas chama-se:", o: [{t:"Revolução Neolítica",c:true}, {t:"Revolução Industrial",c:false}, {t:"Revolução Francesa",c:false}, {t:"Guerra Fria",c:false}], pts: 2, exp: "A Revolução Neolítica compreende o surgimento da agricultura e a domesticação dos animais." },
-        { id: "HIST-F36", p: "No Brasil colonial, o local onde viviam aglomerados os africanos escravizados nos engenhos era a:", o: [{t:"Senzala",c:true}, {t:"Casa-Grande",c:false}, {t:"Câmara Municipal",c:false}, {t:"Feitoria",c:false}], pts: 2, exp: "A senzala era a habitação coletiva dos escravizados, em contraposição à Casa-Grande habitada pelos senhores." },
-
-
-
-        // --- NÍVEL MÉDIO ---
-        { id: "HIST-M01", p: "O Código de Hammurabi, na Mesopotamia Antiga, é um dos exemplos mais famosos de:", o: [{t:"Lei Escrita baseada no Retaliamento",c:true}, {t:"Livro Sagrado Egípcio",c:false}, {t:"Filosofia Grega",c:false}, {t:"Poema Romano",c:false}], pts: 3, exp: "Ficou conhecido pelo princípio do talião: 'Olho por olho, dente por dente'." },
-        { id: "HIST-M02", p: "Em Roma Antiga, a República era governada por:", o: [{t:"Imperadores Divinos",c:false}, {t:"Faraós Estrangeiros",c:false}, {t:"Senadores e Magistrados",c:true}, {t:"Reis Monarcas Absolutos",c:false}], pts: 3, exp: "O Senado, composto principalmente por patrícios, era a principal instituição política." },
-        { id: "HIST-M03", p: "Qual era a principal função do rio Nilo para a civilização do Egito Antigo?", o: [{t:"Um Deus Vivo",c:false}, {t:"Fornecimento de Água para Agricultura e Comércio",c:true}, {t:"Barreira contra Invasões",c:false}, {t:"Criação de Peixes Ornamentais",c:false}], pts: 3, exp: "As cheias regulares do Nilo fertilizavam as margens, permitindo a sobrevivência no meio do deserto." },
-        { id: "HIST-M04", p: "O Reino do Mali, na África Ocidental, ficou famoso por Mansa Musa devido:", o: [{t:"À Conquista do Egito",c:false}, {t:"À Geração de Itens Mágicos",c:false}, {t:"Ao Vasto Comércio de Ouro e Peregrinação",c:true}, {t:"À Invenção da Escrita",c:false}], pts: 3, exp: "A sua peregrinação a Meca distribuiu tanto ouro que desvalorizou a moeda em várias regiões." },
-        { id: "HIST-M05", p: "Os navios que transportavam escravizados africanos para as Américas eram chamados de:", o: [{t:"Caravelas",c:false}, {t:"Navios Negreiros / Tumbeiros",c:true}, {t:"Galés Acadêmicas",c:false}, {t:"Mochilas",c:false}], pts: 3, exp: "Chamados de tumbeiros (tumbas) pelas terríveis condições e alta taxa de mortalidade na travessia." },
-        { id: "HIST-M06", p: "A principal característica da agricultura dos povos Tupi-Guarani no Brasil pré-colonial era o:", o: [{t:"Sedentarismo",c:false}, {t:"Irrigação de Longa Distância",c:false}, {t:"Mochila de Itens",c:false}, {t:"Cultivo em Roças (Semi-nomadismo)",c:true}], pts: 3, exp: "Usavam a técnica da coivara (queimada) e mudavam-se quando o solo perdia fertilidade." },
-        { id: "HIST-M07", p: "O princípio político do Absolutismo, 'O Direito Divino dos Reis', justificava o:", o: [{t:"Poder Absoluto do Rei Como Vontade de Deus",c:true}, {t:"A Democracia Acadêmica",c:false}, {t:"A Criação de Mochilas",c:false}, {t:"A Geração de Itens",c:false}], pts: 3, exp: "Acreditava-se que o monarca era escolhido por Deus, logo, o seu poder era inquestionável." },
-        { id: "HIST-M08", p: "Uma das principais conquistas da civilização Maia foi seu conhecimento em:", o: [{t:"Conversão",c:false}, {t:"Criação da Mochila",c:false}, {t:"Calendários e Matemática (Astronomia)",c:true}, {t:"Geração de Itens",c:false}], pts: 3, exp: "Os Maias criaram calendários precisos e o conceito do zero antes dos europeus." },
-        { id: "HIST-M09", p: "Pedro Álvares Cabral chegou ao Brasil em 1500 com o objetivo de:", o: [{t:"Fim da Urbanização",c:false}, {t:"Tomar Posse da Terra no Caminho das Índias",c:true}, {t:"Criar a Mochila",c:false}, {t:"Conversão de Animais",c:false}], pts: 3, exp: "O principal destino da esquadra era a Índia (especiarias), mas passou pelo Brasil para oficializar a posse." },
-        { id: "HIST-M10", p: "Qual o nome do sistema de escrita desenvolvido pelos Sumérios na Mesopotamia Antiga?", o: [{t:"Hieróglifos",c:false}, {t:"Escrita Cuneiforme",c:true}, {t:"Alfabeto Grego",c:false}, {t:"Escrita Acadêmica",c:false}], pts: 3, exp: "Era feita marcando tabuleiros de argila com uma haste em forma de cunha." },
-        { id: "HIST-M11", p: "No Feudalismo europeu, a principal atividade econômica era a:", o: [{t:"Indústria",c:false}, {t:"Agricultura de Subsistência",c:true}, {t:"Mochila finita",c:false}, {t:"Comércio Imediato",c:false}], pts: 3, exp: "A terra era a maior riqueza e a produção focava apenas no sustento local do feudo." },
-        { id: "HIST-M12", p: "O absolutismo político na monarquia francesa atingiu seu auge com a frase:", o: [{t:"A mochila é finita",c:false}, {t:"O Estado sou eu",c:true}, {t:"Conversão de itens",c:false}, {t:"Fim da Educação",c:false}], pts: 3, exp: "Frase atribuída a Luís XIV (o Rei Sol), simbolizando o controlo total do rei sobre a nação." },
-        { id: "HIST-M13", p: "Nos Reinos Africanos medievais do Sahel, Mansa Musa ficou famoso por sua riqueza em:", o: [{t:"Especiarias",c:false}, {t:"Ouro, durante sua peregrinação",c:true}, {t:"Geração de Mochilas",c:false}, {t:"Fim da Agricultura",c:false}], pts: 3, exp: "O Império do Mali controlava importantes rotas comerciais de ouro e sal." },
-        { id: "HIST-M14", p: "Qual evento da Idade Média marcou a reabertura das rotas comerciais entre Europa e Oriente?", o: [{t:"Queda de Roma",c:false}, {t:"Invenção da Mochila",c:false}, {t:"As Cruzadas",c:true}, {t:"Queda de Constantinopla",c:false}], pts: 3, exp: "As expedições militares cristãs ao Oriente Médio reataram o contato e o comércio pelo Mediterrâneo." },
-        { id: "HIST-M15", p: "Qual foi o primeiro sistema implementado por Portugal para dividir e administrar o Brasil Colonial em 1534?", o: [{t:"Governos Gerais",c:false}, {t:"Mochilas",c:false}, {t:"Capitanias Hereditárias",c:true}, {t:"Vice-reinos",c:false}], pts: 3, exp: "O território foi dividido em grandes faixas de terra entregues a capitães-donatários privados." },
-        { id: "HIST-M16", p: "O Feudalismo caracterizou-se pela descentralização do poder político, que ficou nas mãos dos:", o: [{t:"Mochilas",c:false}, {t:"Senhores Feudais (Nobres)",c:true}, {t:"Camponeses servos",c:false}, {t:"Urbanização imediata",c:false}], pts: 3, exp: "O rei tinha poder enfraquecido; quem governava e ditava as leis localmente era o Senhor Feudal." },
-        { id: "HIST-M17", p: "A invenção da prensa por Gutenberg facilitou a rápida disseminação de ideias, incluindo:", o: [{t:"A Geração",c:false}, {t:"A Bíblia traduzida para línguas nacionais (Protestantismo)",c:true}, {t:"A Conversão",c:false}, {t:"O Fim da Agricultura",c:false}], pts: 3, exp: "Isso permitiu que a população interpretasse os textos religiosos sem depender unicamente da Igreja." },
-        { id: "HIST-M18", p: "Qual era a principal atitude de Martinho Lutero nas suas Teses?", o: [{t:"Opor-se aos dogmas católicos",c:true}, {t:"Criar a mochila",c:false}, {t:"Converter animais",c:false}, {t:"Finalizar as cruzadas",c:false}], pts: 3, exp: "Ele discordava profundamente de várias regras e corrupções praticadas pelo alto clero." },
-        { id: "HIST-M19", p: "O Código de Hammurabi, criado na Mesopotâmia antiga, é famoso por aplicar qual princípio?", o: [{t:"Princípio do Talião (Olho por olho)",c:true}, {t:"Presunção de inocência total",c:false}, {t:"Voto universal e secreto",c:false}, {t:"Liberdade religiosa irrestrita",c:false}], pts: 3, exp: "O Código de Hammurabi baseava-se na lei do Talião, onde a punição era equivalente ao dano cometido." },
-        { id: "HIST-M20", p: "Qual instituição política controlada pelos patrícios era o órgão mais poderoso durante a República Romana?", o: [{t:"Senado Romano",c:true}, {t:"Assembleia dos Plebeus",c:false}, {t:"Conselho de Anciãos",c:false}, {t:"Tribunal de Contas",c:false}], pts: 3, exp: "O Senado controlava as finanças, a política externa e a administração na República Romana." },
-        { id: "HIST-M21", p: "A escrita desenvolvida pelos sumérios na Mesopotâmia, feita com estiletes em placas de argila, era a:", o: [{t:"Escrita Cuneiforme",c:true}, {t:"Escrita Hieróglifa",c:false}, {t:"Escrita Alfabetica Grega",c:false}, {t:"Pintura Rupestre",c:false}], pts: 3, exp: "A escrita cuneiforme utilizava marcas em formato de cunha sobre tabuletas de argila fresca." },
-        { id: "HIST-M22", p: "O Imperador do Mali que espantou o mundo medieval por sua imensa riqueza em ouro na peregrinação a Meca foi:", o: [{t:"Mansa Musa",c:true}, {t:"Shaka Zulu",c:false}, {t:"Tutancâmon",c:false}, {t:"Cleópatra",c:false}], pts: 3, exp: "Mansa Musa governou o Império do Mali no século XIV e é considerado uma das pessoas mais ricas da história." },
-        { id: "HIST-M23", p: "Como eram chamados os navios que realizavam a travessia atlântica trazendo africanos escravizados para as Américas?", o: [{t:"Navios Negreiros ou Tumbeiros",c:true}, {t:"Caravelas de Exploração",c:false}, {t:"Vapores Mercantes",c:false}, {t:"Submarinos de Guerra",c:false}], pts: 3, exp: "Recebiam o nome de tumbeiros devido às altíssimas taxas de mortalidade e condições desumanas a bordo." },
-        { id: "HIST-M24", p: "Qual era a principal técnica agrícola de corte e queimada utilizada pelos povos Tupi-Guarani antes da colonização?", o: [{t:"Coivara",c:true}, {t:"Hidroponia",c:false}, {t:"Irrigação por gotejamento",c:false}, {t:"Arado mecanizado",c:false}], pts: 3, exp: "A coivara consistia no brocado e queimada da vegetação para preparar o solo temporário das roças." },
-        { id: "HIST-M25", p: "Qual teoria absolutista defendia que o poder dos reis era concedido diretamente por Deus?", o: [{t:"Teoria do Direito Divino dos Reis",c:true}, {t:"Teoria do Contrato Social",c:false}, {t:"Teoria do Liberalismo Político",c:false}, {t:"Teoria da Divisão dos Três Poderes",c:false}], pts: 3, exp: "Teóricos como Bossuet defendiam que desobedecer ao rei absolutista era o mesmo que desobedecer a Deus." },
-        { id: "HIST-M26", p: "Qual civilização pré-colombiana se destacou pela invenção do conceito do número zero e calendários precisos?", o: [{t:"Maia",c:true}, {t:"Inca",c:false}, {t:"Tupi-Guarani",c:false}, {t:"Iroquês",c:false}], pts: 3, exp: "A civilização Maia desenvolveu conhecimentos astronômicos complexos e o uso do zero na matemática." },
-        { id: "HIST-M27", p: "O primeiro sistema de administração territorial implantado pela Coroa Portuguesa no Brasil em 1534 foi:", o: [{t:"Capitanias Hereditárias",c:true}, {t:"Governo-Geral",c:false}, {t:"Proclamação da República",c:false}, {t:"Estados Federados",c:false}], pts: 3, exp: "O território colonial foi fatiado em 15 lotes doados a capitães-donatários para ocupação e exploração." },
-        { id: "HIST-M28", p: "As expedições militares organizadas na Idade Média para reconquistar a Terra Santa dos muçulmanos foram as:", o: [{t:"Cruzadas",c:true}, {t:"Grandes Navegações",c:false}, {t:"Bandeiras de Caça",c:false}, {t:"Guerras Napoleônicas",c:false}], pts: 2, exp: "As Cruzadas reabriram o comércio entre a Europa e o Oriente Médio no Mar Mediterrâneo." },
-        { id: "HIST-M29", p: "A frase 'O Estado sou eu', atribuída ao rei francês Luís XIV, simbolizava o auge do:", o: [{t:"Absolutismo Monárquico",c:true}, {t:"Liberalismo Político",c:false}, {t:"Socialismo Científico",c:false}, {t:"Anarquismo",c:false}], pts: 3, exp: "A frase síntese do Rei Sol representava a centralização total do poder estatal na figura do monarca." },
-        { id: "HIST-M30", p: "No sistema feudal europeu, a relação política e militar firmada entre nobres era o pacto de:", o: [{t:"Suserania e Vassalagem",c:true}, {t:"Servidão e Escravidão",c:false}, {t:"Cidadania Direta",c:false}, {t:"Democracia Representativa",c:false}], pts: 3, exp: "O suserano doava terras ao vassalo em troca de lealdade e proteção militar durante as guerras." },
-        { id: "HIST-M31", p: "Qual movimento de contestação nativista ocorreu em Pernambuco em 1817 contra a alta de impostos da Coroa?", o: [{t:"Insurreição Pernambucana de 1817",c:true}, {t:"Confederação dos Tamoios",c:false}, {t:"Guerra dos Mascates",c:false}, {t:"Cabanagem",c:false}], pts: 3, exp: "A Revolução de 1817 chegou a proclamar uma república temporária e influenciou todo o Nordeste." },
-        { id: "HIST-M32", p: "A assembleia da Igreja Católica ocorrida no século XVI para combater o avanço do protestantismo foi o:", o: [{t:"Concílio de Trento",c:true}, {t:"Tratado de Tordesilhas",c:false}, {t:"Édito de Milão",c:false}, {t:"Pacto de Varsóvia",c:false}], pts: 3, exp: "O Concílio de Trento reorganizou a Igreja Católica, reafirmou os dogmas e fortaleceu a Inquisição." },
-        { id: "HIST-M33", p: "Qual ordem religiosa teve papel central na catequização dos indígenas e no ensino colonial no Brasil?", o: [{t:"Companhia de Jesus (Jesuítas)",c:true}, {t:"Ordem dos Franciscanos",c:false}, {t:"Ordem dos Beneditinos",c:false}, {t:"Templários",c:false}], pts: 3, exp: "Fundada por Inácio de Loyola, a ordem jesuítica administrou missões e aldeamentos no Brasil Colonial." },
-        { id: "HIST-M34", p: "O movimento separatista e republicano ocorrido em Minas Gerais em 1789, influenciado pelo Iluminismo, foi a:", o: [{t:"Inconfidência Mineira",c:true}, {t:"Conjuração Baiana",c:false}, {t:"Sabinada",c:false}, {t:"Balaiada",c:false}], pts: 3, exp: "A Inconfidência Mineira questionava a derrama e o domínio português, liderada por figuras como Tiradentes." },
-        { id: "HIST-M35", p: "A Conjuração Baiana (1798) diferenciou-se da Inconfidência Mineira principalmente por contar com:", o: [{t:"Forte participação popular e pauta abolicionista",c:true}, {t:"Apoio exclusivo dos grandes cafeicultores",c:false}, {t:"Liderança direta da Coroa Portuguesa",c:false}, {t:"Financiamento do Império Britânico",c:false}], pts: 3, exp: "A Revolta dos Alfaiates (BA) teve participação de negros e libertos, defendendo o fim da escravidão." },
-        { id: "HIST-M36", p: "O movimento ocorrido no Ceará em 1824 que se opôs ao autoritarismo de D. Pedro I chamou-se:", o: [{t:"Confederação do Equador",c:true}, {t:"Guerra dos Canudos",c:false}, {t:"Revolta da Vacina",c:false}, {t:"Guerra dos Farrapos",c:false}], pts: 3, exp: "Unindo Pernambuco, Ceará e outras províncias, o movimento combateu a outorga da Constituição de 1824." },
-
-
-
-        // --- NÍVEL DIFÍCIL ---
-        { id: "HIST-D01", p: "Na estrutura feudal, o contrato de lealdade entre um suserano e um vassalo chamava-se:", o: [{t:"Pacto da Mochila",c:false}, {t:"Tratado de Verdum",c:false}, {t:"Concordata Acadêmica",c:false}, {t:"Vassalagem / Homenagem",c:true}], pts: 4, exp: "Era uma cerimónia onde um nobre (vassalo) jurava apoio militar em troca de terras do suserano." },
-        { id: "HIST-D02", p: "O Renascimento introduziu o conceito de Humanismo. Qual o foco dessa corrente?", o: [{t:"O Divino e o Teocentrismo",c:false}, {t:"O Estudo dos Animais",c:false}, {t:"O Valor Humano e o Antropocentrismo",c:true}, {t:"A Geração de Itens",c:false}], pts: 4, exp: "O antropocentrismo valorizava a razão e a capacidade humana, em oposição ao foco exclusivo em Deus." },
-        { id: "HIST-D03", p: "Qual era o papel do Faraó na sociedade egípcia, além de ser o chefe do governo?", o: [{t:"Um Deus Vivo",c:true}, {t:"Um Arquiteto Chefe",c:false}, {t:"Um Filósofo Eleito",c:false}, {t:"Um Sacerdote da Mochila",c:false}], pts: 4, exp: "O Egito era uma teocracia, e o Faraó era adorado como encarnação de deuses como Hórus." },
-        { id: "HIST-D04", p: "O Mercantilismo, sistema adotado pelas monarquias absolutistas, visava:", o: [{t:"Livre Mercado",c:false}, {t:"Uma Balança Comercial Favorável e Acúmulo de Metais",c:true}, {t:"Urbanização Imediata",c:false}, {t:"Criação de Mochilas",c:false}], pts: 4, exp: "Acreditava-se que a riqueza de uma nação era medida pela quantidade de ouro e prata nos seus cofres." },
-        { id: "HIST-D05", p: "O impacto das Cruzadas nas rotas comerciais europeias foi a:", o: [{t:"Fim da Agricultura",c:false}, {t:"Criação de Mochilas",c:false}, {t:"Reabertura das Rotas para o Oriente (Seda e Especiarias)",c:true}, {t:"Urbanização Imediata",c:false}], pts: 4, exp: "Os europeus redescobriram produtos orientais, o que impulsionou o renascimento comercial." },
-        { id: "HIST-D06", p: "Uma das bases do Islã são os 'Cinco Pilares'. O que eles representam?", o: [{t:"Mandamentos de Fé, Oração, Jejum, Caridade e Peregrinação",c:true}, {t:"Estratégia de Combate",c:false}, {t:"Geração de Mochilas",c:false}, {t:"Urbanização Imediata",c:false}], pts: 4, exp: "São as cinco obrigações fundamentais de todo o muçulmano praticante." },
-        { id: "HIST-D07", p: "O impacto da Pax Romana, estabelecida por Augusto, foi um período de:", o: [{t:"Fim da Urbanização",c:false}, {t:"Conversão de Animais",c:false}, {t:"Criação de Mochilas",c:false}, {t:"Estabilidade, Paz e Desenvolvimento",c:true}], pts: 4, exp: "Foi um longo período de relativa paz e segurança dentro das fronteiras do Império Romano." },
-        { id: "HIST-D08", p: "No Engenho Colonial, as habitações dos Senhores e dos Escravizados eram a:", o: [{t:"Casa Grande e Senzala",c:true}, {t:"Criação da Mochila",c:false}, {t:"Urbanização Imediata",c:false}, {t:"Geração de Itens",c:false}], pts: 4, exp: "O senhor de engenho vivia na Casa Grande, enquanto os escravizados eram aglomerados nas senzalas." },
-        { id: "HIST-D09", p: "O que eram os 'Griots' nos Reinos Africanos?", o: [{t:"Reis Monarcas Absolutos",c:false}, {t:"Faraós da Mochila",c:false}, {t:"Poetas, cantores e guardiões da história",c:true}, {t:"Senadores Acadêmicos",c:false}], pts: 4, exp: "Numa sociedade de tradição oral, os griots eram fundamentais para passar a cultura às novas gerações." },
-        { id: "HIST-D10", p: "A Queda do Império Asteca ocorreu devido à aliança espanhola com:", o: [{t:"Incas",c:false}, {t:"Tupi-Guarani",c:false}, {t:"Povos inimigos dos Astecas",c:true}, {t:"Mochila",c:false}], pts: 4, exp: "Cortés utilizou povos locais que eram oprimidos pelos Astecas para conseguir dominar a capital Tenochtitlán." },
-        { id: "HIST-D11", p: "No Al-Andalus, a convivência entre muçulmanos, cristãos e judeus fomentou um grande período de:", o: [{t:"Geração de itens",c:false}, {t:"Conversão de animais",c:false}, {t:"Fim da Urbanização",c:false}, {t:"Florescimento Intelectual e Científico",c:true}], pts: 4, exp: "A Península Ibérica sob domínio islâmico tornou-se um grande centro de traduções e estudos." },
-        { id: "HIST-D12", p: "O impacto demográfico indígena mais devastador após a colonização foi causado por:", o: [{t:"Doenças (varíola, gripe) e Escravidão",c:true}, {t:"Fome e Seca Colonial",c:false}, {t:"Geração de itens",c:false}, {t:"Falta de Mochila",c:false}], pts: 4, exp: "Os nativos não possuíam imunidade contra as doenças trazidas pelos europeus." },
-        { id: "HIST-D13", p: "A Contra-Reforma da Igreja Católica (Concílio de Trento) reafirmou dogmas e criou a:", o: [{t:"Ordem dos Jesuítas (Companhia de Jesus)",c:true}, {t:"Invenção da mochila finita",c:false}, {t:"Fim da Educação",c:false}, {t:"Conversão de animais",c:false}], pts: 4, exp: "Os Jesuítas foram a 'tropa de choque' encarregada de expandir a fé católica, especialmente no Novo Mundo." },
-        { id: "HIST-D14", p: "A burguesia europeia financiou as Grandes Navegações visando lucro através do comércio direto de:", o: [{t:"Especiarias do Oriente e Metais Preciosos",c:true}, {t:"Mochilas de itens",c:false}, {t:"Fim da Urbanização",c:false}, {t:"Conversão de animais",c:false}], pts: 4, exp: "Eles queriam quebrar o monopólio das cidades italianas no comércio de produtos de luxo do Oriente." },
-        { id: "HIST-D15", p: "O que eram os 'Griots' nos Reinos Africanos?", o: [{t:"Mochilas finitas de itens",c:false}, {t:"Poetas e cantores, guardiões da tradição oral e história",c:true}, {t:"Geração de itens",c:false}, {t:"Conversão de animais",c:false}], pts: 4, exp: "A memória coletiva africana era transmitida de forma oral pelos mestres griots." },
-        { id: "HIST-D16", p: "Quais civilizações pré-colombianas foram conquistadas pelos espanhóis no início da colonização?", o: [{t:"Incas e Tupis",c:false}, {t:"Astecas e Incas",c:true}, {t:"Maias e Romanos",c:false}, {t:"Egípcios e Vikings",c:false}], pts: 4, exp: "Os Astecas (por Hernán Cortés) e os Incas (por Francisco Pizarro) foram os grandes impérios derrubados pelos espanhóis." },
-        { id: "HIST-D17", p: "O impacto da Pax Romana no desenvolvimento do Império Romano foi de:", o: [{t:"Paz, Estabilidade e Desenvolvimento",c:true}, {t:"Fim da Urbanização",c:false}, {t:"Geração de Itens",c:false}, {t:"Conversão de Animais",c:false}], pts: 4, exp: "Essa estabilidade permitiu a expansão de estradas, comércio e monumentos públicos." },
-        { id: "HIST-D18", p: "O que eram os 'Griots' nos Reinos Africanos?", o: [{t:"Reis Monarcas Absolutos",c:false}, {t:"Faraós da Mochila",c:false}, {t:"Poetas, cantores e guardiões da história",c:true}, {t:"Senadores Acadêmicos",c:false}], pts: 4, exp: "Os griots eram essenciais em sociedades africanas que não utilizavam a escrita para registar os factos." }
-        { id: "HIST-D19", p: "A filosofia do Humanismo Renascentista colocou o ser humano no centro das reflexões, movimento conhecido como:", o: [{t:"Antropocentrismo",c:true}, {t:"Teocentrismo",c:false}, {t:"Etnocentrismo",c:false}, {t:"Fisiocracia",c:false}], pts: 4, exp: "O Antropocentrismo contrapôs-se ao Teocentrismo medieval, valorizando a razão e a capacidade humana." },
-        { id: "HIST-D20", p: "O conjunto de práticas econômicas das monarquias absolutistas baseado no acúmulo de metais preciosos é o:", o: [{t:"Mercantilismo",c:true}, {t:"Feudalismo",c:false}, {t:"Neoliberalismo",c:false}, {t:"Keynesianismo",c:false}], pts: 4, exp: "O Mercantilismo visava a balança comercial favorável e o metalismo para garantir a riqueza do Estado." },
-        { id: "HIST-D21", p: "Na teocracia egípcia, o monarca absoluto era adorado e considerado pelos súditos como:", o: [{t:"Um Deus Vivo na Terra",c:true}, {t:"Um Presidente Eleito",c:false}, {t:"Um Servo Militar",c:false}, {t:"Um Comerciante Estrangeiro",c:false}], pts: 4, exp: "O Faraó encarnava a autoridade política e religiosa máxima, tido como a própria personificação divina." },
-        { id: "HIST-D22", p: "Qual civilização pré-colombiana foi conquistada por Hernán Cortés no início do século XVI?", o: [{t:"Império Asteca",c:true}, {t:"Império Inca",c:false}, {t:"Povo Tupi",c:false}, {t:"Civilização Fenícia",c:false}], pts: 4, exp: "Cortés aliou-se a povos submetidos aos astecas para tomar a capital Tenochtitlán em 1521." },
-        { id: "HIST-D23", p: "A conquista do Império Inca na Cordilheira dos Andes foi liderada pelo espanhol:", o: [{t:"Francisco Pizarro",c:true}, {t:"Christopher Colombo",c:false}, {t:"Pedro Álvares Cabral",c:false}, {t:"Americo Vespúcio",c:false}], pts: 4, exp: "Pizarro aproveitou a guerra civil entre Atahualpa e Huáscar para dominar o Império Inca em 1532." },
-        { id: "HIST-D24", p: "Na Espanha islâmica (Al-Andalus), a cidade de Córdoba destacou-se no período medieval por ser um grande centro de:", o: [{t:"Convivência cultural e produção científica",c:true}, {t:"Isolamento e destruição de livros",c:false}, {t:"Caça às bruxas rigorosa",c:false}, {t:"Comércio exclusivo de escravos",c:false}], pts: 4, exp: "Al-Andalus promoveu a tradução de obras filosóficas e o avanço da medicina, matemática e astronomia." },
-        { id: "HIST-D25", p: "A maior causa do genocídio das populações nativas americanas durante o processo de colonização foi:", o: [{t:"As epidemias e doenças trazidas pelos europeus",c:true}, {t:"A falta de água potável no continente",c:false}, {t:"Os ataques de animais selvagens",c:false}, {t:"As guerras internas pré-colombianas",c:false}], pts: 4, exp: "O choque biológico (varíola, gripe, sarampo) dizimou a maioria da população indígena que não tinha imunidade." },
-        { id: "HIST-D26", p: "Qual movimento intelectual do século XVIII criticava o Absolutismo e defendia a razão e a liberdade?", o: [{t:"Iluminismo",c:true}, {t:"Renascimento Carolíngio",c:false}, {t:"Feudalismo",c:false}, {t:"Realismo Poético",c:false}], pts: 4, exp: "O Iluminismo (Século das Luzes) propôs a igualdade jurídica, o cientificismo e a limitação do poder real." },
-        { id: "HIST-D27", p: "A Revolução que derrubou a monarquia absolutista na França em 1789 sob o lema 'Liberdade, Igualdade, Fraternidade' foi:", o: [{t:"Revolução Francesa",c:true}, {t:"Revolução Gloriosa",c:false}, {t:"Revolução Russa",c:false}, {t:"Revolução Industrial",c:false}], pts: 4, exp: "A Revolução Francesa pôs fim ao Antigo Regime e espalhou ideias liberais e republicanas pelo mundo." },
-        { id: "HIST-D28", p: "A Revolução que ocorreu em São Domingos em 1791 e resultou na independência liderada por negros escravizados foi a:", o: [{t:"Revolução Haitiana",c:true}, {t:"Revolução Cubana",c:false}, {t:"Independência dos EUA",c:false}, {t:"Guerra dos Farrapos",c:false}], pts: 4, exp: "O Haiti tornou-se a primeira república negra das Américas após uma vitoriosa revolta de escravizados." },
-        { id: "HIST-D29", p: "A doutrina econômica do século XVIII formulada por Adam Smith defendendo o livre mercado chamou-se:", o: [{t:"Liberalismo Econômico",c:true}, {t:"Mercantilismo",c:false}, {t:"Metalismo Monárquico",c:false}, {t:"Economia Feudal",c:false}], pts: 4, exp: "Adam Smith defendia que a economia se autorregulava pela lei da oferta e da procura sem intervenção estatal." },
-        { id: "HIST-D30", p: "O processo de substituição do trabalho artesanal pelo uso de máquinas e trabalho assalariado iniciado na Inglaterra foi a:", o: [{t:"Revolução Industrial",c:true}, {t:"Revolução Agrícola",c:false}, {t:"Revolução das Luzes",c:false}, {t:"Revolução Comercial",c:false}], pts: 4, exp: "A Revolução Industrial alterou as relações de trabalho, o tempo social e provocou a urbanização acelerada." },
-        { id: "HIST-D31", p: "A Lei de Terras aprobada no Brasil Imperial em 1850 estabeleceu que a posse da terra devoluta só ocorreria por:", o: [{t:"Compra e venda em dinheiro",c:true}, {t:"Doação gratuita do governo",c:false}, {t:"Ocupação direta de camponeses",c:false}, {t:"Hereditariedade simples",c:false}], pts: 4, exp: "A Lei de Terras de 1850 elitizou o acesso à terra no Brasil, excluindo imigrantes pobres e libertos." },
-        { id: "HIST-D32", p: "Qual o nome da doutrina racial pseudo-científica do século XIX que justificou o Imperialismo europeu na África?", o: [{t:"Darwinismo Social",c:true}, {t:"Iluminismo Francês",c:false}, {t:"Humanismo Clássico",c:false}, {t:"Existencialismo",c:false}], pts: 4, exp: "O Darwinismo Social distorceu a biologia para pregar a falsa 'superioridade civilizatória' dos europeus brancos." },
-        { id: "HIST-D33", p: "A partilha arbitrária do continente africano pelas potências europeias no final do século XIX foi selada na:", o: [{t:"Conferência de Berlim",c:true}, {t:"Conferência de Varsóvia",c:false}, {t:"Tratado de Utrecht",c:false}, {t:"Congresso de Viena",c:false}], pts: 4, exp: "A Conferência de Berlim (1884-1885) fatiou a África sem respeitar as divisões étnicas originais das populações." },
-        { id: "HIST-D34", p: "A Lei aprovada no Brasil em 1850 que proibiu definitivamente o tráfico transatlântico de escravizados foi a:", o: [{t:"Lei Eusébio de Queirós",c:true}, {t:"Lei Áurea",c:false}, {t:"Lei do Ventre Livre",c:false}, {t:"Lei dos Sexagenários",c:false}], pts: 4, exp: "A Lei Eusébio de Queirós extinguiu a entrada de escravizados vindos da África, fortalecendo o tráfico interno." },
-        { id: "HIST-D35", p: "O movimento de segregação espacial promovido pela elite em Fortaleza durante a seca de 1932 criou os chamados:", o: [{t:"Campos de Concentração do Ceará",c:true}, {t:"Quilombos da Periferia",c:false}, {t:"Senzalas Urbanas",c:false}, {t:"Feudais do Sertão",c:false}], pts: 4, exp: "Os Campos de Concentração no Ceará foram criados pelo Estado para reter os retirantes da seca longe do centro da capital." },
-        { id: "HIST-D36", p: "A postura crítica em relação ao eurocentrismo no ensino de História que resgata saberes de povos colonizados chama-se:", o: [{t:"Decolonialidade",c:true}, {t:"Positivismo",c:false}, {t:"Imperialismo",c:false}, {t:"Eurocentrismo",c:false}], pts: 4, exp: "A decolonialidade desconstruir visões eurocêntricas e coloca os povos colonizados como sujeitos ativos da História." }
-    
-    ],
-
-
-
-
-    "Ciências": [
-        // --- NÍVEL FÁCIL ---
-        { id: "CIEN-F01", p: "O que é a célula na biologia?", o: [{t:"O centro líquido da Terra",c:false}, {t:"A camada de ar do planeta",c:false}, {t:"A unidade básica da vida",c:true}, {t:"Um mineral das rochas",c:false}], pts: 2, exp: "A célula é considerada a unidade básica da vida." },
-        { id: "CIEN-F02", p: "O que define um ecossistema?", o: [{t:"Apenas os animais de um lugar",c:false}, {t:"Relação entre seres vivos e ambiente",c:true}, {t:"Um tipo de planta da Amazônia",c:false}, {t:"O estudo dos astros no céu",c:false}], pts: 2, exp: "Um ecossistema define-se pela relação entre os seres vivos e o ambiente." },
-        { id: "CIEN-F03", p: "O que é a crosta terrestre?", o: [{t:"A camada sólida externa da Terra",c:true}, {t:"Um tipo de osso do corpo",c:false}, {t:"Uma camada da atmosfera",c:false}, {t:"O fundo dos oceanos profundos",c:false}], pts: 2, exp: "A crosta terrestre é a camada sólida externa da Terra." },
-        { id: "CIEN-F04", p: "Qual é a definição de uma estrela?", o: [{t:"Um planeta que não tem vida",c:false}, {t:"Uma rocha que orbita o Sol",c:false}, {t:"Um satélite natural da Terra",c:false}, {t:"Um astro que emite luz própria",c:true}], pts: 2, exp: "Uma estrela é um astro que emite luz própria." },
-        { id: "CIEN-F05", p: "O que é a fotossíntese?", o: [{t:"Processo da planta para obter energia",c:true}, {t:"A queda das folhas no outono",c:false}, {t:"A respiração dos animais à noite",c:false}, {t:"O movimento das águas do mar",c:false}], pts: 2, exp: "A fotossíntese é o processo da planta para obter energia." },
-        { id: "CIEN-F06", p: "O que define um animal vertebrado?", o: [{t:"Animal que vive apenas na água",c:false}, {t:"Animal que possui coluna vertebral",c:true}, {t:"Animal que produz mel",c:false}, {t:"Animal que não possui ossos",c:false}], pts: 2, exp: "Um animal vertebrado é aquele que possui coluna vertebral." },
-        { id: "CIEN-F07", p: "Qual é a função do sistema respiratório?", o: [{t:"Levar sangue para as pernas",c:false}, {t:"Quebrar os alimentos em partes",c:false}, {t:"Realizar as trocas gasosas",c:true}, {t:"Defender o corpo de bactérias",c:false}], pts: 2, exp: "A função do sistema respiratório é realizar as trocas gasosas." },
-        { id: "CIEN-F08", p: "O que é a massa de um objeto?", o: [{t:"O espaço que ele ocupa",c:false}, {t:"O brilho que ele emite",c:false}, {t:"A cor que ele apresenta",c:false}, {t:"A quantidade de matéria que possui",c:true}], pts: 2, exp: "A massa é a quantidade de matéria que o objeto possui." },
-        { id: "CIEN-F09", p: "O que é a atmosfera terrestre?", o: [{t:"A camada de gases que envolve a Terra",c:true}, {t:"A água salgada dos oceanos",c:false}, {t:"A floresta que produz oxigênio",c:false}, {t:"O solo onde plantamos alimentos",c:false}], pts: 2, exp: "A atmosfera terrestre é a camada de gases que envolve a Terra." },
-        { id: "CIEN-F10", p: "O que é a água potável?", o: [{t:"Água com muito sal",c:false}, {t:"Água própria para o consumo humano",c:true}, {t:"Água fervente dos vulcões",c:false}, {t:"Água congelada nos polos",c:false}], pts: 2, exp: "A água potável é aquela própria para o consumo humano." },
-        { id: "CIEN-F11", p: "O que são microrganismos?", o: [{t:"Animais grandes da selva",c:false}, {t:"Plantas que vivem no deserto",c:false}, {t:"Seres vivos visíveis apenas ao microscópio",c:true}, {t:"Pedras pequenas encontradas no rio",c:false}], pts: 2, exp: "Microrganismos são seres vivos visíveis apenas ao microscópio." },
-        { id: "CIEN-F12", p: "O que é um animal carnívoro?", o: [{t:"Come apenas frutas",c:false}, {t:"Come apenas sementes",c:false}, {t:"Come apenas plantas",c:false}, {t:"Alimenta-se de outros animais",c:true}], pts: 2, exp: "Um animal carnívoro alimenta-se de outros animais." },
-        { id: "CIEN-F13", p: "O que define o movimento de rotação da Terra?", o: [{t:"Giro da Terra em torno de si mesma",c:true}, {t:"Giro da Terra em torno do Sol",c:false}, {t:"Giro da Lua em torno da Terra",c:false}, {t:"O afastamento da Terra e de Marte",c:false}], pts: 2, exp: "O movimento de rotação é o giro da Terra em torno de si mesma." },
-        { id: "CIEN-F14", p: "Qual a função da raiz na maioria das plantas?", o: [{t:"Realizar a polinização",c:false}, {t:"Absorver água e nutrientes do solo",c:true}, {t:"Produzir sementes e frutos",c:false}, {t:"Captar a luz do Sol nas folhas",c:false}], pts: 2, exp: "A raiz tem a função de absorver água e nutrientes do solo." },
-        { id: "CIEN-F15", p: "O que são recursos renováveis?", o: [{t:"Aqueles que poluem o mar",c:false}, {t:"Aqueles que acabam rápido",c:false}, {t:"Aqueles que se recuperam na natureza",c:true}, {t:"Aqueles que não servem para energia",c:false}], pts: 2, exp: "Recursos renováveis são aqueles que se recuperam na natureza." },
-        { id: "CIEN-F16", p: "Onde ocorre a digestão dos alimentos no corpo?", o: [{t:"No pulmão",c:false}, {t:"No coração",c:false}, {t:"No sistema digestório",c:true}, {t:"No sistema nervoso",c:false}], pts: 2, exp: "A digestão dos alimentos ocorre no sistema digestório." },
-        { id: "CIEN-F17", p: "Quais são os três estados físicos da matéria?", o: [{t:"Sólido, líquido e gasoso",c:true}, {t:"Frio, quente e morno",c:false}, {t:"Duro, mole e flexível",c:false}, {t:"Transparente, opaco e fosco",c:false}], pts: 2, exp: "Os três estados físicos da matéria são: sólido, líquido e gasoso." },
-        { id: "CIEN-F18", p: "O que é um animal herbívoro?", o: [{t:"Alimenta-se de carne e ossos",c:false}, {t:"Alimenta-se apenas de plantas",c:true}, {t:"Alimenta-se de restos de lixo",c:false}, {t:"Alimenta-se de luz solar",c:false}], pts: 2, exp: "Um animal herbívoro alimenta-se apenas de plantas." },
-
-
-
-        // --- NÍVEL MÉDIO ---
-        { id: "CIEN-M01", p: "O que define um organismo autótrofo?", o: [{t:"Precisa caçar para comer",c:false}, {t:"Vive apenas como parasita",c:false}, {t:"Produz o próprio alimento",c:true}, {t:"Decompõe matéria orgânica",c:false}], pts: 3, exp: "Um organismo autótrofo produz o próprio alimento." },
-        { id: "CIEN-M02", p: "Qual é a função dos decompositores na natureza?", o: [{t:"Produzir oxigênio puro",c:false}, {t:"Caçar animais doentes",c:false}, {t:"Proteger as nascentes",c:false}, {t:"Reciclar a matéria orgânica",c:true}], pts: 3, exp: "Os decompositores têm a função de reciclar a matéria orgânica na natureza." },
-        { id: "CIEN-M03", p: "O que é a energia térmica?", o: [{t:"Energia associada ao calor",c:true}, {t:"Energia produzida pelo som",c:false}, {t:"Energia gerada pelo vento",c:false}, {t:"Energia contida nos ímãs",c:false}], pts: 3, exp: "A energia térmica é a energia associada ao calor." },
-        { id: "CIEN-M04", p: "O que são rochas sedimentares?", o: [{t:"Rochas que vem do magma",c:false}, {t:"Rochas formadas por restos de outras",c:true}, {t:"Rochas que não quebram nunca",c:false}, {t:"Rochas encontradas no núcleo",c:false}], pts: 3, exp: "Rochas sedimentares são formadas por restos de outras rochas." },
-        { id: "CIEN-M05", p: "Qual a principal diferença entre planeta e satélite natural?", o: [{t:"O tamanho do astro",c:false}, {t:"A cor refletida no céu",c:false}, {t:"O astro que eles orbitam",c:true}, {t:"A presença de oxigênio",c:false}], pts: 3, exp: "A principal diferença é o astro que eles orbitam." },
-        { id: "CIEN-M06", p: "O que caracteriza os seres pluricelulares?", o: [{t:"Possuem apenas uma célula",c:false}, {t:"Não possuem células vivas",c:false}, {t:"Vivem apenas em laboratórios",c:false}, {t:"São formados por várias células",c:true}], pts: 3, exp: "Seres pluricelulares são formados por várias células." },
-        { id: "CIEN-M07", p: "Qual a função das plaquetas no sangue?", o: [{t:"Realizar a coagulação sanguínea",c:true}, {t:"Transportar o gás oxigênio",c:false}, {t:"Combater os vírus invasores",c:false}, {t:"Produzir a cor vermelha",c:false}], pts: 3, exp: "A função das plaquetas é realizar a coagulação sanguínea." },
-        { id: "CIEN-M08", p: "O que é uma mistura homogênea?", o: [{t:"Mistura com cores diferentes",c:false}, {t:"Mistura que apresenta uma só fase",c:true}, {t:"Mistura de óleo e água pura",c:false}, {t:"Mistura que explode no calor",c:false}], pts: 3, exp: "Uma mistura homogênea é aquela que apresenta uma só fase." },
-        { id: "CIEN-M09", p: "Como agem as vacinas no corpo humano?", o: [{t:"Curam doenças instantaneamente",c:false}, {t:"Matam as bactérias do estômago",c:false}, {t:"Estimulam a produção de anticorpos",c:true}, {t:"Substituem o sistema nervoso",c:false}], pts: 3, exp: "As vacinas agem estimulando a produção de anticorpos no corpo." },
-        { id: "CIEN-M10", p: "O que define os animais invertebrados?", o: [{t:"Animais que voam alto",c:false}, {t:"Animais que vivem na terra",c:false}, {t:"Animais que possuem pelos",c:false}, {t:"Animais que não têm coluna",c:true}], pts: 3, exp: "Os animais invertebrados são aqueles que não têm coluna vertebral." },
-        { id: "CIEN-M11", p: "Qual a função dos estômatos nas folhas?", o: [{t:"Realizar trocas gasosas",c:true}, {t:"Proteção contra insetos",c:false}, {t:"Absorver água da chuva",c:false}, {t:"Dar a cor verde à planta",c:false}], pts: 3, exp: "Os estômatos têm a função de realizar trocas gasosas." },
-        { id: "CIEN-M12", p: "O que é o efeito estufa natural?", o: [{t:"Um buraco na camada de ozônio",c:false}, {t:"Processo que mantém a Terra aquecida",c:true}, {t:"A poluição causada pelas fábricas",c:false}, {t:"O derretimento total das geleiras",c:false}], pts: 3, exp: "O efeito estufa natural é o processo que mantém a Terra aquecida." },
-        { id: "CIEN-M13", p: "O que é a pressão atmosférica?", o: [{t:"O calor que o Sol emite",c:false}, {t:"A força do vento nos mares",c:false}, {t:"O peso do ar sobre a superfície",c:true}, {t:"A falta de ar nas montanhas",c:false}], pts: 3, exp: "A pressão atmosférica é o peso do ar sobre a superfície." },
-        { id: "CIEN-M14", p: "O que são seres procariontes?", o: [{t:"Células com núcleo definido",c:false}, {t:"Seres que não têm células",c:false}, {t:"Seres que vivem no vácuo",c:false}, {t:"Células sem núcleo definido",c:true}], pts: 3, exp: "Os seres procariontes são formados por células sem núcleo definido." },
-        { id: "CIEN-M15", p: "Qual a função dos rins no corpo?", o: [{t:"Filtrar o sangue e produzir urina",c:true}, {t:"Bombear o sangue para o cérebro",c:false}, {t:"Digerir as gorduras pesadas",c:false}, {t:"Controlar os batimentos cardíacos",c:false}], pts: 3, exp: "A função dos rins é filtrar o sangue e produzir urina." },
-        { id: "CIEN-M16", p: "O que é a densidade de um corpo?", o: [{t:"A temperatura interna dele",c:false}, {t:"Relação entre massa e volume",c:true}, {t:"A força que ele faz no chão",c:false}, {t:"O tempo que ele leva para sumir",c:false}], pts: 3, exp: "A densidade é a relação entre a massa e o volume de um corpo." },
-        { id: "CIEN-M17", p: "O que é uma cadeia alimentar?", o: [{t:"Uma plantação de sementes",c:false}, {t:"Um conjunto de seres extintos",c:false}, {t:"Sequência de transferência de energia",c:true}, {t:"A proteção dos animais da caça",c:false}], pts: 3, exp: "Uma cadeia alimentar é uma sequência de transferência de energia ecológica." },
-        { id: "CIEN-M18", p: "O que são rochas metamórficas?", o: [{t:"Rochas que vem do espaço",c:false}, {t:"Rochas feitas de areia fina",c:false}, {t:"Rochas líquidas dos vulcões",c:false}, {t:"Rochas que sofreram pressão e calor",c:true}], pts: 3, exp: "Rochas metamórficas são aquelas que sofreram alterações por pressão e calor." },
-        { id: "CIEN-F19", p: "O que caracteriza uma mistura heterogênea no cotidiano?", o: [{t:"Apresenta duas ou mais fases visíveis",c:true}, {t:"Possui apenas uma fase uniforme",c:false}, {t:"É sempre transparente como a água",c:false}, {t:"Ocorre apenas em altas temperaturas",c:false}], pts: 2, exp: "Misturas heterogêneas (ex: água e óleo) apresentam duas ou mais fases visíveis a olho nu ou ao microscópio." },
-        { id: "CIEN-F20", p: "Qual o método adequado para separar uma mistura de água e areia?", o: [{t:"Filtração",c:true}, {t:"Destilação fracionada",c:false}, {t:"Catação",c:false}, {t:"Atração magnética",c:false}], pts: 2, exp: "A filtração é o processo mecânico ideal para separar misturas heterogêneas formadas por sólidos e líquidos." },
-        { id: "CIEN-F21", p: "Qual estrutura celular é responsável por conter o material genético na maioria dos seres vivos?", o: [{t:"Núcleo",c:true}, {t:"Parede celular",c:false}, {t:"Vacúolo",c:false}, {t:"Membrana plasmática",c:false}], pts: 2, exp: "Em células eucariontes, o núcleo armazena e protege o DNA, gerenciando as atividades celulares." },
-        { id: "CIEN-F22", p: "A união de tecidos com funções integradas forma o quê no corpo humano?", o: [{t:"Um órgão",c:true}, {t:"Uma célula",c:false}, {t:"Um sistema completo",c:false}, {t:"Um organismo",c:false}], pts: 2, exp: "A hierarquia biológica organiza células em tecidos, que por sua vez se unem para formar os órgãos." },
-        { id: "CIEN-F23", p: "Qual sistema do corpo humano é responsável por processar estímulos e coordenar ações rÁpidas?", o: [{t:"Sistema Nervoso",c:true}, {t:"Sistema Digestório",c:false}, {t:"Sistema Linfático",c:false}, {t:"Sistema Excretor",c:false}], pts: 2, exp: "O sistema nervoso capta estímulos sensoriais e envia impulsos para coordenar respostas voluntárias e involuntárias." },
-        { id: "CIEN-F24", p: "Qual das opções representa uma rocha sedimentar formada por acúmulo de partículas ao longo do tempo?", o: [{t:"Arenito",c:true}, {t:"Granito",c:false}, {t:"Basalto",c:false}, {t:"Mármore",c:false}], pts: 2, exp: "O arenito é uma rocha sedimentar originada da compactação de grãos de areia acumulados ao longo das eras geológicas." },
-        { id: "CIEN-F25", p: "Qual é a função da lâmina transparente de uma lupa ou óculos na observação de objetos?", o: [{t:"Refratar e desviar a luz para alterar a imagem",c:true}, {t:"Bloquear totalmente a passagem da luz",c:false}, {t:"Absorver a iluminação do ambiente",c:false}, {t:"Emitir luz própria sobre o objeto",c:false}], pts: 2, exp: "As lentes funcionam curvando (refratando) os raios de luz para ampliar ou corrigir imagens formadas nos olhos." },
-        { id: "CIEN-F26", p: "Qual mecanismo simples facilita a elevação de cargas usando uma roda e uma corda?", o: [{t:"Roldana ou polia",c:true}, {t:"Plano inclinado longo",c:false}, {t:"Alavanca fixa de primeiro grau",c:false}, {t:"Parafuso roscado",c:false}], pts: 2, exp: "A roldana reduz a força necessária e altera a direção do esforço ao puxar objetos pesados." },
-        { id: "CIEN-F27", p: "O calor do Sol chega até a Terra por meio de qual processo de propagação?", o: [{t:"Radiação ou irradiação",c:true}, {t:"Condução térmica",c:false}, {t:"Convecção mecânica",c:false}, {t:"Evaporação",c:false}], pts: 2, exp: "A radiação eletromagnética é a única forma de propagação de calor que ocorre através do vácuo espacial." },
-        { id: "CIEN-F28", p: "A camada de ozônio é vital para a Terra porque filtra qual tipo de radiação solar?", o: [{t:"Raios Ultravioleta (UV)",c:true}, {t:"Ondas de Rádio",c:false}, {t:"Raios Infravermelhos",c:false}, {t:"Luz visível amarela",c:false}], pts: 2, exp: "A camada de ozônio presente na estratosfera bloqueia a radiação UV harmful para seres vivos." },
-        { id: "CIEN-M19", p: "Quando colocamos vinagre sobre o bicarbonato de sódio e surgem bolhas, ocorreu:", o: [{t:"Uma transformação química",c:true}, {t:"Uma mudança física de estado",c:false}, {t:"Uma evaporação simples",c:false}, {t:"Uma fusão dos materiais",c:false}], pts: 3, exp: "A liberação de efervescência (gás carbônico) evidencia a reação e formação de novas substâncias." },
-        { id: "CIEN-M20", p: "Qual processo industrial é empregado para separar os derivados do petróleo bruto em frações?", o: [{t:"Destilação fracionada",c:true}, {t:"Decantação por gravidade",c:false}, {t:"Filtração simples",c:false}, {t:"Sigmagem mecânica",c:false}], pts: 3, exp: "A destilação fracionada separa líquidos miscíveis com base nos seus diferentes pontos de ebulição." },
-        { id: "CIEN-M21", p: "Como se chama a incapacidade de enxergar com clareza objetos distantes, corrigida com lentes divergentes?", o: [{t:"Miopia",c:true}, {t:"Hipermetropia",c:false}, {t:"Astigmatismo",c:false}, {t:"Presbiopia",c:false}], pts: 3, exp: "Na miopia, a imagem é formada antes da retina, dificultando a focalização de objetos distantes." },
-        { id: "CIEN-M22", p: "Qual hormônio/substância pode ser alterado pelo consumo de drogas psicotrópicas, afetando o sistema nervoso?", o: [{t:"Neurotransmissores",c:true}, {t:"Sucos gástricos",c:false}, {t:"Plaquetas do sangue",c:false}, {t:"Calcitocina",c:false}], pts: 3, exp: "Substâncias psicoativas alteram o funcionamento do cérebro ao interferir na ação dos neurotransmissores nas sinapses." },
-        { id: "CIEN-M23", p: "A teoria que explica o movimento contínuo dos continentes sobre o manto terrestre é a:", o: [{t:"Deriva Continental e Tectônica de Placas",c:true}, {t:"Evolução Darwinista",c:false}, {t:"Relatividade Geral",c:false}, {t:"Lei da Gravitação Universal",c:false}], pts: 3, exp: "Modelada por Alfred Wegener, demonstra que a litosfera é dividida em placas que flutuam sobre a astenosfera." },
-        { id: "CIEN-M24", p: "Ao aquecermos um cabo de metal, o calor se espalha por toda sua extensão principalmente por:", o: [{t:"Condução térmica",c:true}, {t:"Convecção mecânica",c:false}, {t:"Irradiação cósmica",c:false}, {t:"Sublimação direta",c:false}], pts: 3, exp: "A condução ocorre predominantemente em sólidos, transferindo energia cinética de partícula para partícula." },
-        { id: "CIEN-M25", p: "A energia das correntes de ar na atmosfera, gerada pelo aquecimento desigual do planeta, chama-se:", o: [{t:"Energia eólica",c:true}, {t:"Energia geotérmica",c:false}, {t:"Energia nuclear",c:false}, {t:"Energia maremotriz",c:false}], pts: 3, exp: "A energia eólica converte a força dos ventos (massas de ar em movimento térmico) em trabalho ou eletricidade." },
-        { id: "CIEN-M26", p: "O bioma típico da Região Semiárida do Nordeste brasileiro, rico em plantas suculentas e espinhosas, é a:", o: [{t:"Caatinga",c:true}, {t:"Mata Atlântica",c:false}, {t:"Floresta Amazônica",c:false}, {t:"Pampa",c:false}], pts: 3, exp: "A Caatinga é um bioma exclusivamente brasileiro adaptado a períodos prolongados de escassez hídrica." },
-        { id: "CIEN-M27", p: "A utilização de vacinas em larga escala é uma estratégia de saúde pública para:", o: [{t:"Prevenir e erradicar doenças infectocontagiosas",c:true}, {t:"Substituir a necessidade de saneamento básico",c:false}, {t:"Curar infecções bacterianas graves instantaneamente",c:false}, {t:"Fornecer nutrientes e calorias ao corpo humano",c:false}], pts: 3, exp: "Vacinas induzem a imunidade ativa produzindo anticorpos preventivos e memória imunológica populacional." },
-        { id: "CIEN-M28", p: "O gás de efeito estufa liberado em grande quantidade pela queima de combustíveis fósseis é o:", o: [{t:"Dióxido de carbono (CO2)",c:true}, {t:"Gás Hélio",c:false}, {t:"Gás Nitrogênio",c:false}, {t:"Ozônio superficial",c:false}], pts: 3, exp: "O CO2 oriundo de combustões de gasolina, diesel e carvão intensifica a retenção de calor na atmosfera terrestre." },
-
-
-
-        // --- NÍVEL DIFÍCIL ---
-        { id: "CIEN-D01", p: "O que é a organela Mitocôndria?", o: [{t:"Responsável pela respiração celular",c:true}, {t:"Responsável por guardar água",c:false}, {t:"Responsável pela cor da pele",c:false}, {t:"Responsável por criar os ossos",c:false}], pts: 4, exp: "A mitocôndria é a organela responsável pela respiração celular." },
-        { id: "CIEN-D02", p: "O que é o DNA para um ser vivo?", o: [{t:"Um tipo de açúcar do sangue",c:false}, {t:"Molécula com informação genética",c:true}, {t:"Uma camada protetora da pele",c:false}, {t:"O gás que respiramos no ar",c:false}], pts: 4, exp: "O DNA é a molécula que contém a informação genética." },
-        { id: "CIEN-D03", p: "O que define o nicho ecológico?", o: [{t:"O lugar físico onde o animal mora",c:false}, {t:"A temperatura máxima do bioma",c:false}, {t:"O papel e as atividades de uma espécie",c:true}, {t:"A quantidade de filhotes gerados",c:false}], pts: 4, exp: "O nicho ecológico define o papel e as atividades de uma espécie no ambiente." },
-        { id: "CIEN-D04", p: "O que é o intemperismo?", o: [{t:"O calor excessivo do deserto",c:false}, {t:"O brilho intenso das pedras",c:false}, {t:"A formação de novas estrelas",c:false}, {t:"Decomposição de rochas por agentes",c:true}], pts: 4, exp: "O intemperismo é o processo de decomposição de rochas por ação de agentes naturais." },
-        { id: "CIEN-D05", p: "O que caracteriza as Gimnospermas?", o: [{t:"Plantas com sementes nuas, sem fruto",c:true}, {t:"Plantas que não possuem raízes",c:false}, {t:"Plantas que vivem só no mar",c:false}, {t:"Plantas que produzem frutos doces",c:false}], pts: 4, exp: "As gimnospermas são plantas que possuem sementes nuas, sem o desenvolvimento de fruto." },
-        { id: "CIEN-D06", p: "O que é o calor específico?", o: [{t:"A temperatura média do corpo",c:false}, {t:"Calor necessário para mudar a temperatura",c:true}, {t:"O calor que vem do centro da Terra",c:false}, {t:"O ponto onde a água vira gelo",c:false}], pts: 4, exp: "O calor específico é a quantidade de calor necessário para mudar a temperatura de um material." },
-        { id: "CIEN-D07", p: "O que caracteriza os animais equinodermos?", o: [{t:"Possuem asas e bicos curtos",c:false}, {t:"Possuem pelos e amamentam",c:false}, {t:"Possuem esqueleto interno e espinhos",c:true}, {t:"Possuem corpo mole e concha",c:false}], pts: 4, exp: "Os equinodermos possuem esqueleto interno e espinhos." },
-        { id: "CIEN-D08", p: "O que é uma Unidade Astronômica (UA)?", o: [{t:"O tamanho médio de uma estrela",c:false}, {t:"O tempo de vida de um planeta",c:false}, {t:"A velocidade da luz no vácuo",c:false}, {t:"Distância média entre a Terra e o Sol",c:true}], pts: 4, exp: "A Unidade Astronômica (UA) corresponde à distância média entre a Terra e o Sol." },
-        { id: "CIEN-D09", p: "Qual a função dos alvéolos pulmonares?", o: [{t:"Onde ocorre a hematose (troca gasosa)",c:true}, {t:"Produzir o muco que limpa o nariz",c:false}, {t:"Proteger os pulmões contra batidas",c:false}, {t:"Bombear o ar para fora do corpo",c:false}], pts: 4, exp: "É nos alvéolos pulmonares que ocorre a hematose (troca gasosa)." },
-        { id: "CIEN-D10", p: "O que define uma pandemia?", o: [{t:"Doença que atinge poucas pessoas",c:false}, {t:"Doença espalhada por vários continentes",c:true}, {t:"Doença que só afeta animais",c:false}, {t:"Doença que tem cura rápida",c:false}], pts: 4, exp: "Uma pandemia é uma doença espalhada por vários continentes." },
-        { id: "CIEN-D11", p: "Qual o reino dos fungos?", o: [{t:"Reino Animalia",c:false}, {t:"Reino Plantae",c:false}, {t:"Reino Fungi",c:true}, {t:"Reino Monera",c:false}], pts: 4, exp: "Os fungos pertencem ao Reino Fungi." },
-        { id: "CIEN-D12", p: "O que é um fenômeno químico?", o: [{t:"Muda apenas a forma do objeto",c:false}, {t:"Muda a cor temporariamente",c:false}, {t:"O objeto quebra em partes",c:false}, {t:"Altera a composição da matéria",c:true}], pts: 4, exp: "Um fenômeno químico altera de facto a composição íntima da matéria." },
-        { id: "CIEN-D13", p: "O que caracteriza as Angiospermas?", o: [{t:"Possuem flores e frutos",c:true}, {t:"Não possuem vasos condutores",c:false}, {t:"São as menores plantas da Terra",c:false}, {t:"Vivem apenas em lugares secos",c:false}], pts: 4, exp: "As angiospermas caracterizam-se por possuírem flores e frutos na sua estrutura." },
-        { id: "CIEN-D14", p: "O que são animais hermafroditas?", o: [{t:"Não possuem sexo definido",c:false}, {t:"Possuem os dois órgãos sexuais",c:true}, {t:"Não conseguem ter filhotes",c:false}, {t:"Mudam de cor conforme o clima",c:false}], pts: 4, exp: "Animais hermafroditas são aqueles que possuem os dois órgãos sexuais em simultâneo." },
-        { id: "CIEN-D15", p: "O que é a camada de ozônio?", o: [{t:"Camada que produz as chuvas",c:false}, {t:"Camada que protege dos raios UV",c:true}, {t:"Camada de poluição das cidades",c:false}, {t:"Camada onde os aviões voam",c:false}], pts: 4, exp: "A camada de ozônio (ozono) atua como uma barreira que protege dos raios ultravioleta (UV)." },
-        { id: "CIEN-D16", p: "Qual a função do Ribossomo?", o: [{t:"Produzir açúcar para a célula",c:false}, {t:"Destruir as células mortas",c:false}, {t:"Proteger a célula contra o frio",c:false}, {t:"Realizar a síntese de proteínas",c:true}], pts: 4, exp: "A função fundamental do ribossomo na célula é realizar a síntese de proteínas." },
-        { id: "CIEN-D17", p: "O que é o vácuo?", o: [{t:"Espaço totalmente vazio de matéria",c:true}, {t:"Um tipo de gás muito pesado",c:false}, {t:"O fundo de uma caverna escura",c:false}, {t:"O ar que respiramos no topo do monte",c:false}], pts: 4, exp: "O vácuo é definido como um espaço que se encontra totalmente vazio de matéria." },
-        { id: "CIEN-D18", p: "O que são fatores abióticos?", o: [{t:"Os animais de um lugar",c:false}, {t:"Partes sem vida do ambiente (luz, água)",c:true}, {t:"As bactérias que causam doenças",c:false}, {t:"As plantas que fazem sombra",c:false}], pts: 4, exp: "Fatores abióticos são as partes e elementos sem vida do ambiente, como a luz ou a água." }
-        { id: "CIEN-D19", p: "Qual o nome da propriedade da matéria que indica a quantidade de massa presente em um determinado volume?", o: [{t:"Densidade",c:true}, {t:"Solubilidade",c:false}, {t:"Viscosidade",c:false}, {t:"Tenacidade",c:false}], pts: 4, exp: "Densidade é a razão d = m/v, definindo a concentração de massa distribuída pelo espaço ocupado pelo corpo." },
-        { id: "CIEN-D20", p: "Em um ecossistema, os fungos e bactérias desempenham um papel ecológico fundamental como:", o: [{t:"Decompositores e cicladores de nutrientes",c:true}, {t:"Consumidores primários exclusivos",c:false}, {t:"Produtores fotossintetizantes principais",c:false}, {t:"Parasitas obrigatórios de topo",c:false}], pts: 4, exp: "Decompositores convertem matéria orgânica morta em sais minerais reutilizáveis pelos produtores no ciclo biogeoquímico." },
-        { id: "CIEN-D21", p: "O motor a vapor e os motores a combustão interna são exemplos históricos de:", o: [{t:"Máquinas térmicas",c:true}, {t:"Máquinas puramente elétricas",c:false}, {t:"Aparelhos de conservação estática",c:false}, {t:"Transformadores químicos frios",c:false}], pts: 4, exp: "Máquinas térmicas convertem a energia calorífica obtida da queima de combustíveis em trabalho mecânico útil." },
-        { id: "CIEN-D22", p: "A escala utilizada para medir a magnitude dos abalos sísmicos gerados por placas tectônicas é a escala:", o: [{t:"Richter",c:true}, {t:"Celsius",c:false}, {t:"Kelvin",c:false}, {t:"Pascal",c:false}], pts: 4, exp: "A escala Richter mensura a energia sísmica liberada no foco do terremoto em uma escala logarítmica." },
-        { id: "CIEN-D23", p: "Qual o principal benefício socioambiental do tratamento e descarte correto do esgoto urbano?", o: [{t:"Evitar a proliferação de doenças e contaminação hídrica",c:true}, {t:"Aumentar a temperatura do ar nas capitais",c:false}, {t:"Substituir a vacinação obrigatória nas escolas",c:false}, {t:"Acelerar o efeito estufa natural",c:false}], pts: 4, exp: "O saneamento básico adequado interrompe o ciclo de transmissão de patógenos de veiculação hídrica e preserva os mananciais." },
-        { id: "CIEN-D24", p: "Uma solução que não consegue mais dissolver nenhuma quantidade adicional do soluto a uma dada temperatura é:", o: [{t:"Saturada",c:true}, {t:"Insaturada",c:false}, {t:"Diluída",c:false}, {t:"Heterogênea pura",c:false}], pts: 4, exp: "Uma solução saturada atingiu o limite máximo de soluto que o solvente consegue dissolver no equilíbrio térmico." },
-        { id: "CIEN-D25", p: "O fenômeno do refluxo e elevação do nível do mar causado pela atração gravitacional da Lua e do Sol é chamado de:", o: [{t:"Marés",c:true}, {t:"Tsunami",c:false}, {t:"El Niño",c:false}, {t:"Ressaca freática",c:false}], pts: 4, exp: "A gravidade combinada do sistema Terra-Lua-Sol distorce as massas de água dos oceanos gerando o ciclo das marés." },
-        { id: "CIEN-D26", p: "O bioma aquático costeiro de transição entre água doce e salgada, crucial como berçário natural da vida marinha, é o:", o: [{t:"Manguezal",c:true}, {t:"Aterro sanitário",c:false}, {t:"Lixão de praia",c:false}, {t:"Arrecife profundo",c:false}], pts: 4, exp: "O manguezal apresenta vegetação adapted a solos lodosos e salobros, servindo de refúgio e reprodução para espécies marinhas." },
-        { id: "CIEN-D27", p: "No corpo humano, o encontro entre neurônios para transmissão do impulso nervoso via mediadores químicos é a:", o: [{t:"Sinapse",c:true}, {t:"Hematose",c:false}, {t:"Miofibrila",c:false}, {t:"Aparelho gástrico",c:false}], pts: 4, exp: "A sinapse é a junção onde sinais químicos (neurotransmissores) saltam a fenda sináptica enviando o estímulo ao próximo neurônio." },
-        { id: "CIEN-D28", p: "Qual o nome do processo de queimadas e desmatamento severo no semiárido que leva à perda irreversível do solo?", o: [{t:"Desertificação",c:true}, {t:"Eutrofização",c:false}, {t:"Salinização oceânica",c:false}, {t:"Condensação hídrica",c:false}], pts: 4, exp: "A desertificação reduz drasticamente a capacidade produtiva do solo devido ao mau manejo e destruição da cobertura vegetal." }
-    
-    ]
+    // ------------------------------------------
+    // 9º ANO
+    // ------------------------------------------
+    "9": {
+        "Matemática": [
+            { id: "9ANO-MAT-D01", p: "O que é o 'Espaço Amostral' na probabilidade?", o: [{t:"Conjunto de todos os resultados possíveis",c:true}, {t:"O erro da pesquisa",c:false}, {t:"A média final",c:false}, {t:"O valor mais comum",c:false}], pts: 4, exp: "Espaço amostral abrange todos os cenários possíveis de um experimento." }
+            // COLE AQUI MAIS QUESTÕES DE MATEMÁTICA DO 9º ANO
+        ],
+        "Português": [
+            { id: "9ANO-PORT-D01", p: "O que define uma oração na gramática?", o: [{t:"Enunciado estruturado em torno de um verbo",c:true}, {t:"Frase sem pontuação",c:false}, {t:"Texto de vários parágrafos",c:false}, {t:"Palavra isolada",c:false}], pts: 4, exp: "A oração exige a presença de verbo ou locução verbal." }
+            // COLE AQUI MAIS QUESTÕES DE PORTUGUÊS DO 9º ANO
+        ],
+        "História": [
+            { id: "9ANO-HIST-D01", p: "O Mercantilismo visava principalmente:", o: [{t:"Balança comercial favorável e acúmulo de metais",c:true}, {t:"Livre comércio global",c:false}, {t:"Fim dos impostos",c:false}, {t:"Industrialização do campo",c:false}], pts: 4, exp: "Monarquias absolutistas buscavam acumular ouro e prata no Tesouro." }
+            // COLE AQUI MAIS QUESTÕES DE HISTÓRIA DO 9º ANO
+        ],
+        "Ciências": [
+            { id: "9ANO-CIEN-D01", p: "O que é o DNA?", o: [{t:"Molécula que contém a informação genética",c:true}, {t:"Açúcar no sangue",c:false}, {t:"Proteína muscular",c:false}, {t:"Gás celular",c:false}], pts: 4, exp: "O DNA armazena o código genético dos seres vivos." }
+            // COLE AQUI MAIS QUESTÕES DE CIÊNCIAS DO 9º ANO
+        ]
+    }
 };
 
 // ==========================================
-// LÓGICA DO APLICATIVO E VARIÁVEIS GLOBAIS
+// CONTROLE DE SESSÃO E VARIÁVEIS GLOBAIS
 // ==========================================
+const idsUsados = new Set(); // Histórico de eliminação na sessão ativa
+let serieAtual = "6"; // Série padrão inicial
+
 let perguntaAtual = null;
 let timerInterval; 
 let tempoRestante; 
 
 // Variáveis do Modo Desafio
-let modoAtual = 'normal'; // Pode ser 'normal' ou 'desafio'
+let modoAtual = 'normal'; // 'normal' ou 'desafio'
 let timerDesafio;
 let tempoJ1 = 40;
 let tempoJ2 = 40;
 let turnoAtual = 0; // 0 = Preparo, 1 = J1 ativo, 2 = J2 ativo
 let materiaDesafio = "";
+
+// Lógica de pareamento por rodada no Desafio
+let nivelRodadaDesafio = null;
+let contadorPerguntasRodada = 0;
 
 const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
 
@@ -471,22 +148,82 @@ function mudarTela(idTela) {
 }
 
 // ==========================================
-// MENU PRINCIPAL (TRANSIÇÃO DE MODOS)
+// NAVEGAÇÃO DE SÉRIES
+// ==========================================
+function selecionarSerie(serie) {
+    serieAtual = serie;
+    
+    document.getElementById('badge-serie-menu').innerText = `${serie}º ANO`;
+    document.getElementById('badge-serie-pergunta').innerText = `${serie}º ANO`;
+    
+    mudarTela('tela-menu');
+}
+
+function voltarParaSeries() {
+    voltarMenu();
+    mudarTela('tela-series');
+}
+
+// ==========================================
+// MOTOR DE SELEÇÃO SEM REPETIÇÃO
+// ==========================================
+function sortearNivelAleatorio() {
+    const niveis = [2, 3, 4]; // 2: Fácil, 3: Médio, 4: Difícil
+    return niveis[Math.floor(Math.random() * niveis.length)];
+}
+
+function obterQuestaoSemRepeticao(materia, nivelDesejado = null) {
+    const listaMateria = (banco[serieAtual] && banco[serieAtual][materia]) ? banco[serieAtual][materia] : [];
+    
+    if (listaMateria.length === 0) {
+        alert(`Ainda não existem perguntas cadastradas para ${materia} no ${serieAtual}º Ano.`);
+        return null;
+    }
+
+    // 1. Filtra questões que ainda não foram exibidas na partida
+    let disponiveis = listaMateria.filter(q => !idsUsados.has(q.id));
+
+    // 2. Filtro por nível no Modo Desafio
+    if (nivelDesejado !== null) {
+        let disponiveisNivel = disponiveis.filter(q => q.pts === nivelDesejado);
+        
+        // Se acabarem as questões do nível, recicla esse nível específico da série
+        if (disponiveisNivel.length === 0) {
+            listaMateria.filter(q => q.pts === nivelDesejado).forEach(q => idsUsados.delete(q.id));
+            disponiveisNivel = listaMateria.filter(q => q.pts === nivelDesejado);
+        }
+        disponiveis = disponiveisNivel;
+    } else {
+        // Modo Normal: Se acabar a matéria toda da série, recicla a matéria
+        if (disponiveis.length === 0) {
+            listaMateria.forEach(q => idsUsados.delete(q.id));
+            disponiveis = listaMateria;
+        }
+    }
+
+    const randomIndex = Math.floor(Math.random() * disponiveis.length);
+    const questaoEscolhida = disponiveis[randomIndex];
+
+    idsUsados.add(questaoEscolhida.id);
+    return JSON.parse(JSON.stringify(questaoEscolhida));
+}
+
+// ==========================================
+// CONTROLES DO MENU PRINCIPAL
 // ==========================================
 function abrirMenuDesafio() {
-    const btn = document.querySelector('#tela-menu .btn-acao');
+    const btn = document.getElementById('btn-toggle-desafio');
     
-    // Transforma o botão num "Liga/Desliga" para o Modo Desafio
     if (modoAtual === 'normal') {
         modoAtual = 'desafio';
-        document.querySelector('#tela-menu h1').innerText = "ESCOLHA A MATÉRIA";
-        document.querySelector('#tela-menu .subtitulo').innerText = "Modo Desafio (2 Jogadores)";
+        document.getElementById('titulo-menu').innerText = "MODO DESAFIO";
+        document.getElementById('subtitulo-menu').innerText = "2 Jogadores em Arena Dividida";
         btn.innerText = "❌ CANCELAR DESAFIO";
         btn.style.backgroundColor = "#607D8B";
     } else {
         modoAtual = 'normal';
-        document.querySelector('#tela-menu h1').innerText = "THE GRADE ESCAPE";
-        document.querySelector('#tela-menu .subtitulo').innerText = "Banco Oficial de Questões";
+        document.getElementById('titulo-menu').innerText = "MATÉRIAS";
+        document.getElementById('subtitulo-menu').innerText = "Escolha a disciplina para jogar";
         btn.innerText = "⚔️ MODO DESAFIO (2 JOGADORES)";
         btn.style.backgroundColor = "#D32F2F";
     }
@@ -496,15 +233,14 @@ function voltarMenu() {
     clearInterval(timerInterval); 
     clearInterval(timerDesafio); 
     
-    // MUDANÇA: Garante que a tela de feedback volta à rotação normal
     document.getElementById('tela-feedback').style.transform = 'rotate(0deg)';
     
-    // Se voltar, garante que o menu volta ao estado Normal
     modoAtual = 'normal';
-    document.querySelector('#tela-menu h1').innerText = "THE GRADE ESCAPE";
-    document.querySelector('#tela-menu .subtitulo').innerText = "Banco Oficial de Questões";
-    const btnDesafio = document.querySelector('#tela-menu .btn-acao');
-    if(btnDesafio) {
+    document.getElementById('titulo-menu').innerText = "MATÉRIAS";
+    document.getElementById('subtitulo-menu').innerText = "Escolha a disciplina para jogar";
+    
+    const btnDesafio = document.getElementById('btn-toggle-desafio');
+    if (btnDesafio) {
         btnDesafio.innerText = "⚔️ MODO DESAFIO (2 JOGADORES)";
         btnDesafio.style.backgroundColor = "#D32F2F";
     }
@@ -512,22 +248,19 @@ function voltarMenu() {
     mudarTela('tela-menu');
 }
 
-
 // ==========================================
 // MODO NORMAL (CAMPANHA)
 // ==========================================
 function sortearPergunta(materia) {
     if (audioCtx.state === 'suspended') audioCtx.resume();
 
-    // INTERCEPTADOR: Se o modo for desafio, desvia para a nova Arena!
     if (modoAtual === 'desafio') {
         prepararArenaDesafio(materia);
         return;
     }
 
-    const questoesMateria = banco[materia];
-    const randomIndex = Math.floor(Math.random() * questoesMateria.length);
-    perguntaAtual = JSON.parse(JSON.stringify(questoesMateria[randomIndex]));
+    perguntaAtual = obterQuestaoSemRepeticao(materia, null);
+    if (!perguntaAtual) return;
     
     const btnDica = document.getElementById('btn-dica');
     if(btnDica) btnDica.disabled = false;
@@ -631,34 +364,34 @@ function usarDica() {
 }
 
 // ==========================================
-// MODO DESAFIO (LÓGICA E RELÓGIOS DE XADREZ)
+// MODO DESAFIO (ARENA DIVIDIDA)
 // ==========================================
-
 function prepararArenaDesafio(materia) {
     materiaDesafio = materia;
     tempoJ1 = 40;
     tempoJ2 = 40;
-    turnoAtual = 0; // Fase de preparo (50/50)
+    turnoAtual = 0; 
+    contadorPerguntasRodada = 0;
+    nivelRodadaDesafio = null;
 
     document.getElementById('relogio-j1').innerText = tempoJ1;
     document.getElementById('relogio-j2').innerText = tempoJ2;
     
-    // Reseta as metades para 50%
     document.getElementById('area-j1').className = 'metade-desafio neutra';
     document.getElementById('area-j2').className = 'metade-desafio neutra';
     
     mudarTela('tela-desafio');
 }
 
-// Disparado ao tocar num dos blocos de "Aguarde" (Overlays)
 function iniciarDesafio(jogadorAlvo) {
-    // Trava de segurança: só funciona no primeiro clique da partida
     if (turnoAtual !== 0) return; 
     
     turnoAtual = jogadorAlvo;
     
     clearInterval(timerDesafio);
     timerDesafio = setInterval(atualizarRelogiosDesafio, 1000);
+    
+    nivelRodadaDesafio = sortearNivelAleatorio();
     
     carregarNovaPerguntaDesafio(turnoAtual);
     atualizarVisualDesafio();
@@ -682,19 +415,18 @@ function atualizarRelogiosDesafio() {
         tempoJ1--;
         document.getElementById('relogio-j1').innerText = tempoJ1;
         if (tempoJ1 <= 10 && tempoJ1 > 0) tocarBipe();
-        if (tempoJ1 <= 0) finalizarDesafio(2); // Tempo do J1 acabou, J2 vence
+        if (tempoJ1 <= 0) finalizarDesafio(2);
     } else if (turnoAtual === 2) {
         tempoJ2--;
         document.getElementById('relogio-j2').innerText = tempoJ2;
         if (tempoJ2 <= 10 && tempoJ2 > 0) tocarBipe();
-        if (tempoJ2 <= 0) finalizarDesafio(1); // Tempo do J2 acabou, J1 vence
+        if (tempoJ2 <= 0) finalizarDesafio(1);
     }
 }
 
 function carregarNovaPerguntaDesafio(jogador) {
-    const questoesMateria = banco[materiaDesafio];
-    const randomIndex = Math.floor(Math.random() * questoesMateria.length);
-    const p = JSON.parse(JSON.stringify(questoesMateria[randomIndex]));
+    const p = obterQuestaoSemRepeticao(materiaDesafio, nivelRodadaDesafio);
+    if (!p) return;
     
     const sufixo = jogador === 1 ? 'j1' : 'j2';
     document.getElementById(`pergunta-${sufixo}`).innerText = p.p;
@@ -709,7 +441,7 @@ function carregarNovaPerguntaDesafio(jogador) {
         btn.innerText = opcao.t;
         
         btn.onclick = (e) => {
-            e.stopPropagation(); // Evita que o clique atravesse o botão e ative o fundo
+            e.stopPropagation();
             if (turnoAtual === jogador) {
                 responderDesafio(jogador, opcao.c);
             }
@@ -720,18 +452,22 @@ function carregarNovaPerguntaDesafio(jogador) {
 
 function responderDesafio(jogador, isCorreta) {
     if (isCorreta) {
-        // Acertou! Passa o turno para o adversário
+        contadorPerguntasRodada++;
+        
+        if (contadorPerguntasRodada % 2 === 0) {
+            nivelRodadaDesafio = sortearNivelAleatorio();
+        }
+
         turnoAtual = jogador === 1 ? 2 : 1;
         carregarNovaPerguntaDesafio(turnoAtual);
         atualizarVisualDesafio();
     } else {
-        // Errou! Aplica a penalidade e troca a pergunta do próprio jogador
         aplicarPenalidade(jogador);
     }
 }
 
 function aplicarPenalidade(jogador) {
-    tocarBipe(); // Bipe rápido de erro
+    tocarBipe();
     
     if (jogador === 1) {
         tempoJ1 -= 5;
@@ -743,31 +479,24 @@ function aplicarPenalidade(jogador) {
         document.getElementById('relogio-j2').innerText = tempoJ2;
     }
     
-    // Captura os elementos para a animação
     const relogio = document.getElementById(`relogio-j${jogador}`);
     const alerta = document.getElementById(`alerta-j${jogador}`);
     
-    // Reseta as animações para permitir que ocorram várias vezes seguidas
     relogio.classList.remove('shake');
     alerta.classList.remove('animar-penalidade');
     
-    // Reflow: truque mágico do JavaScript para forçar o navegador a reiniciar a animação
     void relogio.offsetWidth;
     void alerta.offsetWidth;
     
-    // Dispara a animação
     relogio.classList.add('shake');
     alerta.classList.add('animar-penalidade');
     
-    // Verifica morte súbita por penalidade
     if (jogador === 1 && tempoJ1 <= 0) finalizarDesafio(2);
     else if (jogador === 2 && tempoJ2 <= 0) finalizarDesafio(1);
     else {
-        // Se ainda tiver tempo, recebe logo outra pergunta para continuar a tentar
         carregarNovaPerguntaDesafio(jogador);
     }
 }
-
 
 function finalizarDesafio(vencedor) {
     clearInterval(timerDesafio);
@@ -775,7 +504,6 @@ function finalizarDesafio(vencedor) {
     
     const telaFeedback = document.getElementById('tela-feedback');
     
-    // MUDANÇA: Roda a tela inteira para ficar de frente para quem ganhou!
     if (vencedor === 2) {
         telaFeedback.style.transform = 'rotate(180deg)';
     } else {
@@ -791,10 +519,8 @@ function finalizarDesafio(vencedor) {
     titulo.innerText = `JOGADOR ${vencedor} VENCEU!`;
     titulo.style.color = "#FFD700";
     pontos.innerText = "O tempo do adversário esgotou!";
-    document.getElementById('explicacao-feedback').innerText = "Que duelo! Para uma revanche, basta escolher a matéria novamente no menu principal.";
+    document.getElementById('explicacao-feedback').innerText = "Que duelo! Para jogar novamente, escolha a matéria no menu principal.";
     ref.innerText = "";
     
     mudarTela('tela-feedback');
 }
-
-

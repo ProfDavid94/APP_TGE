@@ -17,16 +17,12 @@
 }
 
 body {
-    font-family: 'Lora', serif; /* Fonte de leitura para perguntas e botões */
+    font-family: 'Lora', serif;
     background-image: url('assets/fundo.png');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
     color: var(--grafite);
-    
-    /* Trava o scroll da tela */
-    margin: 0;
-    padding: 0;
     width: 100%;
     height: 100vh;
     overflow: hidden; 
@@ -39,21 +35,19 @@ body {
     box-shadow: none;
     width: 100%;
     max-width: 600px;
-    height: 100vh; /* Ocupa exatamente a altura do ecrã */
+    height: 100vh;
     margin: 0 auto;
     padding: 20px;
     color: white;
     text-align: center;
     position: relative;
-    
-    /* Distribui os elementos perfeitamente sem espremer */
     display: flex;
     flex-direction: column;
     justify-content: space-evenly; 
 }
 
-h1, h2, .pontos-badge, #tempo-restante, .btn-acao, #titulo-feedback {
-    font-family: 'Cinzel', serif; /* Fonte épica para títulos e números */
+h1, h2, .pontos-badge, #tempo-restante, .btn-acao, #titulo-feedback, .numero-serie {
+    font-family: 'Cinzel', serif;
     letter-spacing: 2px;
 }
 
@@ -65,7 +59,7 @@ h1 {
 
 .subtitulo {
     font-size: 1.2rem;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
     color: #E0E0E0;
 }
 
@@ -78,7 +72,88 @@ h1 {
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* --- BOTÕES DO MENU --- */
+/* --- TELA DE SELEÇÃO DE SÉRIES --- */
+.grid-series {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    max-width: 450px;
+    margin: 0 auto;
+}
+
+.btn-serie {
+    background-color: rgba(255, 255, 255, 0.12);
+    border: 3px solid #FFEB3B;
+    border-radius: 12px;
+    padding: 20px 10px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+}
+
+.numero-serie {
+    font-size: 2.8rem;
+    font-weight: bold;
+    color: #FFEB3B;
+    line-height: 1;
+}
+
+.rotulo-serie {
+    font-family: 'Cinzel', serif;
+    font-size: 1.1rem;
+    color: white;
+    margin-top: 5px;
+    letter-spacing: 2px;
+}
+
+@media (hover: hover) {
+    .btn-serie:hover {
+        transform: scale(1.05);
+        background-color: rgba(255, 235, 59, 0.2);
+        box-shadow: 0 6px 15px rgba(255, 235, 59, 0.3);
+    }
+}
+.btn-serie:active {
+    transform: scale(0.95);
+}
+
+/* --- BADGES DE SÉRIE --- */
+.indicador-serie {
+    display: inline-block;
+    background-color: #FFEB3B;
+    color: #000;
+    font-family: 'Cinzel', serif;
+    font-weight: bold;
+    padding: 4px 16px;
+    border-radius: 15px;
+    font-size: 0.95rem;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+}
+
+.badge-serie-mini {
+    background-color: #FFEB3B;
+    color: #000;
+    font-family: 'Cinzel', serif;
+    font-weight: bold;
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-size: 0.8rem;
+}
+
+.info-materia-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* --- BOTÕES DO MENU DE MATÉRIAS --- */
 .grid-materias {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -93,8 +168,8 @@ h1 {
     background-position: center;
     box-shadow: none; 
     width: 100%;
-    max-width: 232px; /* Aumentado em ~30% */
-    min-height: 258px; /* Aumentado em ~30% */
+    max-width: 232px;
+    min-height: 230px;
     margin: 0 auto;
     cursor: pointer;
     transition: transform 0.2s, filter 0.2s;
@@ -102,25 +177,39 @@ h1 {
     -webkit-tap-highlight-color: transparent;
 }
 
-
-/* Efeito de hover e toque */
 @media (hover: hover) {
     .btn-materia:hover {
         transform: scale(1.05);
-        filter: drop-shadow(0px 5px 10px rgba(255, 235, 59, 0.4)); /* Brilho amarelo ao passar o mouse */
+        filter: drop-shadow(0px 5px 10px rgba(255, 235, 59, 0.4));
     }
 }
 .btn-materia:active {
     transform: scale(0.95);
 }
 
-/* Vinculando cada imagem ao seu respectivo botão */
 .btn-mat { background-image: url('assets/Botao-Mat.png'); }
 .btn-port { background-image: url('assets/Botao-Port.png'); }
 .btn-hist { background-image: url('assets/Botao-Hist.png'); }
 .btn-cien { background-image: url('assets/Botao-Cien.png'); }
 
+.controles-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 15px;
+}
 
+.btn-desafio {
+    width: 100%;
+    background-color: #D32F2F;
+    color: white;
+}
+
+.btn-voltar-serie {
+    width: 100%;
+    background-color: #455A64;
+    color: white;
+}
 
 /* --- TELA DE PERGUNTA --- */
 .cabecalho-pergunta {
@@ -128,7 +217,7 @@ h1 {
     justify-content: space-between;
     align-items: center;
     margin-bottom: 20px;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     border-bottom: 2px dashed rgba(255,255,255,0.3);
     padding-bottom: 10px;
 }
@@ -139,23 +228,19 @@ h1 {
     padding: 5px 15px;
     border-radius: 20px;
     font-weight: bold;
-    font-family: 'Permanent Marker', cursive;
 }
 
-/* --- CRONÔMETRO (MOVIDO PARA FORA DO MEDIA QUERY) --- */
 #tempo-restante {
-    font-family: 'Permanent Marker', cursive;
-    font-size: 1.5rem;
-    color: #FFEB3B; /* Amarelo original */
+    font-size: 1.3rem;
+    color: #FFEB3B;
     background-color: rgba(0,0,0,0.3);
     padding: 5px 15px;
     border-radius: 20px;
     transition: color 0.3s;
 }
 
-/* Forçamos a prioridade juntando o ID com a classe */
 #tempo-restante.tempo-esgotando {
-    color: #F44336 !important; /* Vermelho Alerta */
+    color: #F44336 !important;
     animation: piscarAlerta 1s infinite;
 }
 
@@ -166,8 +251,8 @@ h1 {
 }
 
 #texto-pergunta {
-    font-size: 1.8rem;
-    margin-bottom: 30px;
+    font-size: 1.6rem;
+    margin-bottom: 25px;
     line-height: 1.3;
 }
 
@@ -179,12 +264,12 @@ h1 {
 
 .btn-opcao {
     font-family: 'Lora', serif;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     font-weight: bold;
     background-color: rgba(255, 255, 255, 0.1);
     color: white;
     border: 2px solid white;
-    padding: 15px;
+    padding: 14px;
     border-radius: 8px;
     cursor: pointer;
     transition: all 0.2s;
@@ -195,14 +280,12 @@ h1 {
     display: block;
 }
 
-/* Container das opções do desafio */
 .opcoes-container-desafio {
     display: flex;
     flex-direction: column;
-    gap: 10px; /* Espaço entre as alternativas */
+    gap: 10px;
     width: 100%;
 }
-
 
 @media (hover: hover) {
     .btn-opcao:hover {
@@ -217,33 +300,32 @@ h1 {
 
 /* --- TELA DE FEEDBACK --- */
 #icone-feedback {
-    font-size: 5rem;
+    font-size: 4.5rem;
     margin-bottom: 10px;
 }
 
 #titulo-feedback {
-    font-size: 2.5rem;
+    font-size: 2.2rem;
     margin-bottom: 10px;
 }
 
 #pontos-feedback {
-    font-size: 1.5rem;
-    margin-bottom: 20px;
+    font-size: 1.3rem;
+    margin-bottom: 15px;
     color: #FFEB3B;
 }
 
 #explicacao-feedback {
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     background-color: rgba(0,0,0,0.2);
     padding: 15px;
     border-radius: 8px;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
 }
 
 .btn-acao {
-    font-family: 'Permanent Marker', cursive;
-    font-size: 1.3rem;
-    padding: 15px 30px;
+    font-size: 1.1rem;
+    padding: 14px 25px;
     border: none;
     border-radius: 8px;
     background-color: #f4ecd8;
@@ -255,124 +337,93 @@ h1 {
 }
 .btn-acao:active { transform: scale(0.95); }
 
-/* --- BOTÃO DE DICA --- */
+/* --- DICA --- */
 .btn-dica {
     font-family: 'Cinzel', serif;
-    background-color: #6A1B9A; /* Roxo místico */
+    background-color: #6A1B9A;
     color: white;
     border: 1px solid #E1BEE7;
-    padding: 8px 20px;
+    padding: 6px 16px;
     border-radius: 20px;
     cursor: pointer;
-    font-size: 1.1rem;
+    font-size: 1rem;
     font-weight: bold;
     transition: all 0.3s ease;
     box-shadow: 0 4px 6px rgba(0,0,0,0.3);
 }
 
-.btn-dica:active {
-    transform: scale(0.95);
-}
-
-/* Estado de Dica Usada (Desativado) */
 .btn-dica:disabled {
     background-color: #424242;
     color: #9E9E9E;
     border-color: #616161;
     box-shadow: none;
     cursor: not-allowed;
-    transform: none;
 }
 
-/* --- EFEITO DE ELIMINAÇÃO NA ALTERNATIVA --- */
 .opcao-eliminada {
     opacity: 0.3;
     text-decoration: line-through;
-    pointer-events: none; /* Bloqueia o clique */
+    pointer-events: none;
     background-color: transparent !important;
     border-color: rgba(255, 255, 255, 0.1) !important;
     color: rgba(255, 255, 255, 0.5) !important;
-    transition: all 0.5s ease; /* Animação suave para não desaparecer do nada */
 }
 
-
 /* ==========================================
-   RESPONSIVIDADE (MOBILE OPTIMIZATION)
+   RESPONSIVIDADE (MOBILE)
    ========================================== */
 @media screen and (max-width: 600px) {
     body {
-        padding: 3vh 10px 10px 10px; /* Título mais próximo do topo no celular */
+        padding: 2vh 10px 10px 10px;
     }
 
     #app-container {
-        border-width: 8px; 
-        padding: 10px 5px; /* Menos margem interna para as cartas caberem */
+        padding: 10px 5px;
     }
 
-    
     .texto-pergunta-desafio {
-        font-size: 1.3rem; /* Fica num tamanho ideal no telemóvel */
+        font-size: 1.2rem;
     }
 
+    .grid-series {
+        gap: 10px;
+    }
+
+    .btn-serie {
+        padding: 15px 5px;
+    }
+
+    .numero-serie {
+        font-size: 2.2rem;
+    }
 
     .grid-materias {
-        grid-template-columns: 1fr 1fr; 
-        gap: 5px; /* Reduz o espaço entre as cartas para elas poderem crescer */
+        gap: 5px;
     }
 
     .btn-materia {
-        min-height: 185px; /* Aumentado em ~30% para o celular (era 140px)[cite: 13] */
-        padding: 0; 
-    }
-
-    .cabecalho-pergunta {
-        font-size: 1rem;
-        margin-bottom: 15px;
-    }
-    
-    #tempo-restante {
-        font-size: 1.2rem;
-        padding: 5px 10px;
+        min-height: 170px;
     }
 
     #texto-pergunta {
-        font-size: 1.4rem; 
-        margin-bottom: 20px;
+        font-size: 1.3rem;
+        margin-bottom: 15px;
     }
 
     .btn-opcao {
-        font-size: 1.2rem;
-        padding: 12px 15px;
-    }
-
-    #icone-feedback {
-        font-size: 4rem;
-    }
-
-    #titulo-feedback {
-        font-size: 2rem;
-    }
-
-    #pontos-feedback {
-        font-size: 1.2rem;
-    }
-
-    #explicacao-feedback {
-        font-size: 1.1rem;
-        padding: 12px;
+        font-size: 1.05rem;
+        padding: 10px 12px;
     }
 
     .btn-acao {
-        font-size: 1.1rem;
-        width: 100%; 
-        padding: 15px;
+        font-size: 1rem;
+        padding: 12px;
     }
 }
 
 /* ==========================================
-   MODO DESAFIO (TELA DIVIDIDA)
+   MODO DESAFIO (ARENA DIVIDIDA)
    ========================================== */
-
 #tela-desafio {
     height: 100vh;
     width: 100vw;
@@ -381,41 +432,33 @@ h1 {
     top: 0; left: 0;
     background-color: var(--fundo-quadro);
     overflow: hidden;
-    z-index: 100; /* Garante que cobre o menu completamente quando chamada */
+    z-index: 100;
 }
 
-/* Define o flex apenas quando a tela for ativada pelo JavaScript */
 #tela-desafio.ativa {
     display: flex;
 }
 
-
-/* A Linha Central que divide os jogadores */
 .linha-divisoria {
     height: 6px;
     background-color: #FFEB3B;
     width: 100%;
     z-index: 10;
     box-shadow: 0 0 15px rgba(0,0,0,0.8);
-    flex-shrink: 0; /* O segredo para a linha não desaparecer nem ser esmagada */
+    flex-shrink: 0;
 }
 
-
-
-/* Tamanho da Pergunta no Modo Desafio */
 .texto-pergunta-desafio {
     font-family: 'Lora', serif;
-    font-size: 1.5rem; /* Tamanho grande e legível */
+    font-size: 1.4rem;
     font-weight: bold;
     line-height: 1.3;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
     text-align: center;
     padding: 0 10px;
-    text-shadow: 1px 1px 3px rgba(0,0,0,0.5); /* Sombra para ajudar a ler */
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
 }
 
-
-/* Estrutura base de cada metade */
 .metade-desafio {
     position: relative;
     width: 100%;
@@ -423,102 +466,80 @@ h1 {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    transition: height 0.5s cubic-bezier(0.4, 0, 0.2, 1); /* Animação elástica suave */
+    transition: height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     overflow: hidden;
     padding: 10px;
 }
 
-/* O Segredo do Frente-a-Frente: Roda a metade de cima */
 #area-j2 {
     transform: rotate(180deg);
 }
 
-
-/* ==========================================
-   ESTADOS DE PROPORÇÃO (COM MATEMÁTICA EXATA)
-   ========================================== */
-
-/* Estado 1: Início (50/50) */
 .metade-desafio.neutra {
-    height: calc(50% - 3px); /* 50% menos metade da espessura da linha */
+    height: calc(50% - 3px);
 }
 
-/* Estado 2: Turno Ativo (85%) */
 .metade-desafio.ativa {
     height: calc(85% - 3px);
-    background-color: rgba(255, 255, 255, 0.05); /* Ligeiro destaque */
+    background-color: rgba(255, 255, 255, 0.05);
 }
 
-/* Estado 3: Turno Inativo (Espera - 15%) */
 .metade-desafio.inativa {
     height: calc(15% - 3px);
-    background-color: rgba(0, 0, 0, 0.4); /* Escurece a área */
+    background-color: rgba(0, 0, 0, 0.4);
 }
 
-/* ==========================================
-   ELEMENTOS INTERNOS DA ARENA
-   ========================================== */
-
-    /* O Relógio */
-    .relogio-gigante {
+.relogio-gigante {
     font-family: 'Cinzel', serif;
     font-weight: bold;
     color: white;
     transition: all 0.5s ease;
-    }
+}
 
-    /* Se a área está ativa, o relógio encolhe e vai para o topo */
-    .ativa .relogio-gigante {
+.ativa .relogio-gigante {
     font-size: 2rem;
     position: absolute;
     top: 10px;
     right: 20px;
-    }
+}
 
-    /* Se a área está inativa (15%), o relógio fica gigante no centro */
-    .inativa .relogio-gigante {
-    font-size: 4rem;
+.inativa .relogio-gigante {
+    font-size: 3.5rem;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    color: #9E9E9E; /* Cinza para indicar pausa */
-    }
+    color: #9E9E9E;
+}
 
-    /* Se a área é neutra (início), relógio médio */
-        .neutra .relogio-gigante {
-        font-size: 3rem;
-    }
+.neutra .relogio-gigante {
+    font-size: 3rem;
+}
 
-    /* Esconde as perguntas/botões quando está na área de 15% ou 50% */
-    .inativa .conteudo-desafio, .neutra .conteudo-desafio {
-        opacity: 0;
-        pointer-events: none;
-        display: none;
-    }
+.inativa .conteudo-desafio, .neutra .conteudo-desafio {
+    opacity: 0;
+    pointer-events: none;
+    display: none;
+}
 
-    /* Mostra as perguntas apenas quando a área tem 85% */
-    .ativa .conteudo-desafio {
-        opacity: 1;
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-        max-width: 500px;
-        margin-top: 40px; /* Espaço para o relógio encolhido */
-    }
+.ativa .conteudo-desafio {
+    opacity: 1;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 500px;
+    margin-top: 35px;
+}
 
-/* ==========================================
-   OVERLAY DE ESPERA (CENTRALIZADO PERFEITAMENTE)
-   ========================================== */
 .overlay-espera {
     position: absolute;
     top: 0; left: 0; width: 100%; height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center; /* MUDANÇA: Agora fica tudo no centro da metade */
-    gap: 25px; /* Espaço elegante entre o "JOGADOR" e o "APERTE" */
-    background: rgba(0,0,0,0.85); /* Fundo um pouco mais escuro para o texto brilhar */
+    justify-content: center;
+    gap: 20px;
+    background: rgba(0,0,0,0.85);
     cursor: pointer;
     z-index: 999; 
 }
@@ -526,7 +547,7 @@ h1 {
 .id-jogador {
     color: white;
     font-family: 'Cinzel', serif;
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     letter-spacing: 3px;
     text-shadow: 0 0 10px black;
 }
@@ -534,10 +555,10 @@ h1 {
 .overlay-espera span {
     color: #FFEB3B;
     font-family: 'Cinzel', serif;
-    font-size: 1.1rem;
+    font-size: 1rem;
     font-weight: bold;
     text-align: center;
-    margin: 0; /* Remove margens antigas que empurravam o texto */
+    padding: 0 15px;
     animation: pulsarTexto 1.5s infinite;
 }
 
@@ -552,18 +573,12 @@ h1 {
     100% { opacity: 0.3; transform: scale(1); }
 }
 
-
-
-
-/* ==========================================
-   ANIMAÇÃO DE PENALIDADE (-5s)
-   ========================================== */
 .alerta-penalidade {
     position: absolute;
     top: 30%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-size: 4rem;
+    font-size: 3.5rem;
     color: #F44336;
     font-weight: bold;
     font-family: 'Cinzel', serif;
@@ -582,7 +597,6 @@ h1 {
     100% { opacity: 0; transform: translate(-50%, -100%) scale(1); }
 }
 
-/* Efeito de tremor no relógio ao errar */
 .shake {
     animation: tremer 0.3s;
     color: #F44336 !important;
