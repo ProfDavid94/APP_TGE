@@ -316,7 +316,7 @@ const banco = {
     "7": {
         "Matemática": [
             // ==================== FÁCEIS (20 QUESTAÇÕES) ====================
-              { id: "7ANO-MAT-F01", p: "Qual o resultado de 2/5 + 1/5?", o: [{t:"3/10",c:false}, {t:"3/5",c:true}, {t:"2/5",c:false}, {t:"1/5",c:false}], pts: 2, exp: "Com denominadores iguais, somamos os numeradores (2+1 = 3) e mantemos o denominador 5." }
+              { id: "7ANO-MAT-F01", p: "Qual o resultado de 2/5 + 1/5?", o: [{t:"3/10",c:false}, {t:"3/5",c:true}, {t:"2/5",c:false}, {t:"1/5",c:false}], pts: 2, exp: "Com denominadores iguais, somamos os numeradores (2+1 = 3) e mantemos o denominador 5." },
               { id: "7ANO-MAT-F02", p: "Qual é o resultado da adição (-5) + (+8)?", o: [{t:"+3",c:true}, {t:"-3",c:false}, {t:"+13",c:false}, {t:"-13",c:false}], pts: 2, exp: "Sinais diferentes: subtraímos os módulos (8 - 5 = 3) e conservamos o sinal do maior módulo (+3)." }
               { id: "7ANO-MAT-F03", p: "Na reta numérica, qual número inteiro está localizado exatamente 4 unidades à esquerda do zero?", o: [{t:"+4",c:false}, {t:"-4",c:true}, {t:"-8",c:false}, {t:"0",c:false}], pts: 2, exp: "A esquerda do zero representa os números inteiros negativos, portanto -4." }
               { id: "7ANO-MAT-F04", p: "Quais são os três primeiros múltiplos naturais do número 7?", o: [{t:"1, 7, 14",c:false}, {t:"0, 7, 14",c:true}, {t:"7, 14, 21",c:false}, {t:"0, 1, 7",c:false}], pts: 2, exp: "Os múltiplos naturais começam multiplicando por 0, 1 e 2: 7x0=0, 7x1=7, 7x2=14." }
