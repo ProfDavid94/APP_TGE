@@ -193,6 +193,11 @@ function sortearPergunta(materia) {
 
     mudarTela('tela-pergunta');
     iniciarTimer(perguntaAtual);
+
+    // Reprocessa o LaTeX na tela de pergunta
+    if (window.MathJax) {
+        MathJax.typesetPromise();
+    }
 }
 
 function iniciarTimer(objPergunta) {
@@ -246,6 +251,12 @@ function verificarResposta(isCorreta, objPergunta, tempoEsgotado = false) {
     document.getElementById('explicacao-feedback').innerText = objPergunta.exp;
     ref.innerText = "Ref: " + objPergunta.id;
     mudarTela('tela-feedback');
+
+    // Reprocessa o LaTeX na tela de feedback
+    if (window.MathJax) {
+        MathJax.typesetPromise();
+    }
+
 }
 
 function usarDica() {
@@ -350,6 +361,12 @@ function carregarNovaPerguntaDesafio(jogador) {
         };
         container.appendChild(btn);
     });
+
+    // Reprocessa o LaTeX no Modo Desafio
+    if (window.MathJax) {
+        MathJax.typesetPromise();
+    }
+
 }
 
 function responderDesafio(jogador, isCorreta) {
