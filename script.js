@@ -308,6 +308,7 @@ function confirmarDica() {
 // MODO DESAFIO (ARENA DIVIDIDA)
 // ==========================================
 function prepararArenaDesafio() {
+    materiaDesafio = materia; // GUARDA A MATÉRIA ESCOLHIDA PARA O MODO DESAFIO
     tempoJ1 = 60;
     tempoJ2 = 60;
     turnoAtual = 0;
@@ -351,6 +352,10 @@ function iniciarDesafio(jogadorAlvo) {
 
     clearInterval(timerDesafio);
     timerDesafio = setInterval(atualizarRelogiosDesafio, 1000);
+
+    // --- ADICIONADO: Ativa o visual de duelo e puxa a primeira pergunta ---
+    atualizarVisualDesafio();
+    carregarNovaPerguntaDesafio(jogadorAlvo);
 }
 
 // ... AS FUNÇÕES atualizarVisualDesafio e atualizarRelogiosDesafio CONTINUAM AQUI INTACTAS ...
