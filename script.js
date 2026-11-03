@@ -307,8 +307,8 @@ function confirmarDica() {
 // ==========================================
 // MODO DESAFIO (ARENA DIVIDIDA)
 // ==========================================
-function prepararArenaDesafio() {
-    materiaDesafio = materia; // GUARDA A MATÉRIA ESCOLHIDA PARA O MODO DESAFIO
+function prepararArenaDesafio(materia) {
+    materiaDesafio = materia; // 1. Salva a matéria selecionada no Modo Desafio
     tempoJ1 = 60;
     tempoJ2 = 60;
     turnoAtual = 0;
@@ -321,7 +321,7 @@ function prepararArenaDesafio() {
     document.getElementById('area-j1').className = 'metade-desafio neutra';
     document.getElementById('area-j2').className = 'metade-desafio neutra';
 
-    // GARANTE QUE OS OVERLAYS VOLTAM A FICAR VISÍVEIS AO ENTRAR NA ARENA
+    // Garante que os overlays voltam a ficar visíveis ao entrar na arena
     const overlayJ1 = document.getElementById('overlay-j1');
     const overlayJ2 = document.getElementById('overlay-j2');
     if (overlayJ1) overlayJ1.style.display = 'flex';
@@ -330,41 +330,38 @@ function prepararArenaDesafio() {
     mudarTela('tela-desafio');
 }
 
-// VARIÁVEL DA TRAVA: Controla se os botões podem ser clicados
-bloqueioClickDesafio = false;
+// VARIÁVEL DA TRAVA: Controla se os botões podem ser clicados nos primeiros segundos
+let bloqueioClickDesafio = false;
 
 function iniciarDesafio(jogadorAlvo) {
     if (turnoAtual !== 0) return;
 
     turnoAtual = jogadorAlvo;
 
-    // OCULTA OS OVERLAYS PARA REVELAR AS PERGUNTAS E OPÇÕES DE RESPOSTA
+    // Oculta os overlays de cada jogador
     const overlayJ1 = document.getElementById('overlay-j1');
     const overlayJ2 = document.getElementById('overlay-j2');
     if (overlayJ1) overlayJ1.style.display = 'none';
     if (overlayJ2) overlayJ2.style.display = 'none';
 
-    // ATIVA O BLOQUEIO: Impede cliques acidentais nos primeiros 2 segundos (2000ms)
+    // Bloqueia cliques acidentais nos primeiros 2 segundos
     bloqueioClickDesafio = true;
     setTimeout(() => {
-        bloqueioClickDesafio = false; // Libera os botões após 2 segundos
+        bloqueioClickDesafio = false;
     }, 2000);
 
     clearInterval(timerDesafio);
     timerDesafio = setInterval(atualizarRelogiosDesafio, 1000);
 
-    // --- ADICIONADO: Ativa o visual de duelo e puxa a primeira pergunta ---
+    // 2. Transiciona a tela para o jogador ativo e carrega a pergunta
     atualizarVisualDesafio();
     carregarNovaPerguntaDesafio(jogadorAlvo);
 }
-
-// ... AS FUNÇÕES atualizarVisualDesafio e atualizarRelogiosDesafio CONTINUAM AQUI INTACTAS ...
 
 function atualizarVisualDesafio() {
     const areaJ1 = document.getElementById('area-j1');
     const areaJ2 = document.getElementById('area-j2');
     
-    // Remove o estado neutro inicial
     areaJ1.classList.remove('neutra');
     areaJ2.classList.remove('neutra');
     
@@ -376,6 +373,21 @@ function atualizarVisualDesafio() {
         areaJ2.className = 'metade-desafio ativa';
     }
 }
+
+function atualizarRelogiosDesafio() {
+    if (turnoAtual === 1) {
+        tempoJ1--;
+        document.getElementById('relogio-j1').innerText = tempoJ1;
+        if (tempoJ1 <= 10 && tempoJ1 > 0) tocarBipe();
+        if (tempoJ1 <= 0) finalizarDesafio(2);
+    } else if (turnoAtual === 2) {
+        tempoJ2--;
+        document.getElementById('relogio-j2').innerText = tempoJ2;
+        if (tempoJ2 <= 10 && tempoJ2 > 0) tocarBipe();
+        if (tempoJ2 <= 0) finalizarDesafio(1);
+    }
+}
+
 function carregarNovaPerguntaDesafio(jogador) {
     const p = obterQuestaoSemRepeticao(materiaDesafio, nivelRodadaDesafio);
     if (!p) return;
@@ -394,6 +406,7 @@ function carregarNovaPerguntaDesafio(jogador) {
         
         btn.onclick = (e) => {
             e.stopPropagation();
+            if (bloqueioClickDesafio === true) return;
             if (turnoAtual === jogador) {
                 responderDesafio(jogador, opcao.c);
             }
@@ -401,12 +414,11 @@ function carregarNovaPerguntaDesafio(jogador) {
         container.appendChild(btn);
     });
 
-    // Reprocessa o LaTeX no Modo Desafio
     if (window.MathJax) {
         MathJax.typesetPromise();
     }
-
 }
+
 
 function responderDesafio(jogador, isCorreta) {
     if (isCorreta) {
