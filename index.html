@@ -123,8 +123,8 @@
         <div id="tela-desafio" class="tela">
             
             <!-- JOGADOR 2 (TOPO - INVERTIDO) -->
-            <div id="area-j2" class="metade-desafio neutra" onclick="iniciarDesafio(1)">
-                <div class="relogio-gigante" id="relogio-j2">40</div>
+            <div id="area-j2" class="metade-desafio neutra">
+                <div class="relogio-gigante" id="relogio-j2">60</div>
                 
                 <div class="conteudo-desafio">
                     <p id="pergunta-j2" class="texto-pergunta-desafio"></p>
@@ -132,7 +132,7 @@
                     <div class="alerta-penalidade" id="alerta-j2">-5s</div>
                 </div>
                 
-                <div class="overlay-espera" id="overlay-j2">
+                <div class="overlay-espera" id="overlay-j2" onclick="iniciarDesafio(1)"></div>>
                     <div class="id-jogador">JOGADOR 2</div>
                     <span>TOQUE PARA INICIAR O TEMPO DO ADVERSÁRIO</span>
                 </div>
@@ -142,8 +142,8 @@
             <div class="linha-divisoria"></div>
 
             <!-- JOGADOR 1 (BASE) -->
-            <div id="area-j1" class="metade-desafio neutra" onclick="iniciarDesafio(2)">
-                <div class="relogio-gigante" id="relogio-j1">40</div>
+            <div id="area-j1" class="metade-desafio neutra">
+                <div class="relogio-gigante" id="relogio-j1">60</div>
                 
                 <div class="conteudo-desafio">
                     <p id="pergunta-j1" class="texto-pergunta-desafio"></p>
@@ -151,7 +151,7 @@
                     <div class="alerta-penalidade" id="alerta-j1">-5s</div>
                 </div>
 
-                <div class="overlay-espera" id="overlay-j1">
+                <div class="overlay-espera" id="overlay-j1" onclick="iniciarDesafio(2)">
                     <div class="id-jogador">JOGADOR 1</div>
                     <span>TOQUE PARA INICIAR O TEMPO DO ADVERSÁRIO</span>
                 </div>

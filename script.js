@@ -11,8 +11,8 @@ let tempoRestante;
 // Variáveis do Modo Desafio
 let modoAtual = 'normal'; // 'normal' ou 'desafio'
 let timerDesafio;
-let tempoJ1 = 40;
-let tempoJ2 = 40;
+let tempoJ1 = 60;
+let tempoJ2 = 60;
 let turnoAtual = 0; // 0 = Preparo, 1 = J1 ativo, 2 = J2 ativo
 let materiaDesafio = "";
 
@@ -307,44 +307,50 @@ function confirmarDica() {
 // ==========================================
 // MODO DESAFIO (ARENA DIVIDIDA)
 // ==========================================
-function prepararArenaDesafio(materia) {
-    materiaDesafio = materia;
-    tempoJ1 = 40;
-    tempoJ2 = 40;
-    turnoAtual = 0; 
+function prepararArenaDesafio() {
+    tempoJ1 = 60;
+    tempoJ2 = 60;
+    turnoAtual = 0;
     contadorPerguntasRodada = 0;
     nivelRodadaDesafio = null;
 
     document.getElementById('relogio-j1').innerText = tempoJ1;
     document.getElementById('relogio-j2').innerText = tempoJ2;
-    
+
     document.getElementById('area-j1').className = 'metade-desafio neutra';
     document.getElementById('area-j2').className = 'metade-desafio neutra';
-    
+
+    // GARANTE QUE OS OVERLAYS VOLTAM A FICAR VISÍVEIS AO ENTRAR NA ARENA
+    const overlayJ1 = document.getElementById('overlay-j1');
+    const overlayJ2 = document.getElementById('overlay-j2');
+    if (overlayJ1) overlayJ1.style.display = 'flex';
+    if (overlayJ2) overlayJ2.style.display = 'flex';
+
     mudarTela('tela-desafio');
 }
 
 // VARIÁVEL DA TRAVA: Controla se os botões podem ser clicados
-let bloqueioClickDesafio = false;
+bloqueioClickDesafio = false;
 
 function iniciarDesafio(jogadorAlvo) {
-    if (turnoAtual !== 0) return; 
-    
+    if (turnoAtual !== 0) return;
+
     turnoAtual = jogadorAlvo;
-    
-    // ATIVA O BLOQUEIO: Impede cliques acidentais nos primeiros 2 segundos (2000 ms)
+
+    // OCULTA OS OVERLAYS PARA REVELAR AS PERGUNTAS E OPÇÕES DE RESPOSTA
+    const overlayJ1 = document.getElementById('overlay-j1');
+    const overlayJ2 = document.getElementById('overlay-j2');
+    if (overlayJ1) overlayJ1.style.display = 'none';
+    if (overlayJ2) overlayJ2.style.display = 'none';
+
+    // ATIVA O BLOQUEIO: Impede cliques acidentais nos primeiros 2 segundos (2000ms)
     bloqueioClickDesafio = true;
     setTimeout(() => {
         bloqueioClickDesafio = false; // Libera os botões após 2 segundos
-    }, 2000); 
+    }, 2000);
 
     clearInterval(timerDesafio);
     timerDesafio = setInterval(atualizarRelogiosDesafio, 1000);
-    
-    nivelRodadaDesafio = sortearNivelAleatorio();
-    
-    carregarNovaPerguntaDesafio(turnoAtual);
-    atualizarVisualDesafio();
 }
 
 // ... AS FUNÇÕES atualizarVisualDesafio e atualizarRelogiosDesafio CONTINUAM AQUI INTACTAS ...
