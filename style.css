@@ -360,6 +360,33 @@ h1 {
     cursor: not-allowed;
 }
 
+/* --- BOTÕES DE CONFIRMAÇÃO DA DICA --- */
+.btn-dica-cancelar, .btn-dica-confirmar {
+    font-family: 'Cinzel', serif;
+    color: white;
+    border: none;
+    padding: 6px 14px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+}
+
+.btn-dica-cancelar {
+    background-color: #D32F2F; /* Vermelho */
+}
+
+.btn-dica-confirmar {
+    background-color: #388E3C; /* Verde */
+}
+
+.btn-dica-cancelar:hover, .btn-dica-confirmar:hover {
+    transform: scale(1.1);
+}
+
+
 .opcao-eliminada {
     opacity: 0.3;
     text-decoration: line-through;

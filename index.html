@@ -95,8 +95,11 @@
 
             <p id="texto-pergunta">Carregando pergunta...</p>
             
-            <div style="text-align: right; margin-bottom: 15px;">
-                <button id="btn-dica" class="btn-dica" onclick="usarDica()">🪄 Usar Dica</button>
+            <!-- CONTAINER DA DICA ATUALIZADO -->
+            <div id="container-dica" style="text-align: right; margin-bottom: 15px; display: flex; justify-content: flex-end; gap: 10px;">
+                <button id="btn-dica" class="btn-dica" onclick="solicitarDica()">🪄 Usar Dica</button>
+                <button id="btn-dica-cancelar" class="btn-dica-cancelar" style="display: none;" onclick="cancelarDica()">❌</button>
+                <button id="btn-dica-confirmar" class="btn-dica-confirmar" style="display: none;" onclick="confirmarDica()">✔️</button>
             </div>
 
             <div id="opcoes" class="opcoes-container">
