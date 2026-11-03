@@ -355,58 +355,22 @@ function iniciarDesafio(jogadorAlvo) {
 
 // ... AS FUNÇÕES atualizarVisualDesafio e atualizarRelogiosDesafio CONTINUAM AQUI INTACTAS ...
 
-function carregarNovaPerguntaDesafio(jogador) {
-    const p = obterQuestaoSemRepeticao(materiaDesafio, nivelRodadaDesafio);
-    if (!p) return;
+function atualizarVisualDesafio() {
+    const areaJ1 = document.getElementById('area-j1');
+    const areaJ2 = document.getElementById('area-j2');
     
-    const sufixo = jogador === 1 ? 'j1' : 'j2';
-    document.getElementById(`pergunta-${sufixo}`).innerText = p.p;
+    // Remove o estado neutro inicial
+    areaJ1.classList.remove('neutra');
+    areaJ2.classList.remove('neutra');
     
-    const opcoesEmbaralhadas = embaralhar(p.o);
-    const container = document.getElementById(`opcoes-${sufixo}`);
-    container.innerHTML = '';
-    
-    opcoesEmbaralhadas.forEach(opcao => {
-        const btn = document.createElement('button');
-        btn.className = 'btn-opcao';
-        btn.innerText = opcao.t;
-        
-        // AÇÃO DE CLICAR NA ALTERNATIVA
-        btn.onclick = (e) => {
-            e.stopPropagation();
-            
-            // SE A TRAVA ESTIVER ATIVA (nos primeiros 2s), O CLIQUE É IGNORADO E NÃO FAZ NADA
-            if (bloqueioClickDesafio === true) {
-                return; 
-            }
-
-            if (turnoAtual === jogador) {
-                responderDesafio(jogador, opcao.c);
-            }
-        };
-        container.appendChild(btn);
-    });
-
-    // Reprocessa o LaTeX no Modo Desafio
-    if (window.MathJax) {
-        MathJax.typesetPromise();
-    }
-}
-
-function atualizarRelogiosDesafio() {
     if (turnoAtual === 1) {
-        tempoJ1--;
-        document.getElementById('relogio-j1').innerText = tempoJ1;
-        if (tempoJ1 <= 10 && tempoJ1 > 0) tocarBipe();
-        if (tempoJ1 <= 0) finalizarDesafio(2);
+        areaJ1.className = 'metade-desafio ativa';
+        areaJ2.className = 'metade-desafio inativa';
     } else if (turnoAtual === 2) {
-        tempoJ2--;
-        document.getElementById('relogio-j2').innerText = tempoJ2;
-        if (tempoJ2 <= 10 && tempoJ2 > 0) tocarBipe();
-        if (tempoJ2 <= 0) finalizarDesafio(1);
+        areaJ1.className = 'metade-desafio inativa';
+        areaJ2.className = 'metade-desafio ativa';
     }
 }
-
 function carregarNovaPerguntaDesafio(jogador) {
     const p = obterQuestaoSemRepeticao(materiaDesafio, nivelRodadaDesafio);
     if (!p) return;
