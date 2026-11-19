@@ -24,7 +24,6 @@
         };
     </script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    
 
     <!-- CSS Externo -->
     <link rel="stylesheet" href="style.css">
@@ -61,6 +60,9 @@
         <!-- TELA 1: MENU DE MATÉRIAS -->
         <div id="tela-menu" class="tela">
             <div class="indicador-serie" id="badge-serie-menu">6º ANO</div>
+            <div id="aviso-verificacao-menu" class="badge-verificacao" style="display: none;">
+                🔍 MODO VERIFICAÇÃO ATIVO
+            </div>
             <h1 id="titulo-menu">MATÉRIAS</h1>
             <p class="subtitulo" id="subtitulo-menu">Escolha a disciplina para jogar</p>
             
@@ -76,8 +78,34 @@
                 <button class="btn-acao btn-desafio" id="btn-toggle-desafio" onclick="abrirMenuDesafio()">
                     ⚔️ MODO DESAFIO (2 JOGADORES)
                 </button>
-                <button class="btn-acao btn-voltar-serie" onclick="voltarParaSeries()">
+                <button class="btn-acao btn-voltar-serie" onclick="abrirMenuOpcoes()">
+                    ⚙️ OPÇÕES (SÉRIE / VERIFICAÇÃO)
+                </button>
+            </div>
+        </div>
+
+        <!-- MODAL DE OPÇÕES (TROCA DE SÉRIE E MODO VERIFICAÇÃO) -->
+        <div id="modal-opcoes" class="modal-overlay" style="display: none;" onclick="fecharMenuOpcoes(event)">
+            <div class="modal-conteudo" onclick="event.stopPropagation()">
+                <h2>OPÇÕES</h2>
+                
+                <div class="opcao-item">
+                    <div class="opcao-texto">
+                        <strong>Modo Verificação</strong>
+                        <span>Percorre todas as perguntas da matéria e destaca a resposta correta.</span>
+                    </div>
+                    <label class="switch">
+                        <input type="checkbox" id="toggle-modo-verificacao" onchange="alternarModoVerificacao()">
+                        <span class="slider"></span>
+                    </label>
+                </div>
+
+                <button class="btn-acao btn-modal-serie" onclick="trocarSeriePeloMenu()">
                     🔄 TROCAR SÉRIE
+                </button>
+
+                <button class="btn-acao btn-modal-fechar" onclick="fecharMenuOpcoes()">
+                    FECHAR
                 </button>
             </div>
         </div>
@@ -93,6 +121,12 @@
                 <span id="pontos-materia" class="pontos-badge">3 PTS</span>
             </div>
 
+            <!-- Barra de Progresso e ID no Modo Verificação -->
+            <div id="barra-info-verificacao" class="info-verificacao-bar" style="display: none;">
+                <span id="contador-verificacao">Questão 1 de 60</span>
+                <span id="id-verificacao">ID: 6ANO-MAT-F01</span>
+            </div>
+
             <p id="texto-pergunta">Carregando pergunta...</p>
             
             <!-- CONTAINER DA DICA ATUALIZADO -->
@@ -105,6 +139,19 @@
             <div id="opcoes" class="opcoes-container">
                 <!-- Botões gerados pelo JS -->
             </div>
+
+            <!-- CONTROLES EXCLUSIVOS DO MODO VERIFICAÇÃO -->
+            <div id="controles-verificacao" class="controles-verificacao" style="display: none;">
+                <button class="btn-acao btn-sair-verificacao" onclick="voltarMenu()">
+                    🏠 MENU
+                </button>
+                <button id="btn-voltar-pergunta" class="btn-acao btn-voltar-pergunta" onclick="voltarPerguntaVerificacao()">
+                    ⏮️ ANTERIOR
+                </button>
+                <button class="btn-acao btn-pular-pergunta" onclick="pularPerguntaVerificacao()">
+                    PRÓXIMA ⏭️
+                </button>
+            </div>
         </div>
 
         <!-- TELA 3: FEEDBACK -->
@@ -116,11 +163,10 @@
             
             <p id="referencia-pergunta" style="font-size: 0.9rem; color: #B0BEC5; margin-bottom: 20px; font-family: sans-serif;">Ref: ID</p>
             
-            <button class="btn-acao" onclick="voltarMenu()">CONTINUAR JOGANDO</button>
+            <button class="btn-acao" id="btn-continuar-feedback" onclick="continuarAposFeedback()">CONTINUAR JOGANDO</button>
         </div>
 
         <!-- TELA 4: ARENA DO DESAFIO (2 JOGADORES) -->
-                <!-- TELA 4: ARENA DO DESAFIO (2 JOGADORES) -->
         <div id="tela-desafio" class="tela">
             
             <!-- JOGADOR 2 (TOPO - INVERTIDO) -->

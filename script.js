@@ -16,6 +16,12 @@ let tempoJ2 = 60;
 let turnoAtual = 0; // 0 = Preparo, 1 = J1 ativo, 2 = J2 ativo
 let materiaDesafio = "";
 
+// Variáveis do Modo Verificação
+let modoVerificacaoAtivo = false;
+let listaVerificacao = [];
+let indiceVerificacao = 0;
+let materiaVerificacaoAtual = "";
+
 // Lógica de pareamento por rodada no Desafio
 let nivelRodadaDesafio = null;
 let contadorPerguntasRodada = 0;
@@ -50,7 +56,7 @@ function mudarTela(idTela) {
 }
 
 // ==========================================
-// NAVEGAÇÃO DE SÉRIES
+// NAVEGAÇÃO DE SÉRIES E MENU DE OPÇÕES
 // ==========================================
 function selecionarSerie(serie) {
     serieAtual = serie;
@@ -59,6 +65,41 @@ function selecionarSerie(serie) {
     document.getElementById('badge-serie-pergunta').innerText = `${serie}º ANO`;
     
     mudarTela('tela-menu');
+}
+
+function abrirMenuOpcoes() {
+    document.getElementById('toggle-modo-verificacao').checked = modoVerificacaoAtivo;
+    document.getElementById('modal-opcoes').style.display = 'flex';
+}
+
+function fecharMenuOpcoes(event) {
+    if (event && event.target !== document.getElementById('modal-opcoes')) return;
+    document.getElementById('modal-opcoes').style.display = 'none';
+}
+
+function alternarModoVerificacao() {
+    modoVerificacaoAtivo = document.getElementById('toggle-modo-verificacao').checked;
+    const avisoMenu = document.getElementById('aviso-verificacao-menu');
+    const btnDesafio = document.getElementById('btn-toggle-desafio');
+
+    if (modoVerificacaoAtivo) {
+        if (modoAtual === 'desafio') {
+            modoAtual = 'normal';
+            document.getElementById('titulo-menu').innerText = "MATÉRIAS";
+            btnDesafio.innerText = "⚔️ MODO DESAFIO (2 JOGADORES)";
+            btnDesafio.style.backgroundColor = "#D32F2F";
+        }
+        avisoMenu.style.display = 'inline-block';
+        document.getElementById('subtitulo-menu').innerText = "Escolha a disciplina para verificar";
+    } else {
+        avisoMenu.style.display = 'none';
+        document.getElementById('subtitulo-menu').innerText = "Escolha a disciplina para jogar";
+    }
+}
+
+function trocarSeriePeloMenu() {
+    fecharMenuOpcoes();
+    voltarParaSeries();
 }
 
 function voltarParaSeries() {
@@ -82,21 +123,17 @@ function obterQuestaoSemRepeticao(materia, nivelDesejado = null) {
         return null;
     }
 
-    // 1. Filtra questões que ainda não foram exibidas na partida
     let disponiveis = listaMateria.filter(q => !idsUsados.has(q.id));
 
-    // 2. Filtro por nível no Modo Desafio
     if (nivelDesejado !== null) {
         let disponiveisNivel = disponiveis.filter(q => q.pts === nivelDesejado);
         
-        // Se acabarem as questões do nível, recicla esse nível específico da série
         if (disponiveisNivel.length === 0) {
             listaMateria.filter(q => q.pts === nivelDesejado).forEach(q => idsUsados.delete(q.id));
             disponiveisNivel = listaMateria.filter(q => q.pts === nivelDesejado);
         }
         disponiveis = disponiveisNivel;
     } else {
-        // Modo Normal: Se acabar a matéria toda da série, recicla a matéria
         if (disponiveis.length === 0) {
             listaMateria.forEach(q => idsUsados.delete(q.id));
             disponiveis = listaMateria;
@@ -114,6 +151,12 @@ function obterQuestaoSemRepeticao(materia, nivelDesejado = null) {
 // CONTROLES DO MENU PRINCIPAL
 // ==========================================
 function abrirMenuDesafio() {
+    if (modoVerificacaoAtivo) {
+        modoVerificacaoAtivo = false;
+        document.getElementById('toggle-modo-verificacao').checked = false;
+        document.getElementById('aviso-verificacao-menu').style.display = 'none';
+    }
+
     const btn = document.getElementById('btn-toggle-desafio');
     
     if (modoAtual === 'normal') {
@@ -139,7 +182,9 @@ function voltarMenu() {
     
     modoAtual = 'normal';
     document.getElementById('titulo-menu').innerText = "MATÉRIAS";
-    document.getElementById('subtitulo-menu').innerText = "Escolha a disciplina para jogar";
+    document.getElementById('subtitulo-menu').innerText = modoVerificacaoAtivo 
+        ? "Escolha a disciplina para verificar" 
+        : "Escolha a disciplina para jogar";
     
     const btnDesafio = document.getElementById('btn-toggle-desafio');
     if (btnDesafio) {
@@ -151,7 +196,7 @@ function voltarMenu() {
 }
 
 // ==========================================
-// MODO NORMAL (CAMPANHA)
+// MODO NORMAL E MODO VERIFICAÇÃO
 // ==========================================
 function sortearPergunta(materia) {
     if (audioCtx.state === 'suspended') audioCtx.resume();
@@ -161,21 +206,93 @@ function sortearPergunta(materia) {
         return;
     }
 
+    if (modoVerificacaoAtivo) {
+        iniciarModoVerificacao(materia);
+        return;
+    }
+
     perguntaAtual = obterQuestaoSemRepeticao(materia, null);
     if (!perguntaAtual) return;
-    
-    const btnDica = document.getElementById('btn-dica');
-    if(btnDica) {
-        btnDica.disabled = false;
-        btnDica.style.display = 'inline-block';
+
+    renderizarPergunta(materia, perguntaAtual, false);
+}
+
+function iniciarModoVerificacao(materia) {
+    const listaMateria = (banco[serieAtual] && banco[serieAtual][materia]) ? banco[serieAtual][materia] : [];
+    if (listaMateria.length === 0) {
+        alert(`Ainda não existem perguntas cadastradas para ${materia} no ${serieAtual}º Ano.`);
+        return;
     }
-    const btnCancelar = document.getElementById('btn-dica-cancelar');
-    if(btnCancelar) btnCancelar.style.display = 'none';
-    const btnConfirmar = document.getElementById('btn-dica-confirmar');
-    if(btnConfirmar) btnConfirmar.style.display = 'none';
+
+    materiaVerificacaoAtual = materia;
+    listaVerificacao = JSON.parse(JSON.stringify(listaMateria));
+    indiceVerificacao = 0;
+
+    carregarQuestaoVerificacao();
+}
+
+function carregarQuestaoVerificacao() {
+    perguntaAtual = listaVerificacao[indiceVerificacao];
+    renderizarPergunta(materiaVerificacaoAtual, perguntaAtual, true);
+}
+
+function voltarPerguntaVerificacao() {
+    if (indiceVerificacao > 0) {
+        indiceVerificacao--;
+        carregarQuestaoVerificacao();
+    }
+}
+
+function pularPerguntaVerificacao() {
+    indiceVerificacao++;
+    if (indiceVerificacao >= listaVerificacao.length) {
+        alert(`Você concluiu todas as ${listaVerificacao.length} perguntas de ${materiaVerificacaoAtual} (${serieAtual}º Ano)!`);
+        voltarMenu();
+        return;
+    }
+    carregarQuestaoVerificacao();
+}
+
+function renderizarPergunta(materia, questao, isVerificacao) {
+    const btnDica = document.getElementById('btn-dica');
+    const containerDica = document.getElementById('container-dica');
+    const barraVerificacao = document.getElementById('barra-info-verificacao');
+    const controlesVerificacao = document.getElementById('controles-verificacao');
+    const displayTempo = document.getElementById('tempo-restante');
+
+    if (isVerificacao) {
+        clearInterval(timerInterval);
+        displayTempo.innerText = "🔍 REVISÃO";
+        displayTempo.classList.remove('tempo-esgotando');
+
+        if (containerDica) containerDica.style.display = 'none';
+        barraVerificacao.style.display = 'flex';
+        controlesVerificacao.style.display = 'flex';
+
+        document.getElementById('contador-verificacao').innerText = `Questão ${indiceVerificacao + 1} de ${listaVerificacao.length}`;
+        document.getElementById('id-verificacao').innerText = `ID: ${questao.id}`;
+
+        const btnVoltar = document.getElementById('btn-voltar-pergunta');
+        if (btnVoltar) {
+            btnVoltar.disabled = (indiceVerificacao === 0);
+        }
+    } else {
+        barraVerificacao.style.display = 'none';
+        controlesVerificacao.style.display = 'none';
+
+        if (containerDica) containerDica.style.display = 'flex';
+        if (btnDica) {
+            btnDica.disabled = false;
+            btnDica.style.display = 'inline-block';
+        }
+        const btnCancelar = document.getElementById('btn-dica-cancelar');
+        if (btnCancelar) btnCancelar.style.display = 'none';
+        const btnConfirmar = document.getElementById('btn-dica-confirmar');
+        if (btnConfirmar) btnConfirmar.style.display = 'none';
+    }
 
     document.getElementById('nome-materia').innerText = materia;
-    document.getElementById('pontos-materia').innerText = perguntaAtual.pts + " PTS";
+    document.getElementById('pontos-materia').innerText = questao.pts + " PTS";
     
     const headerMateria = document.getElementById('nome-materia');
     if(materia === "Matemática") headerMateria.style.color = "var(--cor-mat)";
@@ -183,25 +300,32 @@ function sortearPergunta(materia) {
     if(materia === "História") headerMateria.style.color = "var(--cor-hist)";
     if(materia === "Ciências") headerMateria.style.color = "var(--cor-cien)";
 
-    document.getElementById('texto-pergunta').innerText = perguntaAtual.p;
+    document.getElementById('texto-pergunta').innerText = questao.p;
     
-    const opcoesEmbaralhadas = embaralhar(perguntaAtual.o);
+    const opcoesParaExibir = isVerificacao ? questao.o : embaralhar(questao.o);
     const containerOpcoes = document.getElementById('opcoes');
     containerOpcoes.innerHTML = ''; 
     
-    opcoesEmbaralhadas.forEach(opcao => {
+    opcoesParaExibir.forEach(opcao => {
         const btn = document.createElement('button');
         btn.className = 'btn-opcao';
         btn.innerText = opcao.t;
-        btn.dataset.correta = opcao.c; 
-        btn.onclick = () => verificarResposta(opcao.c, perguntaAtual, false);
+        btn.dataset.correta = opcao.c;
+
+        if (isVerificacao && opcao.c === true) {
+            btn.classList.add('opcao-correta-verificacao');
+        }
+
+        btn.onclick = () => verificarResposta(opcao.c, questao, false);
         containerOpcoes.appendChild(btn);
     });
 
     mudarTela('tela-pergunta');
-    iniciarTimer(perguntaAtual);
 
-    // Reprocessa o LaTeX na tela de pergunta
+    if (!isVerificacao) {
+        iniciarTimer(questao);
+    }
+
     if (window.MathJax) {
         MathJax.typesetPromise();
     }
@@ -237,6 +361,7 @@ function verificarResposta(isCorreta, objPergunta, tempoEsgotado = false) {
     const pontos = document.getElementById('pontos-feedback');
     const icone = document.getElementById('icone-feedback');
     const ref = document.getElementById('referencia-pergunta');
+    const btnContinuar = document.getElementById('btn-continuar-feedback');
 
     if (tempoEsgotado) {
         icone.innerText = "⏰";
@@ -247,7 +372,9 @@ function verificarResposta(isCorreta, objPergunta, tempoEsgotado = false) {
         icone.innerText = "✅";
         titulo.innerText = "RESPOSTA CORRETA!";
         titulo.style.color = "#4CAF50"; 
-        pontos.innerText = `Você ganhou +${objPergunta.pts} Pontos!`;
+        pontos.innerText = modoVerificacaoAtivo 
+            ? `Modo Verificação (${objPergunta.pts} PTS)` 
+            : `Você ganhou +${objPergunta.pts} Pontos!`;
     } else {
         icone.innerText = "❌";
         titulo.innerText = "RESPOSTA INCORRETA!";
@@ -255,29 +382,35 @@ function verificarResposta(isCorreta, objPergunta, tempoEsgotado = false) {
         pontos.innerText = "Nenhum ponto recebido.";
     }
 
+    btnContinuar.innerText = modoVerificacaoAtivo ? "PRÓXIMA QUESTÃO" : "CONTINUAR JOGANDO";
+
     document.getElementById('explicacao-feedback').innerText = objPergunta.exp;
     ref.innerText = "Ref: " + objPergunta.id;
     mudarTela('tela-feedback');
 
-    // Reprocessa o LaTeX na tela de feedback
     if (window.MathJax) {
         MathJax.typesetPromise();
     }
+}
 
+function continuarAposFeedback() {
+    if (modoVerificacaoAtivo) {
+        pularPerguntaVerificacao();
+    } else {
+        voltarMenu();
+    }
 }
 
 function solicitarDica() {
     const btnDica = document.getElementById('btn-dica');
     if (btnDica.disabled) return;
     
-    // Esconde o botão original e mostra os de confirmação
     btnDica.style.display = 'none';
     document.getElementById('btn-dica-cancelar').style.display = 'inline-block';
     document.getElementById('btn-dica-confirmar').style.display = 'inline-block';
 }
 
 function cancelarDica() {
-    // Esconde os de confirmação e volta o original
     document.getElementById('btn-dica-cancelar').style.display = 'none';
     document.getElementById('btn-dica-confirmar').style.display = 'none';
     document.getElementById('btn-dica').style.display = 'inline-block';
@@ -295,7 +428,6 @@ function confirmarDica() {
         tocarBipe();
     }
     
-    // Esconde a confirmação e desativa o botão original
     document.getElementById('btn-dica-cancelar').style.display = 'none';
     document.getElementById('btn-dica-confirmar').style.display = 'none';
     const btnDica = document.getElementById('btn-dica');
@@ -308,7 +440,7 @@ function confirmarDica() {
 // MODO DESAFIO (ARENA DIVIDIDA)
 // ==========================================
 function prepararArenaDesafio(materia) {
-    materiaDesafio = materia; // 1. Salva a matéria selecionada no Modo Desafio
+    materiaDesafio = materia;
     tempoJ1 = 60;
     tempoJ2 = 60;
     turnoAtual = 0;
@@ -321,7 +453,6 @@ function prepararArenaDesafio(materia) {
     document.getElementById('area-j1').className = 'metade-desafio neutra';
     document.getElementById('area-j2').className = 'metade-desafio neutra';
 
-    // Garante que os overlays voltam a ficar visíveis ao entrar na arena
     const overlayJ1 = document.getElementById('overlay-j1');
     const overlayJ2 = document.getElementById('overlay-j2');
     if (overlayJ1) overlayJ1.style.display = 'flex';
@@ -330,7 +461,6 @@ function prepararArenaDesafio(materia) {
     mudarTela('tela-desafio');
 }
 
-// VARIÁVEL DA TRAVA: Controla se os botões podem ser clicados nos primeiros segundos
 let bloqueioClickDesafio = false;
 
 function iniciarDesafio(jogadorAlvo) {
@@ -338,13 +468,11 @@ function iniciarDesafio(jogadorAlvo) {
 
     turnoAtual = jogadorAlvo;
 
-    // Oculta os overlays de cada jogador
     const overlayJ1 = document.getElementById('overlay-j1');
     const overlayJ2 = document.getElementById('overlay-j2');
     if (overlayJ1) overlayJ1.style.display = 'none';
     if (overlayJ2) overlayJ2.style.display = 'none';
 
-    // Bloqueia cliques acidentais nos primeiros 2 segundos
     bloqueioClickDesafio = true;
     setTimeout(() => {
         bloqueioClickDesafio = false;
@@ -353,7 +481,6 @@ function iniciarDesafio(jogadorAlvo) {
     clearInterval(timerDesafio);
     timerDesafio = setInterval(atualizarRelogiosDesafio, 1000);
 
-    // 2. Transiciona a tela para o jogador ativo e carrega a pergunta
     atualizarVisualDesafio();
     carregarNovaPerguntaDesafio(jogadorAlvo);
 }
@@ -418,7 +545,6 @@ function carregarNovaPerguntaDesafio(jogador) {
         MathJax.typesetPromise();
     }
 }
-
 
 function responderDesafio(jogador, isCorreta) {
     if (isCorreta) {
